@@ -7,7 +7,8 @@
 //
 
 #import "AppDelegate.h"
-#import "DetailViewController.h"
+#import "SNParentProfile.h"
+#import "SNParentProfileViewController.h"
 
 @interface AppDelegate ()
 
@@ -18,6 +19,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    SNParentProfileViewController *viewcontroller = (SNParentProfileViewController *)[storyboard instantiateViewControllerWithIdentifier:@"parentProfile"];
+    
+    SNParentProfile *parent = [SNParentProfile savedParent];
+    viewcontroller.parent = parent?parent:[[SNParentProfile alloc] init];
+    
     return YES;
 }
 
