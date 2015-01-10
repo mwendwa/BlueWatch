@@ -22,6 +22,7 @@
 		443EF1521A2D61E6008A5EA3 /* email-red-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 443EF14F1A2D61E6008A5EA3 /* email-red-32.png */; };
 		443EF1531A2D61E6008A5EA3 /* phone1-red-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 443EF1501A2D61E6008A5EA3 /* phone1-red-32.png */; };
 		443EF1581A2D691B008A5EA3 /* SNParentProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 443EF1571A2D691B008A5EA3 /* SNParentProfileViewController.m */; };
+		44557C361A60854800C9947E /* gps_receiving-red-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 44557C351A60854800C9947E /* gps_receiving-red-50.png */; };
 		449FC3911A17E20A00F15D62 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 449FC3901A17E20A00F15D62 /* SWRevealViewController.m */; };
 		449FC3951A17E65B00F15D62 /* date-red-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 449FC3921A17E65B00F15D62 /* date-red-50.png */; };
 		449FC3971A17E65B00F15D62 /* settings-red-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 449FC3941A17E65B00F15D62 /* settings-red-50.png */; };
@@ -97,6 +98,7 @@
 		443EF1501A2D61E6008A5EA3 /* phone1-red-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "phone1-red-32.png"; sourceTree = "<group>"; };
 		443EF1561A2D691B008A5EA3 /* SNParentProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNParentProfileViewController.h; sourceTree = "<group>"; };
 		443EF1571A2D691B008A5EA3 /* SNParentProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNParentProfileViewController.m; sourceTree = "<group>"; };
+		44557C351A60854800C9947E /* gps_receiving-red-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "gps_receiving-red-50.png"; sourceTree = "<group>"; };
 		449FC38F1A17E20A00F15D62 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		449FC3901A17E20A00F15D62 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		449FC3921A17E65B00F15D62 /* date-red-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "date-red-50.png"; sourceTree = "<group>"; };
@@ -263,6 +265,7 @@
 		44F6C9841A1698A1008D8186 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				44557C351A60854800C9947E /* gps_receiving-red-50.png */,
 				44CF80001A4FABBC001171A0 /* camcoder-red-50.png */,
 				44CF80011A4FABBC001171A0 /* location-red-50.png */,
 				44CF7FFE1A4F8A0A001171A0 /* SNI Shield-2.png */,
@@ -418,6 +421,7 @@
 				44CF7FFD1A4F8943001171A0 /* SNI Shield.png in Resources */,
 				443EF1521A2D61E6008A5EA3 /* email-red-32.png in Resources */,
 				449FC3A01A17EC7800F15D62 /* about-red-50.png in Resources */,
+				44557C361A60854800C9947E /* gps_receiving-red-50.png in Resources */,
 				44F6C9AC1A1698A1008D8186 /* steering_wheel-red-50.png in Resources */,
 				44F6C99D1A1698A1008D8186 /* find_user-red-50.png in Resources */,
 				44F6C9A11A1698A1008D8186 /* listen-red-50.png in Resources */,

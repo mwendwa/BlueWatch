@@ -11,13 +11,19 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright (c) 2014 SafeNet Industries. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="8ie-xW-0ye">
-                    <rect key="frame" x="20" y="439" width="441" height="21"/>
+                    <rect key="frame" x="20" y="459" width="441" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="DB1-r8-9uk"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DrivingWhileTeen" textAlignment="center" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumFontSize="18" translatesAutoresizingMaskIntoConstraints="NO" id="kId-c2-rCX">
                     <rect key="frame" x="20" y="30" width="441" height="43"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="43" id="8lT-z6-XA5"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
                     <color key="textColor" red="1" green="0.25628003690000001" blue="0.25172087999999998" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -25,22 +31,21 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SNI Shield-2.png" translatesAutoresizingMaskIntoConstraints="NO" id="40G-OJ-kcs">
                     <rect key="frame" x="120" y="164" width="240" height="245"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="245" id="Mzd-PB-8LC"/>
-                        <constraint firstAttribute="width" constant="240" id="jJO-rS-DD4"/>
+                        <constraint firstAttribute="width" constant="240" id="gKp-8Z-FQZ"/>
                     </constraints>
                 </imageView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="8ie-xW-0ye" secondAttribute="bottom" constant="20" id="Kzo-t9-V3l"/>
-                <constraint firstItem="8ie-xW-0ye" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" symbolic="YES" id="MfP-vx-nX0"/>
-                <constraint firstItem="40G-OJ-kcs" firstAttribute="centerX" secondItem="8ie-xW-0ye" secondAttribute="centerX" id="Se1-uE-MkV"/>
-                <constraint firstItem="8ie-xW-0ye" firstAttribute="top" secondItem="40G-OJ-kcs" secondAttribute="bottom" constant="30" id="TTO-JX-mDd"/>
-                <constraint firstAttribute="centerX" secondItem="8ie-xW-0ye" secondAttribute="centerX" id="ZEH-qu-HZ9"/>
-                <constraint firstItem="kId-c2-rCX" firstAttribute="leading" secondItem="8ie-xW-0ye" secondAttribute="leading" id="hVS-Jr-99w"/>
-                <constraint firstItem="40G-OJ-kcs" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="164" id="izC-uv-jr4"/>
-                <constraint firstItem="kId-c2-rCX" firstAttribute="trailing" secondItem="8ie-xW-0ye" secondAttribute="trailing" id="vNl-3h-13B"/>
-                <constraint firstItem="kId-c2-rCX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="30" id="yCD-yW-Tsd"/>
+                <constraint firstItem="kId-c2-rCX" firstAttribute="leading" secondItem="8ie-xW-0ye" secondAttribute="leading" id="7ot-IK-hs0"/>
+                <constraint firstItem="8ie-xW-0ye" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="96S-XL-qZQ"/>
+                <constraint firstItem="kId-c2-rCX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="Gm0-51-x7j"/>
+                <constraint firstAttribute="bottom" secondItem="8ie-xW-0ye" secondAttribute="bottom" id="Ksh-Y7-bVB"/>
+                <constraint firstItem="8ie-xW-0ye" firstAttribute="top" secondItem="40G-OJ-kcs" secondAttribute="bottom" constant="50" id="Lkp-Ks-dWF"/>
+                <constraint firstItem="40G-OJ-kcs" firstAttribute="centerX" secondItem="8ie-xW-0ye" secondAttribute="centerX" id="di2-TQ-Ri0"/>
+                <constraint firstItem="kId-c2-rCX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="30" id="sPV-Fl-eW3"/>
+                <constraint firstItem="kId-c2-rCX" firstAttribute="trailing" secondItem="8ie-xW-0ye" secondAttribute="trailing" id="sW5-yH-mCK"/>
+                <constraint firstItem="40G-OJ-kcs" firstAttribute="top" secondItem="kId-c2-rCX" secondAttribute="bottom" constant="91" id="t5l-Wi-lyP"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

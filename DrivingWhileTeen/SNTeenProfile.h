@@ -19,5 +19,6 @@
 - (void) save;
 + (SNTeenProfile *) savedTeen;
 - (NSString *) description;
+- (NSString *) myLocation;
 
 @end

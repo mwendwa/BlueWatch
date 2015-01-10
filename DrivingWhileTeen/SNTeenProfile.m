@@ -53,10 +53,18 @@
     return [NSKeyedUnarchiver unarchiveObjectWithData:data];
 }
 
+#pragma mark - Description and Location
+
 -(NSString *)description
 {
     return [NSString stringWithFormat:@"<Name: %@, Number: %@, E-Mail: %@, Latitude %+.6f, Longitude %+.6f>",
             self.name, self.number, self.email, self.location.coordinate.latitude, self.location.coordinate.longitude];
+}
+
+-(NSString *)myLocation
+{
+    return [NSString stringWithFormat:@"<I'm located at Latitude %+.6f, Longitude %+.6f>",
+            self.location.coordinate.latitude, self.location.coordinate.longitude];
 }
 
 @end

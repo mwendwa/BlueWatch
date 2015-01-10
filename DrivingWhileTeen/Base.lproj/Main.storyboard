@@ -449,7 +449,7 @@
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="map-red-50.png" translatesAutoresizingMaskIntoConstraints="NO" id="Fbz-K3-YO6">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="gps_receiving-red-50.png" translatesAutoresizingMaskIntoConstraints="NO" id="Fbz-K3-YO6">
                                             <rect key="frame" x="20" y="2" width="38" height="38"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="38" id="9RR-vC-5Xs"/>
@@ -694,13 +694,15 @@
                             <constraint firstItem="ji7-AT-Nxh" firstAttribute="leading" secondItem="MCg-Sf-Nbh" secondAttribute="leadingMargin" constant="35" id="ql8-u4-Ta8"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="nIP-IV-kkO">
-                        <barButtonItem key="leftBarButtonItem" image="menu-red-32.png" id="4bl-iv-f8o">
+                        <barButtonItem key="leftBarButtonItem" image="menu-red-32.png" id="r2m-hP-aZD">
                             <color key="tintColor" red="0.69019607839999997" green="0.1450980392" blue="0.12549019610000001" alpha="1" colorSpace="calibratedRGB"/>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="sidebarButton" destination="4bl-iv-f8o" id="SLQ-gt-x5h"/>
+                        <outlet property="sidebarButton" destination="r2m-hP-aZD" id="mA2-R0-1He"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DQh-hI-ItM" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -784,9 +786,9 @@
         <image name="engine-red-50.png" width="50" height="50"/>
         <image name="find_user-red-50.png" width="50" height="50"/>
         <image name="flash_light-red-50.png" width="50" height="50"/>
+        <image name="gps_receiving-red-50.png" width="50" height="50"/>
         <image name="iphone-red-50.png" width="50" height="50"/>
         <image name="listen-red-50.png" width="50" height="50"/>
-        <image name="map-red-50.png" width="50" height="50"/>
         <image name="menu-red-32.png" width="32" height="32"/>
         <image name="parent_guardian-red-50.png" width="50" height="50"/>
         <image name="police_badge-red-50.png" width="50" height="50"/>
@@ -795,6 +797,6 @@
         <image name="talk-red-50.png" width="50" height="50"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="K5A-H1-DqH"/>
+        <segue reference="Mir-pk-aV2"/>
     </inferredMetricsTieBreakers>
 </document>

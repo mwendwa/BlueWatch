@@ -34,7 +34,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"Parent Profile Settings";
+    self.title = @"Teen Profile Settings";
     self.teen = [[SNTeenProfile alloc] init];
     SNTeenProfile *sp = [SNTeenProfile savedTeen];
     

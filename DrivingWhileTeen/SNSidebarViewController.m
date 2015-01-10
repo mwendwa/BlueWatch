@@ -68,7 +68,7 @@
         NSLog(@"Send teen location to: %@", _parent.description);
         NSLog(@"Teen is at: %@", _teen.location);
         
-        //[self sendSMS:@"Location..." recipientList:[NSArray arrayWithObjects:_parent.number, nil]];
+        [self sendSMS:@"Location..." recipientList:[NSArray arrayWithObjects:_parent.number, nil]];
     }
     
     // Manage the view transition and tell SWRevealViewController the new front view controller for display.

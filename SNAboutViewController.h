@@ -11,5 +11,6 @@
 @interface SNAboutViewController : UIViewController
 
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *sidebarButton;
+@property (nonatomic, weak) IBOutlet UIBarButtonItem *doneButton;
 
 @end

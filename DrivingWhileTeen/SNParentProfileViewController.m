@@ -18,6 +18,7 @@
 @property (nonatomic, strong) NSArray *thumbNails;
 @property (nonatomic, strong) UITextField *selectedTextField;
 @property (nonatomic) BOOL isEditing;
+@property (nonatomic, strong) NSArray *parentArray;
 
 @end
 
@@ -35,8 +36,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = @"Parent Profile Settings";
-    self.parent = [[SNParentProfile alloc] init];
     SNParentProfile *sp = [SNParentProfile savedParent];
+    self.parent = [[SNParentProfile alloc] init];
+    self.parentArray = [[NSArray alloc] init];
    
     if (nil == sp) {
         self.parent.name = @"Jon Doe";
@@ -70,7 +72,7 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -78,8 +80,17 @@
     return [self.menuItems count];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    
+    if(section == 0)
+        return @"Parent/Gaurdian 1";
+    if(section == 1)
+        return @"Parent/Gaurdian 2";
+    
+    return @"Parent/Gaurdian";
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     SNTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCellIdentifier];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
