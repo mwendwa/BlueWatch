@@ -10,6 +10,7 @@
 #import "SWRevealViewController.h"
 #import "SNTableViewCell.h"
 
+#define kTitle @"Teen Profile"
 #define kCellIdentifier @"SNTableViewCell"
 
 @interface SNTeenProfileViewController ()
@@ -34,7 +35,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"Teen Profile Settings";
+
+    UILabel* tlabel=[[UILabel alloc] initWithFrame:CGRectMake(0,0, 300, 40)];
+    tlabel.text = kTitle;
+    tlabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:20.0];
+    tlabel.textColor=[UIColor grayColor];
+    tlabel.backgroundColor =[UIColor clearColor];
+    tlabel.adjustsFontSizeToFitWidth=YES;
+    self.navigationItem.titleView=tlabel;
+    
+    // emboss so that the label looks OK
+    [tlabel setShadowColor:[UIColor darkGrayColor]];
+    [tlabel setShadowOffset:CGSizeMake(0, -0.5)];
+    self.navigationItem.titleView = tlabel;
+    
     self.teen = [[SNTeenProfile alloc] init];
     SNTeenProfile *sp = [SNTeenProfile savedTeen];
     
@@ -90,15 +104,15 @@
     switch (indexPath.row) {
         case 0:
             cell.imageView.image = [UIImage imageNamed:[self.thumbNails objectAtIndex:indexPath.row]];
-            cell.textFieldValue.placeholder = self.teen.name;
+            cell.textFieldValue.text = self.teen.name;
             break;
         case 1:
             cell.imageView.image = [UIImage imageNamed:[self.thumbNails objectAtIndex:indexPath.row]];
-            cell.textFieldValue.placeholder = self.teen.number;
+            cell.textFieldValue.text = self.teen.number;
             break;
         case 2:
             cell.imageView.image = [UIImage imageNamed:[self.thumbNails objectAtIndex:indexPath.row]];
-            cell.textFieldValue.placeholder = self.teen.email;
+            cell.textFieldValue.text = self.teen.email;
             break;
         default:
             break;

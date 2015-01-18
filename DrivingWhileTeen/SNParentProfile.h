@@ -14,8 +14,8 @@
 @property (copy, nonatomic) NSString* number;
 @property (copy, nonatomic) NSString* email;
 
-- (void) save;
-+ (SNParentProfile *) savedParent;
+- (void) save:(NSString *)keyName;
++ (SNParentProfile *) savedParent:(NSString *)keyName;
 - (NSString *) description;
 
-@end
+@end;

@@ -11,6 +11,9 @@
 #import "SNTableViewCell.h"
 
 #define kCellIdentifier @"SNTableViewCell"
+#define kParent1 @"Parent1"
+#define kParent2 @"Parent2"
+#define kTitle @"Parent Profile"
 
 @interface SNParentProfileViewController ()
 
@@ -18,7 +21,7 @@
 @property (nonatomic, strong) NSArray *thumbNails;
 @property (nonatomic, strong) UITextField *selectedTextField;
 @property (nonatomic) BOOL isEditing;
-@property (nonatomic, strong) NSArray *parentArray;
+
 
 @end
 
@@ -35,21 +38,48 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = @"Parent Profile Settings";
-    SNParentProfile *sp = [SNParentProfile savedParent];
-    self.parent = [[SNParentProfile alloc] init];
-    self.parentArray = [[NSArray alloc] init];
-   
-    if (nil == sp) {
-        self.parent.name = @"Jon Doe";
-        self.parent.number = @"555-555-5555";
-        self.parent.email = @"jon.doe@email.com";
-        NSLog(@"[%@ Parent Profile]", self.parent.description);
+    
+    UILabel* tlabel=[[UILabel alloc] initWithFrame:CGRectMake(0,0, 300, 40)];
+    tlabel.text = kTitle;
+    tlabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:20.0];
+    tlabel.textColor=[UIColor grayColor];
+    tlabel.backgroundColor =[UIColor clearColor];
+    tlabel.adjustsFontSizeToFitWidth=YES;
+    self.navigationItem.titleView=tlabel;
+    
+    // emboss so that the label looks OK
+    [tlabel setShadowColor:[UIColor darkGrayColor]];
+    [tlabel setShadowOffset:CGSizeMake(0, -0.5)];
+    self.navigationItem.titleView = tlabel;
+    
+    SNParentProfile *sp1 = [SNParentProfile savedParent:kParent1];
+    SNParentProfile *sp2 = [SNParentProfile savedParent:kParent2];
+    self.p1 = [[SNParentProfile alloc] init];
+    self.p2 = [[SNParentProfile alloc] init];
+
+    
+    if (nil == sp1) {
+        self.p1.name = @"Jon Doe";
+        self.p1.number = @"555-555-5555";
+        self.p1.email = @"jon.doe@email.com";
+        NSLog(@"[%@ Parent Profile]", self.p1.description);
     } else {
-        self.parent.name = sp.name;
-        self.parent.number = sp.number;
-        self.parent.email = sp.email;
-        NSLog(@"[%@ Saved Parent Profile]", self.parent.description);
+        self.p1.name = sp1.name;
+        self.p1.number = sp1.number;
+        self.p1.email = sp1.email;
+        NSLog(@"[%@ Saved Parent Profile]", self.p1.description);
+    }
+    
+    if (nil == sp2) {
+        self.p2.name = @"Jane Doe";
+        self.p2.number = @"444-444-4444";
+        self.p2.email = @"jane.doe@email.com";
+        NSLog(@"[%@ Parent Profile]", self.p2.description);
+    } else {
+        self.p2.name = sp2.name;
+        self.p2.number = sp2.number;
+        self.p2.email = sp2.email;
+        NSLog(@"[%@ Saved Parent Profile]", self.p2.description);
     }
     
     [self setTextFieldEditing:NO];
@@ -95,27 +125,45 @@
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     cell.textFieldValue.delegate = self;
-    cell.textFieldValue.tag = indexPath.row;
+    cell.textFieldValue.tag = indexPath.row + (indexPath.section * 3);
+    NSLog(@"section: %li row: %li tag: %li", indexPath.section, indexPath.row, (long)cell.textFieldValue.tag);
     
-    // there should only be 3 elements
-    switch (indexPath.row) {
-        case 0:
-            cell.imageView.image = [UIImage imageNamed:[self.thumbNails objectAtIndex:indexPath.row]];
-            //cell.textFieldValue.text = self.parent.name;
-            cell.textFieldValue.placeholder = self.parent.name;
-            break;
-        case 1:
-            cell.imageView.image = [UIImage imageNamed:[self.thumbNails objectAtIndex:indexPath.row]];
-            //cell.textFieldValue.text = self.parent.number;
-            cell.textFieldValue.placeholder = self.parent.number;
-            break;
-        case 2:
-            cell.imageView.image = [UIImage imageNamed:[self.thumbNails objectAtIndex:indexPath.row]];
-            //cell.textFieldValue.text = self.parent.email;
-            cell.textFieldValue.placeholder = self.parent.email;
-            break;
-        default:
-            break;
+    // there should only be 3 elements per section
+    if (indexPath.section == 0) {
+        switch (cell.textFieldValue.tag) {
+            case 0: // 0 + (0 * 0)
+                cell.imageView.image = [UIImage imageNamed:[self.thumbNails objectAtIndex:indexPath.row]];
+                cell.textFieldValue.text = self.p1.name;
+                break;
+            case 1: // 1 + (0 * 0)
+                cell.imageView.image = [UIImage imageNamed:[self.thumbNails objectAtIndex:indexPath.row]];
+                cell.textFieldValue.text = self.p1.number;
+                break;
+            case 2: // 2 + (0 * 0)
+                cell.imageView.image = [UIImage imageNamed:[self.thumbNails objectAtIndex:indexPath.row]];
+                cell.textFieldValue.text = self.p1.email;
+                break;
+            default:
+                break;
+        }
+    } else {    // section = 1
+        switch (cell.textFieldValue.tag) {
+            case 3: // 0 + (3 * 1)
+                cell.imageView.image = [UIImage imageNamed:[self.thumbNails objectAtIndex:indexPath.row]];
+                cell.textFieldValue.text = self.p2.name;
+                break;
+            case 4: // 1 + (3 * 1)
+                cell.textFieldValue.tag = indexPath.row + indexPath.section + 5;
+                cell.imageView.image = [UIImage imageNamed:[self.thumbNails objectAtIndex:indexPath.row]];
+                cell.textFieldValue.text = self.p2.number;
+                break;
+            case 5: // 2 + (3 * 1)
+                cell.imageView.image = [UIImage imageNamed:[self.thumbNails objectAtIndex:indexPath.row]];
+                cell.textFieldValue.text = self.p2.email;
+                break;
+            default:
+                break;
+        }
     }
     return cell;
 }
@@ -150,7 +198,8 @@
     [self setTextFieldEditing:!_isEditing];
     
     if (!_isEditing) {
-        [self.parent save];
+        [_p1 save:kParent1];
+        [_p2 save:kParent2];
     }
 }
 
@@ -184,21 +233,33 @@
  */
 
 - (void)textFieldDidEndEditing:(UITextField *)textField {
-    
-    
+    NSLog(@"tag: %li", (long)textField.tag);
     switch (textField.tag) {
         case 0:{
-            self.parent.name = textField.text;
+            self.p1.name = textField.text;
             break;
         }
         case 1:{
-            self.parent.number = textField.text;
+            self.p1.number = textField.text;
             break;
         }
         case 2:{
-            self.parent.email = textField.text;
+            self.p1.email = textField.text;
             break;
         }
+        case 3:{
+            self.p2.name = textField.text;
+            break;
+        }
+        case 7:{
+            self.p2.number = textField.text;
+            break;
+        }
+        case 5:{
+            self.p2.email = textField.text;
+            break;
+        }
+            
         default:
             break;
     }

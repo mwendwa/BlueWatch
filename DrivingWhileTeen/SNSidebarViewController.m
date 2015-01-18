@@ -14,12 +14,17 @@
 #import "SNParentProfile.h"
 #import "SNTeenProfile.h"
 #import <MessageUI/MessageUI.h>
-#define kSendLocation   @"sendLocation"
+
+#define kSendLocation @"sendLocation"
+#define kParent1 @"Parent1"
+#define kParent2 @"Parent2"
+#define kTitle @"Settings"
 
 @interface SNSidebarViewController ()
 
 @property (nonatomic, strong) NSArray *menuItems;
-@property (nonatomic, strong) SNParentProfile *parent;
+@property (nonatomic, strong) SNParentProfile *parent1;
+@property (nonatomic, strong) SNParentProfile *parent2;
 @property (nonatomic, strong) SNTeenProfile *teen;
 
 @end
@@ -39,6 +44,19 @@
 {
     [super viewDidLoad];
     
+    UILabel* tlabel=[[UILabel alloc] initWithFrame:CGRectMake(0,0, 300, 40)];
+    tlabel.text = kTitle;
+    tlabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:20.0];
+    tlabel.textColor=[UIColor grayColor];
+    tlabel.backgroundColor =[UIColor clearColor];
+    tlabel.adjustsFontSizeToFitWidth=YES;
+    self.navigationItem.titleView=tlabel;
+    
+    // emboss so that the label looks OK
+    [tlabel setShadowColor:[UIColor darkGrayColor]];
+    [tlabel setShadowOffset:CGSizeMake(0, -0.5)];
+    self.navigationItem.titleView = tlabel;
+    
     self.view.backgroundColor = [UIColor colorWithWhite:0.2f alpha:1.0f];
     self.tableView.backgroundColor = [UIColor colorWithWhite:0.2f alpha:1.0f];
     self.tableView.separatorColor = [UIColor colorWithWhite:0.15f alpha:0.2f];
@@ -47,10 +65,12 @@
     [self.tableView setDelegate:self];
     [self.tableView setDataSource:self];
     
-    _parent = [SNParentProfile savedParent];
+    _parent1 = [SNParentProfile savedParent:kParent1];
+    _parent2 = [SNParentProfile savedParent:kParent2];
     _teen = [SNTeenProfile savedTeen];
     
-    _menuItems = @[@"title", @"drive", @"parent", @"teen", @"location", @"record", @"about"];
+    //_menuItems = @[@"title", @"drive", @"parent", @"teen", @"location", @"record", @"about"];
+    _menuItems = @[@"drive", @"parent", @"teen", @"location", @"record", @"about"];
     NSLog(@"[%@ viewDidLoad]",self);
 }
 
@@ -65,10 +85,15 @@
     // Send the teen's location to parents.  I really want this done in the didSelectRowForIndexPath method, but can't figure
     // out why it's not being triggered. Ugh!
     if ([segue.identifier isEqualToString:kSendLocation]) {
-        NSLog(@"Send teen location to: %@", _parent.description);
+        NSLog(@"Send teen location to: %@", _parent1.description);
         NSLog(@"Teen is at: %@", _teen.location);
         
-        [self sendSMS:@"Location..." recipientList:[NSArray arrayWithObjects:_parent.number, nil]];
+        //[self sendSMS:@"Location..." recipientList:[NSArray arrayWithObjects:_parent1.number, nil]];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sending Location:" message:_teen.myLocation delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+        // optional - add more buttons:
+        [alert addButtonWithTitle:@"OK"];
+        [alert setTag:1];
+        [alert show];
     }
     
     // Manage the view transition and tell SWRevealViewController the new front view controller for display.
@@ -128,11 +153,27 @@
 }
 
 - (void) tableView:(UITableView *)tableView didSeselectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"Send teen location to: %@", _parent);
+    NSLog(@"Send teen location to: %@", _parent1);
     
     //if ([indexPath isEqual:[tableView indexPathForCell:self.sendLocationButtonCell]]) {
       //  NSLog(@"Send teen location to parent");
     //}
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+{
+    NSLog(@"Button Index =%ld",buttonIndex);
+    if (alertView.tag == 1) {
+        if (buttonIndex == 0)
+        {
+            NSLog(@"You have clicked Cancel");
+        }
+        else if(buttonIndex == 1)
+        {
+            NSLog(@"You have clicked OK");
+            [self sendSMS:@"Location..." recipientList:[NSArray arrayWithObjects:_parent1.number,_parent2.number, nil]];
+        }
+    }
 }
 
 - (void)sendSMS:(NSString *)bodyOfMessage recipientList:(NSArray *)recipients

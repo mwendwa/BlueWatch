@@ -11,7 +11,6 @@
 #define kName   @"name"
 #define kNumber @"number"
 #define kEmail  @"email"
-#define kSavedParent @"SavedParent"
 
 @implementation SNParentProfile
 
@@ -36,21 +35,21 @@
 
 #pragma mark - Save
 
-- (void)save {
+- (void)save:(NSString *)keyName {
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self];
-    [defaults setObject:data forKey:kSavedParent];
+    [defaults setObject:data forKey:keyName];
     [defaults synchronize];
 }
 
-+ (SNParentProfile *)savedParent {
++ (SNParentProfile *)savedParent:(NSString *)keyName {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    NSData *data = [defaults objectForKey:kSavedParent];
+    NSData *data = [defaults objectForKey:keyName];
     return [NSKeyedUnarchiver unarchiveObjectWithData:data];
 }
 
--(NSString *)description
+- (NSString *)description
 {
     return [NSString stringWithFormat:@"<Name: %@, Number: %@, E-Mail: %@>",
             self.name, self.number, self.email];

@@ -10,6 +10,9 @@
 #import "SNParentProfile.h"
 #import "SNParentProfileViewController.h"
 
+#define kParent1 @"Parent1"
+#define kParent2 @"Parent2"
+
 @interface AppDelegate ()
 
 @end
@@ -23,8 +26,10 @@
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     SNParentProfileViewController *viewcontroller = (SNParentProfileViewController *)[storyboard instantiateViewControllerWithIdentifier:@"parentProfile"];
     
-    SNParentProfile *parent = [SNParentProfile savedParent];
-    viewcontroller.parent = parent?parent:[[SNParentProfile alloc] init];
+    SNParentProfile *parent1 = [SNParentProfile savedParent:kParent1];
+    viewcontroller.p1 = parent1?parent1:[[SNParentProfile alloc] init];
+    SNParentProfile *parent2 = [SNParentProfile savedParent:kParent2];
+    viewcontroller.p1 = parent2?parent2:[[SNParentProfile alloc] init];
     
     return YES;
 }

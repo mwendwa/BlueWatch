@@ -9,6 +9,8 @@
 #import "SNAboutViewController.h"
 #import "SWRevealViewController.h"
 
+#define kTitle @"About"
+
 @interface SNAboutViewController ()
 
 @end
@@ -17,6 +19,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    UILabel* tlabel=[[UILabel alloc] initWithFrame:CGRectMake(0,0, 300, 40)];
+    tlabel.text = kTitle;
+    tlabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:20.0];
+    tlabel.textColor=[UIColor blackColor];
+    tlabel.backgroundColor =[UIColor clearColor];
+    tlabel.adjustsFontSizeToFitWidth=YES;
+    self.navigationItem.titleView=tlabel;
+    
+    // emboss so that the label looks OK
+    [tlabel setShadowColor:[UIColor darkGrayColor]];
+    [tlabel setShadowOffset:CGSizeMake(0, -0.5)];
+    self.navigationItem.titleView = tlabel;
     
     // Set the side bar button action. When it's tapped, it'll show up the sidebar.
     _sidebarButton.target = self.revealViewController;

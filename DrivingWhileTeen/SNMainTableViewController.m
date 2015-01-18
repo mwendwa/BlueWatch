@@ -11,6 +11,8 @@
 #import "SNTeenProfile.h"
 #import <CoreLocation/CoreLocation.h>
 
+#define kTitle @"Driving While Teen"
+
 @interface SNMainTableViewController () <CLLocationManagerDelegate>
 
 @property (nonatomic, strong) NSArray *menuItems;
@@ -20,7 +22,6 @@
 @property (nonatomic, strong) CLGeocoder *geocoder;
 @property (nonatomic, strong) NSArray *locationAddress;
 @property (nonatomic, strong) SNTeenProfile *teen;
-
 
 @end
 
@@ -38,20 +39,29 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.title = @"Driving While Teen";
-    //self.teen = [[SNTeenProfile alloc] init];
+    UILabel* tlabel=[[UILabel alloc] initWithFrame:CGRectMake(0,0, 300, 40)];
+    tlabel.text = kTitle;
+    tlabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:20.0];
+    tlabel.textColor=[UIColor grayColor];
+    tlabel.backgroundColor =[UIColor clearColor];
+    tlabel.adjustsFontSizeToFitWidth=YES;
+    self.navigationItem.titleView=tlabel;
+    
+    // emboss so that the label looks OK
+    [tlabel setShadowColor:[UIColor darkGrayColor]];
+    [tlabel setShadowOffset:CGSizeMake(0, -0.5)];
+    self.navigationItem.titleView = tlabel;
+    
     self.teen = [SNTeenProfile savedTeen];
     
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
-    //self.view.backgroundColor = [UIColor colorWithWhite:0.2f alpha:1.0f];
+    self.view.backgroundColor = [UIColor colorWithWhite:0.2f alpha:1.0f];
     self.tableView.backgroundColor = [UIColor colorWithWhite:0.2f alpha:1.0f];
     self.tableView.separatorColor = [UIColor colorWithWhite:0.15f alpha:0.2f];
     
     // Set the side bar button action. When it's tapped, it'll show up the sidebar.
-    _sidebarButton.target = self.revealViewController;
-    _sidebarButton.action = @selector(revealToggle:);
-    //_sidebarButton.tintColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"menu-red-50.png"]];
-    //_sidebarButton.tintColor = [UIColor colorWithRed:176.0f/255.0f green:37.0f/255.0f blue:32.0f/255.0f alpha:1.0f];
+    self.sidebarButton.target = self.revealViewController;
+    self.sidebarButton.action = @selector(revealToggle:);
     
     _menuItems = @[@"pullover", @"window", @"engine", @"domelight", @"smartphone",  @"hands", @"speak", @"obey", @"answer", @"consent", @"badge"];
     

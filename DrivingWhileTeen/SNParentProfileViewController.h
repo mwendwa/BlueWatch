@@ -12,6 +12,7 @@
 @interface SNParentProfileViewController : UITableViewController <UITextFieldDelegate>
 
 @property (nonatomic, weak) IBOutlet UIBarButtonItem *sidebarButton;
-@property (nonatomic, strong) SNParentProfile *parent;
+@property (nonatomic, strong) SNParentProfile *p1;
+@property (nonatomic, strong) SNParentProfile *p2;
 
 @end
