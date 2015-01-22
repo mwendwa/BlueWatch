@@ -23,7 +23,7 @@
     UILabel* tlabel=[[UILabel alloc] initWithFrame:CGRectMake(0,0, 300, 40)];
     tlabel.text = kTitle;
     tlabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:20.0];
-    tlabel.textColor=[UIColor blackColor];
+    tlabel.textColor=[UIColor grayColor];
     tlabel.backgroundColor =[UIColor clearColor];
     tlabel.adjustsFontSizeToFitWidth=YES;
     self.navigationItem.titleView=tlabel;

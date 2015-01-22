@@ -9,11 +9,12 @@
 #import "SNMainTableViewController.h"
 #import "SWRevealViewController.h"
 #import "SNTeenProfile.h"
+#import <MessageUI/MessageUI.h>
 #import <CoreLocation/CoreLocation.h>
 
 #define kTitle @"Driving While Teen"
 
-@interface SNMainTableViewController () <CLLocationManagerDelegate>
+@interface SNMainTableViewController () <CLLocationManagerDelegate, MFMessageComposeViewControllerDelegate>
 
 @property (nonatomic, strong) NSArray *menuItems;
 @property (nonatomic, strong) NSString *itemName;
@@ -83,7 +84,6 @@
         if (!self.geocoder)
             self.geocoder = [[CLGeocoder alloc] init];
         
-        
         [self.geocoder reverseGeocodeLocation:self.locationManager.location completionHandler:^(NSArray* placemarks, NSError *error) {
             NSLog(@"Found placemarks: %@, error: %@", placemarks, error);
             if (nil == error && [placemarks count] > 0) {
@@ -138,9 +138,38 @@
         _teen.location = location;
         [_teen save];
         
+        // send location to parent
+        //[self sendSMS:@"Location..." recipientList:[NSArray arrayWithObjects:_parent1.number,_parent2.number, nil]];
+        
         NSLog(@"Saved teen location at: %@", _teen.location);
     }
     NSLog(@"%@", [locations lastObject]);
+}
+
+- (void)sendSMS:(NSString *)bodyOfMessage recipientList:(NSArray *)recipients
+{
+    MFMessageComposeViewController *controller = [[MFMessageComposeViewController alloc] init];
+    if([MFMessageComposeViewController canSendText])
+    {
+        controller.body = bodyOfMessage;
+        controller.recipients = recipients;
+        controller.messageComposeDelegate = self;
+        [self presentViewController:self animated:YES completion:nil];
+    }
+}
+
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
+{
+    [self dismissModalViewControllerAnimated:YES];
+    
+    if (result == MessageComposeResultCancelled)
+        NSLog(@"Message cancelled");
+    else if (result == MessageComposeResultSent)
+        NSLog(@"Message sent");
+    else
+        NSLog(@"Message failed");
+    
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 #pragma mark - Table view data source

@@ -635,42 +635,55 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ji7-AT-Nxh">
-                                <rect key="frame" x="51" y="41" width="497" height="114"/>
+                                <rect key="frame" x="16" y="41" width="568" height="162"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="114" id="kx6-P2-dTP"/>
+                                    <constraint firstAttribute="height" constant="162" id="JV3-gL-yP2"/>
                                 </constraints>
                                 <string key="text">Give your loved one the best assistance possible when interacting with law enforcement and give yourself peace of mind.  Safe Net provides your teen step by step guidance on how to safely interact with police when stopped while driving and record the conversation for legal and safety purposes.  The Safe Net app will automatically contact you when activated and provide you with your teen's real time GPS location.</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="  Copyright (c) 2014 SafeNet Industries. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="aNs-pV-9Ix">
-                                <rect key="frame" x="52" y="559" width="497" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright (c) 2014 SafeNet Industries. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="aNs-pV-9Ix">
+                                <rect key="frame" x="52" y="527" width="497" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="dJ0-3M-gDM"/>
+                                    <constraint firstAttribute="height" constant="21" id="fG1-YY-tPj"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SNI Shield-2.png" translatesAutoresizingMaskIntoConstraints="NO" id="zxk-1B-n5c">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SNI Shield.png" translatesAutoresizingMaskIntoConstraints="NO" id="zxk-1B-n5c">
                                 <rect key="frame" x="180" y="194" width="240" height="245"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="240" id="UED-xF-s7F"/>
-                                    <constraint firstAttribute="height" constant="245" id="r8x-h5-j74"/>
+                                    <constraint firstAttribute="width" constant="240" id="8DR-UP-2ub"/>
                                 </constraints>
                             </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Icons provided by icons8.com" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="yC6-TH-RdG">
+                                <rect key="frame" x="180" y="447" width="240" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="bta-TY-uAU"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="aNs-pV-9Ix" firstAttribute="leading" secondItem="MCg-Sf-Nbh" secondAttribute="leadingMargin" constant="36" id="00k-05-mdG"/>
-                            <constraint firstItem="zxk-1B-n5c" firstAttribute="centerX" secondItem="MCg-Sf-Nbh" secondAttribute="centerX" id="9OF-ad-bmB"/>
-                            <constraint firstItem="ji7-AT-Nxh" firstAttribute="top" secondItem="6KK-48-yMC" secondAttribute="bottom" constant="21" id="D3E-Dd-abd"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ji7-AT-Nxh" secondAttribute="trailing" constant="36" id="RMg-FM-Oe6"/>
-                            <constraint firstItem="zxk-1B-n5c" firstAttribute="top" secondItem="ji7-AT-Nxh" secondAttribute="bottom" constant="39" id="Z8q-wP-ibX"/>
-                            <constraint firstItem="aNs-pV-9Ix" firstAttribute="centerX" secondItem="zxk-1B-n5c" secondAttribute="centerX" id="hOT-bt-xAg"/>
-                            <constraint firstAttribute="bottom" secondItem="aNs-pV-9Ix" secondAttribute="bottom" constant="20" symbolic="YES" id="oDM-3a-TVp"/>
-                            <constraint firstItem="ji7-AT-Nxh" firstAttribute="leading" secondItem="MCg-Sf-Nbh" secondAttribute="leadingMargin" constant="35" id="ql8-u4-Ta8"/>
+                            <constraint firstItem="yC6-TH-RdG" firstAttribute="leading" secondItem="zxk-1B-n5c" secondAttribute="leading" id="Cmo-ta-CLq"/>
+                            <constraint firstItem="yC6-TH-RdG" firstAttribute="centerX" secondItem="aNs-pV-9Ix" secondAttribute="centerX" id="Fd2-KK-gTM"/>
+                            <constraint firstItem="ji7-AT-Nxh" firstAttribute="trailing" secondItem="MCg-Sf-Nbh" secondAttribute="trailingMargin" id="GFq-Oh-2fv"/>
+                            <constraint firstItem="zxk-1B-n5c" firstAttribute="top" secondItem="6KK-48-yMC" secondAttribute="bottom" constant="174" id="I0m-Mb-pdf"/>
+                            <constraint firstItem="aNs-pV-9Ix" firstAttribute="leading" secondItem="MCg-Sf-Nbh" secondAttribute="leadingMargin" constant="36" id="JDA-jR-IBO"/>
+                            <constraint firstItem="aNs-pV-9Ix" firstAttribute="top" secondItem="yC6-TH-RdG" secondAttribute="bottom" constant="40" id="K4z-BP-Hld"/>
+                            <constraint firstItem="zxk-1B-n5c" firstAttribute="trailing" secondItem="yC6-TH-RdG" secondAttribute="trailing" id="PEi-eX-bEn"/>
+                            <constraint firstItem="sz7-vc-t4t" firstAttribute="top" secondItem="aNs-pV-9Ix" secondAttribute="bottom" constant="8" symbolic="YES" id="PqS-Ah-TtC"/>
+                            <constraint firstItem="ji7-AT-Nxh" firstAttribute="leading" secondItem="MCg-Sf-Nbh" secondAttribute="leadingMargin" id="PyG-Yr-khw"/>
+                            <constraint firstItem="ji7-AT-Nxh" firstAttribute="top" secondItem="6KK-48-yMC" secondAttribute="bottom" constant="21" id="adw-oK-bdu"/>
+                            <constraint firstItem="yC6-TH-RdG" firstAttribute="top" secondItem="zxk-1B-n5c" secondAttribute="bottom" constant="8" symbolic="YES" id="ae8-i3-JtU"/>
+                            <constraint firstItem="zxk-1B-n5c" firstAttribute="centerX" secondItem="ji7-AT-Nxh" secondAttribute="centerX" id="uKI-Gv-DLo"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -686,7 +699,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DQh-hI-ItM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1387" y="-1024"/>
+            <point key="canvasLocation" x="1269" y="-1456"/>
         </scene>
         <!--Teen Profile View Controller-->
         <scene sceneID="XHx-jH-e9V">
@@ -773,7 +786,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="SNI Shield-2.png" width="1057" height="1057"/>
+        <image name="SNI Shield.png" width="1057" height="1057"/>
         <image name="about-red-50.png" width="50" height="50"/>
         <image name="camcoder-red-50.png" width="50" height="50"/>
         <image name="carpool-red-50.png" width="50" height="50"/>

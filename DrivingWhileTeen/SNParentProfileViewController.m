@@ -22,7 +22,6 @@
 @property (nonatomic, strong) UITextField *selectedTextField;
 @property (nonatomic) BOOL isEditing;
 
-
 @end
 
 @implementation SNParentProfileViewController

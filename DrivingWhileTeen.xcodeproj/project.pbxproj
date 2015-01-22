@@ -58,6 +58,12 @@
 		44557C8C1A6C272F00C9947E /* settings-red-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 44557C731A6C272F00C9947E /* settings-red-50.png */; };
 		44557C8D1A6C272F00C9947E /* SNI Shield.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 44557C741A6C272F00C9947E /* SNI Shield.tiff */; };
 		44557C8E1A6C272F00C9947E /* talk-red-50 22-12-11-322.png in Resources */ = {isa = PBXBuildFile; fileRef = 44557C751A6C272F00C9947E /* talk-red-50 22-12-11-322.png */; };
+		44557C951A6C304600C9947E /* 29pt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44557C8F1A6C304600C9947E /* 29pt@2x.png */; };
+		44557C961A6C304600C9947E /* 40pt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44557C901A6C304600C9947E /* 40pt@2x.png */; };
+		44557C971A6C304600C9947E /* 57pt.png in Resources */ = {isa = PBXBuildFile; fileRef = 44557C911A6C304600C9947E /* 57pt.png */; };
+		44557C981A6C304600C9947E /* 57pt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44557C921A6C304600C9947E /* 57pt@2x.png */; };
+		44557C991A6C304600C9947E /* 60pt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44557C931A6C304600C9947E /* 60pt@2x.png */; };
+		44557C9A1A6C304600C9947E /* SNI Shield-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 44557C941A6C304600C9947E /* SNI Shield-2.png */; };
 		449FC3911A17E20A00F15D62 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 449FC3901A17E20A00F15D62 /* SWRevealViewController.m */; };
 		449FC39E1A17E87700F15D62 /* SNSidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 449FC39D1A17E87700F15D62 /* SNSidebarViewController.m */; };
 		44BEFC8D1A40CCC900F2FAE9 /* SNParentProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEFC8C1A40CCC900F2FAE9 /* SNParentProfile.m */; };
@@ -141,6 +147,12 @@
 		44557C731A6C272F00C9947E /* settings-red-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-red-50.png"; sourceTree = "<group>"; };
 		44557C741A6C272F00C9947E /* SNI Shield.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = "SNI Shield.tiff"; sourceTree = "<group>"; };
 		44557C751A6C272F00C9947E /* talk-red-50 22-12-11-322.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "talk-red-50 22-12-11-322.png"; sourceTree = "<group>"; };
+		44557C8F1A6C304600C9947E /* 29pt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "29pt@2x.png"; sourceTree = "<group>"; };
+		44557C901A6C304600C9947E /* 40pt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "40pt@2x.png"; sourceTree = "<group>"; };
+		44557C911A6C304600C9947E /* 57pt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 57pt.png; sourceTree = "<group>"; };
+		44557C921A6C304600C9947E /* 57pt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "57pt@2x.png"; sourceTree = "<group>"; };
+		44557C931A6C304600C9947E /* 60pt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "60pt@2x.png"; sourceTree = "<group>"; };
+		44557C941A6C304600C9947E /* SNI Shield-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SNI Shield-2.png"; sourceTree = "<group>"; };
 		449FC38F1A17E20A00F15D62 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		449FC3901A17E20A00F15D62 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		449FC39C1A17E87700F15D62 /* SNSidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNSidebarViewController.h; sourceTree = "<group>"; };
@@ -279,6 +291,12 @@
 		44F6C9841A1698A1008D8186 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				44557C8F1A6C304600C9947E /* 29pt@2x.png */,
+				44557C901A6C304600C9947E /* 40pt@2x.png */,
+				44557C911A6C304600C9947E /* 57pt.png */,
+				44557C921A6C304600C9947E /* 57pt@2x.png */,
+				44557C931A6C304600C9947E /* 60pt@2x.png */,
+				44557C941A6C304600C9947E /* SNI Shield-2.png */,
 				44557C5D1A6C272F00C9947E /* about-red-50.png */,
 				44557C5E1A6C272F00C9947E /* camcoder-red-50.png */,
 				44557C5F1A6C272F00C9947E /* carpool-red-50.png */,
@@ -377,6 +395,7 @@
 				TargetAttributes = {
 					44354C651A16922300FFD46D = {
 						CreatedOnToolsVersion = 6.1;
+						DevelopmentTeam = VPLND4RT6H;
 					};
 					44354C811A16922300FFD46D = {
 						CreatedOnToolsVersion = 6.1;
@@ -428,16 +447,20 @@
 				44557C4D1A6C245800C9947E /* driver-red-50.png in Resources */,
 				44557C8A1A6C272F00C9947E /* phone1-red-50.png in Resources */,
 				44557C7B1A6C272F00C9947E /* Default.png in Resources */,
+				44557C9A1A6C304600C9947E /* SNI Shield-2.png in Resources */,
 				44557C7A1A6C272F00C9947E /* Default-568h@2x.png in Resources */,
 				44557C881A6C272F00C9947E /* parent_guardian-red-50.png in Resources */,
 				44557C7D1A6C272F00C9947E /* edit_user-red-32.png in Resources */,
+				44557C951A6C304600C9947E /* 29pt@2x.png in Resources */,
 				44557C8B1A6C272F00C9947E /* phone2-red-50.png in Resources */,
 				44557C8D1A6C272F00C9947E /* SNI Shield.tiff in Resources */,
 				44557C871A6C272F00C9947E /* parent_guardian-red-32.png in Resources */,
 				44557C4E1A6C245800C9947E /* engine-red-50.png in Resources */,
 				44557C8C1A6C272F00C9947E /* settings-red-50.png in Resources */,
 				44557C7E1A6C272F00C9947E /* edit_user-red-50.png in Resources */,
+				44557C991A6C304600C9947E /* 60pt@2x.png in Resources */,
 				44557C561A6C245800C9947E /* question-red-50.png in Resources */,
+				44557C981A6C304600C9947E /* 57pt@2x.png in Resources */,
 				44557C781A6C272F00C9947E /* carpool-red-50.png in Resources */,
 				44557C541A6C245800C9947E /* menu-red-50.png in Resources */,
 				44557C531A6C245800C9947E /* listen-red-50.png in Resources */,
@@ -447,12 +470,14 @@
 				44557C851A6C272F00C9947E /* menu-red-32.png in Resources */,
 				44557C791A6C272F00C9947E /* date-red-50.png in Resources */,
 				44557C5A1A6C245800C9947E /* steering_wheel-red-50.png in Resources */,
+				44557C961A6C304600C9947E /* 40pt@2x.png in Resources */,
 				44557C811A6C272F00C9947E /* gps_receiving-red-50.png in Resources */,
 				44557C4F1A6C245800C9947E /* find_user-red-50.png in Resources */,
 				44557C5C1A6C245800C9947E /* two_smartphones-red-50.png in Resources */,
 				44354C7D1A16922300FFD46D /* LaunchScreen.xib in Resources */,
 				44557C581A6C245800C9947E /* right2-red-50.png in Resources */,
 				44557C7C1A6C272F00C9947E /* Default@2x.png in Resources */,
+				44557C971A6C304600C9947E /* 57pt.png in Resources */,
 				44557C761A6C272F00C9947E /* about-red-50.png in Resources */,
 				44354C7A1A16922300FFD46D /* Images.xcassets in Resources */,
 			);
@@ -605,9 +630,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = DrivingWhileTeen/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -617,9 +644,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = DrivingWhileTeen/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

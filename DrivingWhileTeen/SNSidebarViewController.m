@@ -69,7 +69,6 @@
     _parent2 = [SNParentProfile savedParent:kParent2];
     _teen = [SNTeenProfile savedTeen];
     
-    //_menuItems = @[@"title", @"drive", @"parent", @"teen", @"location", @"record", @"about"];
     _menuItems = @[@"drive", @"parent", @"teen", @"location", @"record", @"about"];
     NSLog(@"[%@ viewDidLoad]",self);
 }
@@ -81,7 +80,6 @@
     UINavigationController *destViewController = (UINavigationController*)segue.destinationViewController;
     destViewController.title = [[_menuItems objectAtIndex:indexPath.row] capitalizedString];
   
-
     // Send the teen's location to parents.  I really want this done in the didSelectRowForIndexPath method, but can't figure
     // out why it's not being triggered. Ugh!
     if ([segue.identifier isEqualToString:kSendLocation]) {
@@ -111,7 +109,6 @@
     }
     
 }
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -171,7 +168,7 @@
         else if(buttonIndex == 1)
         {
             NSLog(@"You have clicked OK");
-            [self sendSMS:@"Location..." recipientList:[NSArray arrayWithObjects:_parent1.number,_parent2.number, nil]];
+            [self sendSMS:self.teen.myLocation recipientList:[NSArray arrayWithObjects:_parent1.number,_parent2.number, nil]];
         }
     }
 }
@@ -186,6 +183,20 @@
         controller.messageComposeDelegate = self;
         [self presentModalViewController:controller animated:YES];
     }    
+}
+
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
+{
+    [self dismissModalViewControllerAnimated:YES];
+    
+    if (result == MessageComposeResultCancelled)
+        NSLog(@"Message cancelled");
+        else if (result == MessageComposeResultSent)
+            NSLog(@"Message sent");
+            else
+                NSLog(@"Message failed");
+    
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 @end

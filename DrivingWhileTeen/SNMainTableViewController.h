@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SNMainTableViewController : UITableViewController
+@interface SNMainTableViewController : UITableViewController 
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 
