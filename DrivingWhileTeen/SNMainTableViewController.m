@@ -96,7 +96,9 @@
                                           placemark.country]];
                 }
                 _locationAddress = [tempArray copy];
-                //NSLog(@"I am currently at %@", _locationAddress);
+                _teen.address = [tempArray copy];
+                [_teen save];
+                NSLog(@"I am currently at %@", _teen.address);
             }
             else {
                 _locationAddress = nil;
@@ -109,7 +111,6 @@
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
-    
 }
 
 - (void)didReceiveMemoryWarning

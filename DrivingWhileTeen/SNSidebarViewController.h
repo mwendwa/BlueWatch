@@ -11,7 +11,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SNSidebarViewController : UITableViewController <UIGestureRecognizerDelegate, UITableViewDelegate, UIAlertViewDelegate>
+@interface SNSidebarViewController : UITableViewController 
 
 
 @end

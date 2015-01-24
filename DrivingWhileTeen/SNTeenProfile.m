@@ -14,6 +14,7 @@
 #define kNumber @"number"
 #define kEmail  @"email"
 #define kLocation @"location"
+#define kAddress @"address"
 #define kSavedTeen @"SavedTeen"
 
 - (void)encodeWithCoder:(NSCoder *)encoder {
@@ -22,6 +23,7 @@
     [encoder encodeObject:self.number forKey:kNumber];
     [encoder encodeObject:self.email forKey:kEmail];
     [encoder encodeObject:self.location forKey:kLocation];
+    [encoder encodeObject:self.address forKey:kAddress];
     
 }
 
@@ -32,6 +34,7 @@
         self.number = [decoder decodeObjectForKey:kNumber];
         self.email  = [decoder decodeObjectForKey:kEmail];
         self.location = [decoder decodeObjectForKey:kLocation];
+        self.address = [decoder decodeObjectForKey:kAddress];
     }
     
     return self;
@@ -63,8 +66,7 @@
 
 -(NSString *)myLocation
 {
-    return [NSString stringWithFormat:@"<I'm located at Latitude %+.6f, Longitude %+.6f>",
-            self.location.coordinate.latitude, self.location.coordinate.longitude];
+    return [[self.address valueForKey:@"description"] componentsJoinedByString:@""];
 }
 
 @end

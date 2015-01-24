@@ -10,9 +10,9 @@
 
 @interface SNParentProfile : NSObject <NSCoding>
 
-@property (copy, nonatomic) NSString* name;
-@property (copy, nonatomic) NSString* number;
-@property (copy, nonatomic) NSString* email;
+@property (copy, nonatomic) NSString *name;
+@property (copy, nonatomic) NSString *number;
+@property (copy, nonatomic) NSString *email;
 
 - (void) save:(NSString *)keyName;
 + (SNParentProfile *) savedParent:(NSString *)keyName;

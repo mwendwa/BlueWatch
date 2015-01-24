@@ -166,6 +166,7 @@
 		44CF800A1A5B7FD9001171A0 /* SNTeenProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNTeenProfileViewController.m; sourceTree = "<group>"; };
 		44CF800F1A5C7F8F001171A0 /* SNAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNAboutViewController.h; path = ../SNAboutViewController.h; sourceTree = "<group>"; };
 		44CF80101A5C7F8F001171A0 /* SNAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNAboutViewController.m; path = ../SNAboutViewController.m; sourceTree = "<group>"; };
+		44D2A8251A74382200F62FEF /* DrivingWhileTeen.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = DrivingWhileTeen.entitlements; sourceTree = "<group>"; };
 		44E5375E1A30D10C0081630F /* SNTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNTableViewCell.h; sourceTree = "<group>"; };
 		44E5375F1A30D10C0081630F /* SNTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNTableViewCell.m; sourceTree = "<group>"; };
 		44F6CA311A16B10F008D8186 /* SNMainTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNMainTableViewController.h; sourceTree = "<group>"; };
@@ -225,6 +226,7 @@
 		44354C681A16922300FFD46D /* DrivingWhileTeen */ = {
 			isa = PBXGroup;
 			children = (
+				44D2A8251A74382200F62FEF /* DrivingWhileTeen.entitlements */,
 				449FC38E1A17E20A00F15D62 /* Library */,
 				44F6C9841A1698A1008D8186 /* images */,
 				449FC39C1A17E87700F15D62 /* SNSidebarViewController.h */,
@@ -396,6 +398,17 @@
 					44354C651A16922300FFD46D = {
 						CreatedOnToolsVersion = 6.1;
 						DevelopmentTeam = VPLND4RT6H;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+							com.apple.InterAppAudio = {
+								enabled = 0;
+							};
+							com.apple.Maps.iOS = {
+								enabled = 0;
+							};
+						};
 					};
 					44354C811A16922300FFD46D = {
 						CreatedOnToolsVersion = 6.1;

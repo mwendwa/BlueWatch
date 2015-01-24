@@ -20,12 +20,15 @@
 #define kParent2 @"Parent2"
 #define kTitle @"Settings"
 
-@interface SNSidebarViewController ()
+@interface SNSidebarViewController () <UIGestureRecognizerDelegate, UITableViewDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, strong) NSArray *menuItems;
 @property (nonatomic, strong) SNParentProfile *parent1;
 @property (nonatomic, strong) SNParentProfile *parent2;
 @property (nonatomic, strong) SNTeenProfile *teen;
+@property (nonatomic, strong) CLGeocoder *geocoder;
+@property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, strong) NSArray *locationAddress;
 
 @end
 
@@ -84,9 +87,45 @@
     // out why it's not being triggered. Ugh!
     if ([segue.identifier isEqualToString:kSendLocation]) {
         NSLog(@"Send teen location to: %@", _parent1.description);
-        NSLog(@"Teen is at: %@", _teen.location);
+        NSLog(@"Teen is at: %@", _teen.myLocation);
         
-        //[self sendSMS:@"Location..." recipientList:[NSArray arrayWithObjects:_parent1.number, nil]];
+        /*
+        // set the location
+        if ([CLLocationManager locationServicesEnabled]) {
+            
+            // reverse geocode location
+            if (!self.geocoder)
+                self.geocoder = [[CLGeocoder alloc] init];
+            
+            [self.geocoder reverseGeocodeLocation:_teen.location completionHandler:^(NSArray* placemarks, NSError *error) {
+                NSLog(@"Found placemarks: %@, error: %@", placemarks, error);
+                if (nil == error && [placemarks count] > 0) {
+                    NSMutableArray *tempArray = [[NSMutableArray alloc] initWithCapacity:[placemarks count]];
+                    for (CLPlacemark *placemark in placemarks) {
+                        [tempArray addObject:[NSString stringWithFormat:@"%@ %@\n%@ %@\n%@\n%@\n",
+                                              placemark.subThoroughfare, placemark.thoroughfare,
+                                              placemark.postalCode, placemark.locality,
+                                              placemark.administrativeArea,
+                                              placemark.country]];
+                    }
+                    _locationAddress = [tempArray copy];
+                    NSString *result = [[_locationAddress valueForKey:@"description"] componentsJoinedByString:@""];
+                    NSLog(@"I am currently at %@", result);
+                }
+                else {
+                    _locationAddress = nil;
+                    NSLog(@"Error: %@", error.debugDescription);
+                }
+                
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sending Location:" message:_teen.myLocation delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
+                // optional - add more buttons:
+                [alert addButtonWithTitle:@"OK"];
+                [alert setTag:1];
+                [alert show];
+            }];
+        }
+        */
+        
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sending Location:" message:_teen.myLocation delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
         // optional - add more buttons:
         [alert addButtonWithTitle:@"OK"];
@@ -105,9 +144,7 @@
             [navController setViewControllers: @[dvc] animated: NO ];
             [self.revealViewController setFrontViewPosition: FrontViewPositionLeft animated: YES];
         };
-        
     }
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -159,6 +196,7 @@
 
 - (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
 {
+    
     NSLog(@"Button Index =%ld",buttonIndex);
     if (alertView.tag == 1) {
         if (buttonIndex == 0)
@@ -168,7 +206,8 @@
         else if(buttonIndex == 1)
         {
             NSLog(@"You have clicked OK");
-            [self sendSMS:self.teen.myLocation recipientList:[NSArray arrayWithObjects:_parent1.number,_parent2.number, nil]];
+            NSString *result = [[_locationAddress valueForKey:@"description"] componentsJoinedByString:@""];
+            [self sendSMS:result recipientList:[NSArray arrayWithObjects:_parent1.number,_parent2.number, nil]];
         }
     }
 }
