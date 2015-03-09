@@ -6,7 +6,7 @@
 //  Copyright (c) 2014 SafeNet Industries. All rights reserved.
 //
 
-#import "SNMainTableViewController.h"
+#import "SNMainTableViewControllerRecord.h"
 #import "SWRevealViewController.h"
 #import "SNParentProfile.h"
 #import "SNTeenProfile.h"
@@ -17,11 +17,8 @@
 #define kParent1 @"Parent1"
 #define kParent2 @"Parent2"
 #define kTitle @"Driving While Teen"
-#define kSpeechRate  0.10
-#define kSpeechMpx  1.0
-#define kSpeechDelay 0.25
 
-@interface SNMainTableViewController () <CLLocationManagerDelegate, AVSpeechSynthesizerDelegate, AVAudioRecorderDelegate>
+@interface SNMainTableViewControllerRecord () <CLLocationManagerDelegate, AVAudioRecorderDelegate>
 
 @property (nonatomic, strong) NSArray *menuItems;
 @property (nonatomic, strong) NSString *itemName;
@@ -32,21 +29,25 @@
 @property (nonatomic, strong) SNParentProfile *parent1;
 @property (nonatomic, strong) SNParentProfile *parent2;
 @property (nonatomic, strong) SNTeenProfile *teen;
-@property (nonatomic, strong) NSMutableArray *speechArray;
-@property (nonatomic, strong) AVSpeechSynthesizer *synth;
-@property (nonatomic, strong) AVSpeechUtterance *utter;
 @property (nonatomic, strong) AVAudioRecorder *audioRecorder;
-@property (nonatomic) BOOL isRecording;
 
 @end
 
-@implementation SNMainTableViewController
+@implementation SNMainTableViewControllerRecord
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+        if([_recording isEqualToString:@"YES"]) {
+            NSLog(@"Record %@", _recording);
+            UIBarButtonItem *stopButton = [[UIBarButtonItem alloc] initWithTitle:@"Record" style:UIBarButtonItemStyleBordered  target:self action:@selector(stopRecording)];
+            self.navigationItem.rightBarButtonItem = stopButton;
+        }
+        else if([_recording isEqualToString:@"NO"]) {
+            NSLog(@"Record %@", _recording);
+        }
     }
     return self;
 }
@@ -82,8 +83,7 @@
     
     _menuItems = @[@"pullover", @"window", @"engine", @"domelight", @"smartphone",  @"hands", @"speak", @"obey", @"consent", @"badge"];
     
-    // record button
-    [self setRecording:NO];
+
     
     // Initialize the audio stuff
     NSError *audioSessionError = nil;
@@ -124,12 +124,7 @@
         [_audioRecorder prepareToRecord];
     }
     
-    // Speech stuff
-    _synth = [[AVSpeechSynthesizer alloc] init];
-    [_synth setDelegate: self];
-    _speechArray = [[NSMutableArray alloc] init];
-    
-    // Set the location
+    // set the location
     if ([CLLocationManager locationServicesEnabled]) {
         
         if (nil == self.locationManager)
@@ -201,40 +196,11 @@
         _teen.location = location;
         [_teen save];
         
-        // send location to parent
-        //[self sendSMS:_teen.myLocation recipientList:[NSArray arrayWithObjects:_parent1.number,_parent2.number, nil]];
-        
         NSLog(@"Saved teen location at: %@", _teen.location);
     }
     NSLog(@"%@", [locations lastObject]);
 }
 
-/*
-- (void)sendSMS:(NSString *)bodyOfMessage recipientList:(NSArray *)recipients
-{
-    MFMessageComposeViewController *controller = [[MFMessageComposeViewController alloc] init];
-    if([MFMessageComposeViewController canSendText])
-    {
-        controller.body = bodyOfMessage;
-        controller.recipients = recipients;
-        controller.messageComposeDelegate = self;
-        [self presentViewController:controller animated:YES completion:nil];
-    }
-}
-
-- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
-{
-    [self dismissViewControllerAnimated:YES completion:^{
-        
-        if (result == MessageComposeResultCancelled)
-            NSLog(@"Message cancelled");
-        else if (result == MessageComposeResultSent)
-            NSLog(@"Message sent");
-        else
-            NSLog(@"Message failed");
-    }];
-}
- */
 
 #pragma mark - Table view data source
 
@@ -255,88 +221,10 @@
     NSString *CellIdentifier = [self.menuItems objectAtIndex:indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    [_speechArray addObject:cell.textLabel.text];
-    [self speakNext:cell.textLabel.text];
-    
     return cell;
 }
 
-#pragma mark - Speech
-
-- (void)speechSynthesizer:(AVSpeechSynthesizer *)avsSynthesizer didFinishSpeechUtterance:(AVSpeechUtterance *)utterance
-{
-    if ([_synth isEqual:avsSynthesizer] && [utterance isEqual:_utter])
-        [self speakNext];
-}
-
-- (void) speakNext
-{
-    if (_speechArray.count > 0)
-    {
-        NSString *speechStr = [_speechArray objectAtIndex:0];
-        [_speechArray removeObjectAtIndex:0];
-        _utter = [[AVSpeechUtterance alloc] initWithString:speechStr];
-        _utter.voice = [AVSpeechSynthesisVoice voiceWithLanguage:@"en-US"];
-        _utter.rate = kSpeechRate;
-        _utter.pitchMultiplier = kSpeechMpx;
-        _utter.postUtteranceDelay = kSpeechDelay;
-
-        [_synth speakUtterance:_utter];
-        [_synth stopSpeakingAtBoundary:AVSpeechBoundaryImmediate];
-        
-         NSLog(@"Uttered the phrase: %@", speechStr);
-    }
-}
-
-- (void) speakNext:(NSString *)phrase
-{
-    _utter = [[AVSpeechUtterance alloc] initWithString:phrase];
-    _utter.voice = [AVSpeechSynthesisVoice voiceWithLanguage:@"en-US"];
-    _utter.rate = kSpeechRate;
-    _utter.pitchMultiplier = kSpeechMpx;
-    _utter.postUtteranceDelay = kSpeechDelay;
-        
-    [_synth speakUtterance:_utter];
-        
-    NSLog(@"Uttered the phrase: %@", phrase);
-}
-
 #pragma mark - AVAudioRecorder
-
-- (void)setRecording:(BOOL)recording {
-    _isRecording = recording;
-    UIBarButtonItem *barButton = nil;
-    
-    if (recording) {
-        barButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Stop-50"] style:UIBarButtonItemStylePlain
-                                                                  target:self
-                                                                  action:@selector(barButtonPressed:)];
-    } else {
-        barButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Record-red-50"] style:UIBarButtonItemStylePlain
-                                                                  target:self
-                                                                  action:@selector(barButtonPressed:)];
-    }
-    
-    self.navigationItem.rightBarButtonItem = barButton;
-    self.navigationItem.rightBarButtonItem.tintColor = [UIColor colorWithRed:176.0f/255.0f green:37.0f/255.0f blue:32.0f/255.0f alpha:1.0f];
-    
-    if (!recording) {
-        //[_selectedTextField resignFirstResponder];
-    }
-    
-}
-
-- (void)barButtonPressed:(UIBarButtonItem *)button {
-    
-    [self setRecording:!_isRecording];
-    
-    if (!_isRecording) {
-        [self stopRecording];
-    }
-    else {
-        [self startRecording];
-    }
-}
 
 - (void)startRecording
 {
@@ -344,14 +232,21 @@
         AVAudioSession *session = [AVAudioSession sharedInstance];
         [session setActive:YES error:nil];
         
+        //UIBarButtonItem *stopButton = [[UIBarButtonItem alloc] initWithTitle:@"Record" style:UIBarButtonItemStyleBordered  target:self action:@selector(stopRecording)];
+        //self.navigationItem.rightBarButtonItem = stopButton;
+        
         // Start recording
-        //[_audioRecorder record];
+        [_audioRecorder record];
     }
 }
 
 - (void)stopRecording
 {
-    //[_audioRecorder stop];
+    [_audioRecorder stop];
+    
+    UIBarButtonItem *startButton = [[UIBarButtonItem alloc] initWithTitle:@"Record" style:UIBarButtonItemStyleBordered  target:self action:@selector(startRecording)];
+    self.navigationItem.rightBarButtonItem = startButton;
+    
 }
 
 - (void)audioRecorderDidFinishRecording:(AVAudioRecorder *) aRecorder successfully:(BOOL)flag
@@ -363,3 +258,4 @@
 
 
 @end
+

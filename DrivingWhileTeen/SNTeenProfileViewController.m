@@ -165,8 +165,6 @@
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
     NSLog(@"textFieldShouldBeginEditing");
     return _isEditing;
-    //textField.backgroundColor = [UIColor colorWithRed:220.0f/255.0f green:220.0f/255.0f blue:220.0f/255.0f alpha:1.0f];
-    //[self.tableView scrollRectToVisible:textField.frame animated:YES];
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {

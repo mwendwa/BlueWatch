@@ -13,14 +13,17 @@
 #import "SWRevealViewController.h"
 #import "SNParentProfile.h"
 #import "SNTeenProfile.h"
+#import "SNMainTableViewControllerRecord.h"
 #import <MessageUI/MessageUI.h>
+#import <AVFoundation/AVFoundation.h>
 
 #define kSendLocation @"sendLocation"
+#define kStartRecording @"startRecording"
 #define kParent1 @"Parent1"
 #define kParent2 @"Parent2"
 #define kTitle @"Settings"
 
-@interface SNSidebarViewController () <UIGestureRecognizerDelegate, UITableViewDelegate, UIAlertViewDelegate>
+@interface SNSidebarViewController () <UIGestureRecognizerDelegate, UITableViewDelegate, UIAlertViewDelegate, MFMessageComposeViewControllerDelegate, AVAudioRecorderDelegate>
 
 @property (nonatomic, strong) NSArray *menuItems;
 @property (nonatomic, strong) SNParentProfile *parent1;
@@ -29,6 +32,7 @@
 @property (nonatomic, strong) CLGeocoder *geocoder;
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) NSArray *locationAddress;
+@property (nonatomic, strong) AVAudioRecorder *audioRecorder;
 
 @end
 
@@ -73,6 +77,46 @@
     _teen = [SNTeenProfile savedTeen];
     
     _menuItems = @[@"drive", @"parent", @"teen", @"location", @"record", @"about"];
+    
+    // Initialize the audio stuff
+    NSError *audioSessionError = nil;
+    
+    // Set the new dated audio file
+    NSArray *pathComponents = [NSArray arrayWithObjects:
+                               [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject],
+                               @"dwtMemo.m4a",
+                               nil];
+    NSURL *soundFileURL = [NSURL fileURLWithPathComponents:pathComponents];
+    
+    // Setup audio stuff
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    [session setCategory:AVAudioSessionCategoryRecord error:&audioSessionError];
+    if (audioSessionError) {
+        NSLog(@"Error %ld, %@",
+              (long)audioSessionError.code, audioSessionError.localizedDescription);
+    }
+    
+    // Define the recorder setting
+    NSMutableDictionary *recordSetting = [[NSMutableDictionary alloc] init];
+    
+    [recordSetting setValue:[NSNumber numberWithInt:kAudioFormatMPEG4AAC] forKey:AVFormatIDKey];
+    [recordSetting setValue:[NSNumber numberWithFloat:44100.0] forKey:AVSampleRateKey];
+    [recordSetting setValue:[NSNumber numberWithInt:2] forKey:AVNumberOfChannelsKey];
+    [recordSetting setValue:[NSNumber numberWithInt:16] forKey:AVEncoderBitRateKey];
+    [recordSetting setValue:[NSNumber numberWithInt:AVAudioQualityMin] forKey:AVEncoderAudioQualityKey];
+    
+    // Initiate and prepare the recorder
+    _audioRecorder = [[AVAudioRecorder alloc] initWithURL:soundFileURL settings:recordSetting error:&audioSessionError];
+    _audioRecorder.delegate = self;
+    _audioRecorder.meteringEnabled = YES;
+    
+    if (audioSessionError)
+    {
+        NSLog(@"error: %@", [audioSessionError localizedDescription]);
+    } else {
+        [_audioRecorder prepareToRecord];
+    }
+    
     NSLog(@"[%@ viewDidLoad]",self);
 }
 
@@ -86,51 +130,75 @@
     // Send the teen's location to parents.  I really want this done in the didSelectRowForIndexPath method, but can't figure
     // out why it's not being triggered. Ugh!
     if ([segue.identifier isEqualToString:kSendLocation]) {
-        NSLog(@"Send teen location to: %@", _parent1.description);
-        NSLog(@"Teen is at: %@", _teen.myLocation);
+        NSLog(@"Send teen location to: %@, %@", _parent1.description, _parent2.description);
+        NSLog(@"%@ is at: %@", _teen.name, _teen.myLocation);
         
-        /*
-        // set the location
-        if ([CLLocationManager locationServicesEnabled]) {
-            
-            // reverse geocode location
-            if (!self.geocoder)
-                self.geocoder = [[CLGeocoder alloc] init];
-            
-            [self.geocoder reverseGeocodeLocation:_teen.location completionHandler:^(NSArray* placemarks, NSError *error) {
-                NSLog(@"Found placemarks: %@, error: %@", placemarks, error);
-                if (nil == error && [placemarks count] > 0) {
-                    NSMutableArray *tempArray = [[NSMutableArray alloc] initWithCapacity:[placemarks count]];
-                    for (CLPlacemark *placemark in placemarks) {
-                        [tempArray addObject:[NSString stringWithFormat:@"%@ %@\n%@ %@\n%@\n%@\n",
-                                              placemark.subThoroughfare, placemark.thoroughfare,
-                                              placemark.postalCode, placemark.locality,
-                                              placemark.administrativeArea,
-                                              placemark.country]];
-                    }
-                    _locationAddress = [tempArray copy];
-                    NSString *result = [[_locationAddress valueForKey:@"description"] componentsJoinedByString:@""];
-                    NSLog(@"I am currently at %@", result);
-                }
-                else {
-                    _locationAddress = nil;
-                    NSLog(@"Error: %@", error.debugDescription);
-                }
-                
-                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sending Location:" message:_teen.myLocation delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
-                // optional - add more buttons:
-                [alert addButtonWithTitle:@"OK"];
-                [alert setTag:1];
-                [alert show];
-            }];
-        }
-        */
+        NSString *alertTitle = NSLocalizedString(@"Send Location", @"Send Location");
+        NSString *alertMessage = _teen.myLocation;
         
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sending Location:" message:_teen.myLocation delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:nil];
-        // optional - add more buttons:
-        [alert addButtonWithTitle:@"OK"];
-        [alert setTag:1];
-        [alert show];
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:alertTitle
+                                                                                 message:alertMessage
+                                                                          preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", @"Cancel action")
+                                                               style:UIAlertActionStyleCancel
+                                                             handler:^(UIAlertAction *action)
+                                       {
+                                           NSLog(@"Cancel action");
+                                           
+                                       }];
+        
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", @"OK action")
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction *action)
+                                   {
+                                       NSLog(@"OK action");
+                                       [self sendSMS:_teen.myLocation recipientList:[NSArray arrayWithObjects:_parent1.number,_parent2.number, nil]];
+                                   }];
+        
+        [alertController addAction:cancelAction];
+        [alertController addAction:okAction];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+    
+    // Start recording conversation
+    if ([segue.identifier isEqualToString:kStartRecording]) {
+        NSLog(@"Start recording conversation");
+        
+        NSString *alertTitle = NSLocalizedString(@"Record", @"Record Conversation");
+        NSString *alertMessage = NSLocalizedString(@"Record conversation with Police Officer", @"Record conversation with Police Officer");
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:alertTitle
+                                                                                 message:alertMessage
+                                                                          preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", @"Cancel action")
+                                                               style:UIAlertActionStyleCancel
+                                                             handler:^(UIAlertAction *action)
+                                       {
+                                           NSLog(@"Cancel action");
+                                           
+                                       }];
+        
+        UIAlertAction *okAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"OK", @"OK action")
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction *action)
+                                   {
+                                       NSLog(@"OK action");
+                                       
+                                       //UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                                       //SNMainTableViewControllerRecord *rvController = (SNMainTableViewControllerRecord *)[storyboard instantiateViewControllerWithIdentifier:@"MVC"];
+                                       //rvController.recording = @"YES";
+                                       //[self.navigationController pushViewController:rvController animated:YES];
+                                       
+                                       //[self startRecording];
+                                   }];
+        
+        [alertController addAction:cancelAction];
+        [alertController addAction:okAction];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
     }
     
     // Manage the view transition and tell SWRevealViewController the new front view controller for display.
@@ -182,34 +250,19 @@
     return cell;
 }
 
-- (void) handleTap:(UIGestureRecognizer *)recognizer {
+- (void) handleTap:(UIGestureRecognizer *)recognizer
+{
     NSLog(@"handleTap: Send teen location to parent");
 }
 
-- (void) tableView:(UITableView *)tableView didSeselectRowAtIndexPath:(NSIndexPath *)indexPath {
+- (void) tableView:(UITableView *)tableView didSeselectRowAtIndexPath:(NSIndexPath *)indexPath
+{
     NSLog(@"Send teen location to: %@", _parent1);
-    
-    //if ([indexPath isEqual:[tableView indexPathForCell:self.sendLocationButtonCell]]) {
-      //  NSLog(@"Send teen location to parent");
-    //}
 }
 
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex
+- (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller
 {
-    
-    NSLog(@"Button Index =%ld",buttonIndex);
-    if (alertView.tag == 1) {
-        if (buttonIndex == 0)
-        {
-            NSLog(@"You have clicked Cancel");
-        }
-        else if(buttonIndex == 1)
-        {
-            NSLog(@"You have clicked OK");
-            NSString *result = [[_locationAddress valueForKey:@"description"] componentsJoinedByString:@""];
-            [self sendSMS:result recipientList:[NSArray arrayWithObjects:_parent1.number,_parent2.number, nil]];
-        }
-    }
+    return UIModalPresentationNone;
 }
 
 - (void)sendSMS:(NSString *)bodyOfMessage recipientList:(NSArray *)recipients
@@ -220,22 +273,47 @@
         controller.body = bodyOfMessage;
         controller.recipients = recipients;
         controller.messageComposeDelegate = self;
-        [self presentModalViewController:controller animated:YES];
-    }    
+        [self presentViewController:controller animated:YES completion:nil];
+    }
 }
 
 - (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
 {
-    [self dismissModalViewControllerAnimated:YES];
-    
-    if (result == MessageComposeResultCancelled)
-        NSLog(@"Message cancelled");
+    [self dismissViewControllerAnimated:YES completion:^{
+        if (result == MessageComposeResultCancelled)
+            NSLog(@"Message cancelled");
         else if (result == MessageComposeResultSent)
             NSLog(@"Message sent");
-            else
-                NSLog(@"Message failed");
+        else
+            NSLog(@"Message failed");
+    }];
+}
+
+#pragma mark - AVAudioRecorder
+
+- (void)startRecording
+{
+    if (!_audioRecorder.recording) {
+        AVAudioSession *session = [AVAudioSession sharedInstance];
+        [session setActive:YES error:nil];
+        
+        // Start recording
+        [_audioRecorder record];
+    }
+}
+
+- (void)stopRecording
+{
+    [_audioRecorder stop];
     
-    [self dismissModalViewControllerAnimated:YES];
+    UIBarButtonItem *startButton = [[UIBarButtonItem alloc] initWithTitle:@"Record" style:UIBarButtonItemStyleBordered  target:self action:@selector(startRecording)];
+    self.navigationItem.rightBarButtonItem = startButton;
+}
+
+- (void)audioRecorderDidFinishRecording:(AVAudioRecorder *) aRecorder successfully:(BOOL)flag
+{
+    NSLog (@"audioRecorderDidFinishRecording:successfully:");
+    // your actions here
 }
 
 @end
