@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SNLocationTracker.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) SNLocationTracker *locationTracker;
+@property (nonatomic) NSTimer *locationUpdateTimer;
 
 @end
 

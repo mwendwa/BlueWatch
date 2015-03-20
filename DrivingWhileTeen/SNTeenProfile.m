@@ -17,7 +17,8 @@
 #define kAddress @"address"
 #define kSavedTeen @"SavedTeen"
 
-- (void)encodeWithCoder:(NSCoder *)encoder {
+- (void)encodeWithCoder:(NSCoder *)encoder
+{
     
     [encoder encodeObject:self.name forKey:kName];
     [encoder encodeObject:self.number forKey:kNumber];
@@ -27,7 +28,8 @@
     
 }
 
-- (id)initWithCoder:(NSCoder *)decoder {
+- (id)initWithCoder:(NSCoder *)decoder
+{
     self = [super init];
     if (self) {
         self.name   = [decoder decodeObjectForKey:kName];
@@ -42,7 +44,8 @@
 
 #pragma mark - Save
 
-- (void)save {
+- (void)save
+{
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSData *data = [NSKeyedArchiver archivedDataWithRootObject:self];
@@ -50,7 +53,8 @@
     [defaults synchronize];
 }
 
-+ (SNTeenProfile *)savedTeen {
++ (SNTeenProfile *)savedTeen
+{
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSData *data = [defaults objectForKey:kSavedTeen];
     return [NSKeyedUnarchiver unarchiveObjectWithData:data];

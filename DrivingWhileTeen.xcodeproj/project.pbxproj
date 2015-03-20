@@ -67,6 +67,9 @@
 		449C6C1E1A9FFB2B0078525E /* SNMainTableViewControllerRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 449C6C1D1A9FFB2B0078525E /* SNMainTableViewControllerRecord.m */; };
 		449FC3911A17E20A00F15D62 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 449FC3901A17E20A00F15D62 /* SWRevealViewController.m */; };
 		449FC39E1A17E87700F15D62 /* SNSidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 449FC39D1A17E87700F15D62 /* SNSidebarViewController.m */; };
+		44ACAFA11AB4A2F000610E1E /* SNBackgroundTaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 44ACAF9E1AB4A2F000610E1E /* SNBackgroundTaskManager.m */; };
+		44ACAFA21AB4A2F000610E1E /* SNLocationShareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 44ACAFA01AB4A2F000610E1E /* SNLocationShareModel.m */; };
+		44ACAFA51AB8669500610E1E /* SNLocationTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 44ACAFA41AB8669500610E1E /* SNLocationTracker.m */; };
 		44BEFC8D1A40CCC900F2FAE9 /* SNParentProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEFC8C1A40CCC900F2FAE9 /* SNParentProfile.m */; };
 		44CF80061A520CB5001171A0 /* SNTeenProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CF80051A520CB5001171A0 /* SNTeenProfile.m */; };
 		44CF80081A5B0F97001171A0 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44CF80071A5B0F97001171A0 /* MessageUI.framework */; };
@@ -168,6 +171,12 @@
 		449FC3901A17E20A00F15D62 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		449FC39C1A17E87700F15D62 /* SNSidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNSidebarViewController.h; sourceTree = "<group>"; };
 		449FC39D1A17E87700F15D62 /* SNSidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNSidebarViewController.m; sourceTree = "<group>"; };
+		44ACAF9D1AB4A2F000610E1E /* SNBackgroundTaskManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNBackgroundTaskManager.h; sourceTree = "<group>"; };
+		44ACAF9E1AB4A2F000610E1E /* SNBackgroundTaskManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNBackgroundTaskManager.m; sourceTree = "<group>"; };
+		44ACAF9F1AB4A2F000610E1E /* SNLocationShareModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNLocationShareModel.h; sourceTree = "<group>"; };
+		44ACAFA01AB4A2F000610E1E /* SNLocationShareModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNLocationShareModel.m; sourceTree = "<group>"; };
+		44ACAFA31AB8669500610E1E /* SNLocationTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNLocationTracker.h; sourceTree = "<group>"; };
+		44ACAFA41AB8669500610E1E /* SNLocationTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNLocationTracker.m; sourceTree = "<group>"; };
 		44BEFC8B1A40CCC900F2FAE9 /* SNParentProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNParentProfile.h; sourceTree = "<group>"; };
 		44BEFC8C1A40CCC900F2FAE9 /* SNParentProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNParentProfile.m; sourceTree = "<group>"; };
 		44CF80041A520CB5001171A0 /* SNTeenProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNTeenProfile.h; sourceTree = "<group>"; };
@@ -247,9 +256,16 @@
 		44354C681A16922300FFD46D /* DrivingWhileTeen */ = {
 			isa = PBXGroup;
 			children = (
-				44D2A8251A74382200F62FEF /* DrivingWhileTeen.entitlements */,
 				449FC38E1A17E20A00F15D62 /* Library */,
 				44F6C9841A1698A1008D8186 /* images */,
+				44354C6D1A16922300FFD46D /* AppDelegate.h */,
+				44354C6E1A16922300FFD46D /* AppDelegate.m */,
+				44ACAF9D1AB4A2F000610E1E /* SNBackgroundTaskManager.h */,
+				44ACAF9E1AB4A2F000610E1E /* SNBackgroundTaskManager.m */,
+				44ACAFA31AB8669500610E1E /* SNLocationTracker.h */,
+				44ACAFA41AB8669500610E1E /* SNLocationTracker.m */,
+				44ACAF9F1AB4A2F000610E1E /* SNLocationShareModel.h */,
+				44ACAFA01AB4A2F000610E1E /* SNLocationShareModel.m */,
 				449C6C1C1A9FFB2B0078525E /* SNMainTableViewControllerRecord.h */,
 				449C6C1D1A9FFB2B0078525E /* SNMainTableViewControllerRecord.m */,
 				449FC39C1A17E87700F15D62 /* SNSidebarViewController.h */,
@@ -268,8 +284,7 @@
 				44BEFC8C1A40CCC900F2FAE9 /* SNParentProfile.m */,
 				44CF80041A520CB5001171A0 /* SNTeenProfile.h */,
 				44CF80051A520CB5001171A0 /* SNTeenProfile.m */,
-				44354C6D1A16922300FFD46D /* AppDelegate.h */,
-				44354C6E1A16922300FFD46D /* AppDelegate.m */,
+				44D2A8251A74382200F62FEF /* DrivingWhileTeen.entitlements */,
 				44354C761A16922300FFD46D /* Main.storyboard */,
 				44354C791A16922300FFD46D /* Images.xcassets */,
 				44354C7B1A16922300FFD46D /* LaunchScreen.xib */,
@@ -556,11 +571,14 @@
 				44CF800B1A5B7FD9001171A0 /* SNTeenProfileViewController.m in Sources */,
 				44E537601A30D10C0081630F /* SNTableViewCell.m in Sources */,
 				44CF80111A5C7F8F001171A0 /* SNAboutViewController.m in Sources */,
+				44ACAFA11AB4A2F000610E1E /* SNBackgroundTaskManager.m in Sources */,
 				443EF1581A2D691B008A5EA3 /* SNParentProfileViewController.m in Sources */,
+				44ACAFA51AB8669500610E1E /* SNLocationTracker.m in Sources */,
 				449FC3911A17E20A00F15D62 /* SWRevealViewController.m in Sources */,
 				449C6C1E1A9FFB2B0078525E /* SNMainTableViewControllerRecord.m in Sources */,
 				449FC39E1A17E87700F15D62 /* SNSidebarViewController.m in Sources */,
 				44F6CA351A16B10F008D8186 /* SNMainTableViewController.m in Sources */,
+				44ACAFA21AB4A2F000610E1E /* SNLocationShareModel.m in Sources */,
 				44354C6C1A16922300FFD46D /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

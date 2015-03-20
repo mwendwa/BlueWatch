@@ -10,6 +10,7 @@
 #import "SWRevealViewController.h"
 #import "SNParentProfile.h"
 #import "SNTeenProfile.h"
+#import "SNLocationShareModel.h"
 #import <MessageUI/MessageUI.h>
 #import <CoreLocation/CoreLocation.h>
 #import <AVFoundation/AVFoundation.h>
@@ -21,7 +22,7 @@
 #define kSpeechMpx  1.0
 #define kSpeechDelay 0.25
 
-@interface SNMainTableViewController () <CLLocationManagerDelegate, AVSpeechSynthesizerDelegate, AVAudioRecorderDelegate>
+@interface SNMainTableViewController () <AVSpeechSynthesizerDelegate, AVAudioRecorderDelegate>
 
 @property (nonatomic, strong) NSArray *menuItems;
 @property (nonatomic, strong) NSString *itemName;
@@ -36,6 +37,7 @@
 @property (nonatomic, strong) AVSpeechSynthesizer *synth;
 @property (nonatomic, strong) AVSpeechUtterance *utter;
 @property (nonatomic, strong) AVAudioRecorder *audioRecorder;
+@property (nonatomic, strong) SNLocationShareModel *locationShareModel;
 @property (nonatomic) BOOL isRecording;
 
 @end
@@ -129,46 +131,6 @@
     [_synth setDelegate: self];
     _speechArray = [[NSMutableArray alloc] init];
     
-    // Set the location
-    if ([CLLocationManager locationServicesEnabled]) {
-        
-        if (nil == self.locationManager)
-            self.locationManager = [[CLLocationManager alloc] init];
-    
-        self.locationManager.delegate = self;
-        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-        self.locationManager.distanceFilter = 500;
-        if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)])
-            [self.locationManager requestWhenInUseAuthorization];
-        [self.locationManager startUpdatingLocation];
-
-        // reverse geocode location
-        if (!self.geocoder)
-            self.geocoder = [[CLGeocoder alloc] init];
-        
-        [self.geocoder reverseGeocodeLocation:self.locationManager.location completionHandler:^(NSArray* placemarks, NSError *error) {
-            NSLog(@"Found placemarks: %@, error: %@", placemarks, error);
-            if (nil == error && [placemarks count] > 0) {
-                NSMutableArray *tempArray = [[NSMutableArray alloc] initWithCapacity:[placemarks count]];
-                for (CLPlacemark *placemark in placemarks) {
-                    [tempArray addObject:[NSString stringWithFormat:@"%@ %@\n%@ %@\n%@\n%@\n",
-                                          placemark.subThoroughfare, placemark.thoroughfare,
-                                          placemark.postalCode, placemark.locality,
-                                          placemark.administrativeArea,
-                                          placemark.country]];
-                }
-                _locationAddress = [tempArray copy];
-                _teen.address = [tempArray copy];
-                [_teen save];
-                NSLog(@"%@ is currently at %@",_teen.name, _teen.address);
-            }
-            else {
-                _locationAddress = nil;
-                NSLog(@"Error: %@", error.debugDescription);
-            }
-         }];
-    }
-    
     NSLog(@"[%@ viewDidLoad]",self);
     
     // Uncomment the following line to preserve selection between presentations.
@@ -181,33 +143,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Location manager delegate methods
-
--(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
-    UIAlertView *errorAlert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"There was an error retrieving your location" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
-    [errorAlert show];
-    NSLog(@"Error: %@",error.description);
-}
-
-// Location Manager Delegate Methods
-- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
-    
-    // If it's a relatively recent event, turn off updates to save power.
-    CLLocation* location = [locations lastObject];
-    NSDate* eventDate = location.timestamp;
-    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
-    if (abs(howRecent) < 15.0) {
-        // If the event is recent, save location.
-        _teen.location = location;
-        [_teen save];
-        
-        // send location to parent
-        //[self sendSMS:_teen.myLocation recipientList:[NSArray arrayWithObjects:_parent1.number,_parent2.number, nil]];
-        
-        NSLog(@"Saved teen location at: %@", _teen.location);
-    }
-    NSLog(@"%@", [locations lastObject]);
-}
+#pragma mark - Message composition
 
 /*
 - (void)sendSMS:(NSString *)bodyOfMessage recipientList:(NSArray *)recipients
@@ -361,5 +297,5 @@
     
 }
 
-
 @end
+
