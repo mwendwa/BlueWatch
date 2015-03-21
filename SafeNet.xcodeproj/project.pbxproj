@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4414F0761ABDC6BA008FCC2D /* CBAutoScrollLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4414F0751ABDC6BA008FCC2D /* CBAutoScrollLabel.m */; };
 		44354C6C1A16922300FFD46D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 44354C6B1A16922300FFD46D /* main.m */; };
 		44354C6F1A16922300FFD46D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 44354C6E1A16922300FFD46D /* AppDelegate.m */; };
 		44354C781A16922300FFD46D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44354C761A16922300FFD46D /* Main.storyboard */; };
@@ -64,7 +65,6 @@
 		44557C981A6C304600C9947E /* 57pt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44557C921A6C304600C9947E /* 57pt@2x.png */; };
 		44557C991A6C304600C9947E /* 60pt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 44557C931A6C304600C9947E /* 60pt@2x.png */; };
 		44557C9A1A6C304600C9947E /* SNI Shield-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 44557C941A6C304600C9947E /* SNI Shield-2.png */; };
-		449C6C1E1A9FFB2B0078525E /* SNMainTableViewControllerRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = 449C6C1D1A9FFB2B0078525E /* SNMainTableViewControllerRecord.m */; };
 		449FC3911A17E20A00F15D62 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 449FC3901A17E20A00F15D62 /* SWRevealViewController.m */; };
 		449FC39E1A17E87700F15D62 /* SNSidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 449FC39D1A17E87700F15D62 /* SNSidebarViewController.m */; };
 		44ACAFA11AB4A2F000610E1E /* SNBackgroundTaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 44ACAF9E1AB4A2F000610E1E /* SNBackgroundTaskManager.m */; };
@@ -102,6 +102,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4414F0741ABDC6BA008FCC2D /* CBAutoScrollLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAutoScrollLabel.h; sourceTree = "<group>"; };
+		4414F0751ABDC6BA008FCC2D /* CBAutoScrollLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAutoScrollLabel.m; sourceTree = "<group>"; };
 		44354C661A16922300FFD46D /* SafeNet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SafeNet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44354C6A1A16922300FFD46D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44354C6B1A16922300FFD46D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -165,8 +167,6 @@
 		44557C921A6C304600C9947E /* 57pt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "57pt@2x.png"; sourceTree = "<group>"; };
 		44557C931A6C304600C9947E /* 60pt@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "60pt@2x.png"; sourceTree = "<group>"; };
 		44557C941A6C304600C9947E /* SNI Shield-2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SNI Shield-2.png"; sourceTree = "<group>"; };
-		449C6C1C1A9FFB2B0078525E /* SNMainTableViewControllerRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNMainTableViewControllerRecord.h; sourceTree = "<group>"; };
-		449C6C1D1A9FFB2B0078525E /* SNMainTableViewControllerRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNMainTableViewControllerRecord.m; sourceTree = "<group>"; };
 		449FC38F1A17E20A00F15D62 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		449FC3901A17E20A00F15D62 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		449FC39C1A17E87700F15D62 /* SNSidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNSidebarViewController.h; sourceTree = "<group>"; };
@@ -266,8 +266,6 @@
 				44ACAFA41AB8669500610E1E /* SNLocationTracker.m */,
 				44ACAF9F1AB4A2F000610E1E /* SNLocationShareModel.h */,
 				44ACAFA01AB4A2F000610E1E /* SNLocationShareModel.m */,
-				449C6C1C1A9FFB2B0078525E /* SNMainTableViewControllerRecord.h */,
-				449C6C1D1A9FFB2B0078525E /* SNMainTableViewControllerRecord.m */,
 				449FC39C1A17E87700F15D62 /* SNSidebarViewController.h */,
 				449FC39D1A17E87700F15D62 /* SNSidebarViewController.m */,
 				44F6CA311A16B10F008D8186 /* SNMainTableViewController.h */,
@@ -322,6 +320,8 @@
 		449FC38E1A17E20A00F15D62 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				4414F0741ABDC6BA008FCC2D /* CBAutoScrollLabel.h */,
+				4414F0751ABDC6BA008FCC2D /* CBAutoScrollLabel.m */,
 				449FC38F1A17E20A00F15D62 /* SWRevealViewController.h */,
 				449FC3901A17E20A00F15D62 /* SWRevealViewController.m */,
 			);
@@ -574,8 +574,8 @@
 				44ACAFA11AB4A2F000610E1E /* SNBackgroundTaskManager.m in Sources */,
 				443EF1581A2D691B008A5EA3 /* SNParentProfileViewController.m in Sources */,
 				44ACAFA51AB8669500610E1E /* SNLocationTracker.m in Sources */,
+				4414F0761ABDC6BA008FCC2D /* CBAutoScrollLabel.m in Sources */,
 				449FC3911A17E20A00F15D62 /* SWRevealViewController.m in Sources */,
-				449C6C1E1A9FFB2B0078525E /* SNMainTableViewControllerRecord.m in Sources */,
 				449FC39E1A17E87700F15D62 /* SNSidebarViewController.m in Sources */,
 				44F6CA351A16B10F008D8186 /* SNMainTableViewController.m in Sources */,
 				44ACAFA21AB4A2F000610E1E /* SNLocationShareModel.m in Sources */,

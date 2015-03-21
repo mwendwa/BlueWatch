@@ -23,10 +23,11 @@
     UILabel* tlabel=[[UILabel alloc] initWithFrame:CGRectMake(0,0, 300, 40)];
     tlabel.text = kTitle;
     tlabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:20.0];
-    tlabel.textColor=[UIColor grayColor];
-    tlabel.backgroundColor =[UIColor clearColor];
-    tlabel.adjustsFontSizeToFitWidth=YES;
-    self.navigationItem.titleView=tlabel;
+    tlabel.textColor = [UIColor grayColor];
+    tlabel.backgroundColor = [UIColor clearColor];
+    tlabel.adjustsFontSizeToFitWidth = YES;
+    tlabel.textAlignment = NSTextAlignmentCenter;
+    self.navigationItem.titleView = tlabel;
     
     // emboss so that the label looks OK
     [tlabel setShadowColor:[UIColor darkGrayColor]];

@@ -226,7 +226,7 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="56658002-13EB-4BD2-8DF3-8132984DCA3E" id="8R0-sh-1mc">
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="35AA9191-2970-4F61-841A-0219FEDFFA3D" id="8R0-sh-1mc">
                                             <rect key="frame" x="15" y="0.0" width="43" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
@@ -659,7 +659,7 @@
                                     <constraint firstAttribute="width" constant="240" id="8DR-UP-2ub"/>
                                 </constraints>
                             </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Icons provided by icons8.com" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="yC6-TH-RdG">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Icons by icons8.com" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="yC6-TH-RdG">
                                 <rect key="frame" x="180" y="447" width="240" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -989,7 +989,7 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="0B6FC487-876F-451E-BE0F-5843B21B8C9F" id="1IJ-6U-bmJ">
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="6DBC9892-5274-492B-AB1D-EDC8C0526CE5" id="1IJ-6U-bmJ">
                                             <rect key="frame" x="15" y="0.0" width="43" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
@@ -1060,7 +1060,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="0B6FC487-876F-451E-BE0F-5843B21B8C9F" width="50" height="50">
+        <image name="35AA9191-2970-4F61-841A-0219FEDFFA3D" width="50" height="50">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -1277,7 +1277,7 @@ sgC1ALcAuQC7AL0AwgDZANsA3TBfMGQwbzB4MIswjzCiMK0wtjC7MMMwxjDLMNow3jDlMO0w+jD/MQEx
 AzEIMRAxEzEYMSAxIzE1MTgxPQAAAAAAAAIBAAAAAAAAAEIAAAAAAAAAAAAAAAAAADE/A
 </mutableData>
         </image>
-        <image name="56658002-13EB-4BD2-8DF3-8132984DCA3E" width="50" height="50">
+        <image name="6DBC9892-5274-492B-AB1D-EDC8C0526CE5" width="50" height="50">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

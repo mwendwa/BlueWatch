@@ -10,6 +10,7 @@
 #import "SWRevealViewController.h"
 #import "SNParentProfile.h"
 #import "SNTeenProfile.h"
+#import "CBAutoScrollLabel.h"
 #import <MessageUI/MessageUI.h>
 #import <CoreLocation/CoreLocation.h>
 #import <AVFoundation/AVFoundation.h>
@@ -17,6 +18,7 @@
 #define kParent1 @"Parent1"
 #define kParent2 @"Parent2"
 #define kTitle @"SafeNet"
+#define kRecording @"Recording...Recording...Recording..."
 #define kSpeechRate  0.10
 #define kSpeechMpx  1.0
 #define kSpeechDelay 0.25
@@ -245,9 +247,29 @@
     [self setRecording:!_isRecording];
     
     if (!_isRecording) {
+        UILabel *tlabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0, 300, 40)];
+        tlabel.text = kTitle;
+        tlabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:30.0];
+        tlabel.textColor = [UIColor grayColor];
+        tlabel.backgroundColor = [UIColor clearColor];
+        tlabel.adjustsFontSizeToFitWidth = YES;
+        tlabel.textAlignment = NSTextAlignmentCenter;
+        self.navigationItem.titleView = tlabel;
+        
         [self stopRecording];
     }
     else {
+        CBAutoScrollLabel *tlabel = [[CBAutoScrollLabel alloc] initWithFrame:CGRectMake(0,0, 300, 40)];
+        //UILabel *tlabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0, 300, 40)];
+        tlabel.text = kRecording;
+        tlabel.pauseInterval = 3.f;
+        tlabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:20.0];
+        tlabel.textColor = [UIColor colorWithRed:176.0f/255.0f green:37.0f/255.0f blue:32.0f/255.0f alpha:1.0f];
+        tlabel.backgroundColor = [UIColor clearColor];
+        tlabel.textAlignment = NSTextAlignmentCenter;
+        self.navigationItem.titleView = tlabel;
+        [tlabel observeApplicationNotifications];
+
         [self startRecording];
     }
 }
