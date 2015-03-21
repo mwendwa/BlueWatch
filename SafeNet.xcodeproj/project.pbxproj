@@ -12,7 +12,7 @@
 		44354C781A16922300FFD46D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44354C761A16922300FFD46D /* Main.storyboard */; };
 		44354C7A1A16922300FFD46D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44354C791A16922300FFD46D /* Images.xcassets */; };
 		44354C7D1A16922300FFD46D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44354C7B1A16922300FFD46D /* LaunchScreen.xib */; };
-		44354C891A16922300FFD46D /* DrivingWhileTeenTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44354C881A16922300FFD46D /* DrivingWhileTeenTests.m */; };
+		44354C891A16922300FFD46D /* SafeNetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44354C881A16922300FFD46D /* SafeNetTests.m */; };
 		443EF1581A2D691B008A5EA3 /* SNParentProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 443EF1571A2D691B008A5EA3 /* SNParentProfileViewController.m */; };
 		44557C381A6C1C9100C9947E /* SNI Shield.icns in Resources */ = {isa = PBXBuildFile; fileRef = 44557C371A6C1C9100C9947E /* SNI Shield.icns */; };
 		44557C3A1A6C1F9E00C9947E /* SNI Shield.png in Resources */ = {isa = PBXBuildFile; fileRef = 44557C391A6C1F9E00C9947E /* SNI Shield.png */; };
@@ -97,12 +97,12 @@
 			containerPortal = 44354C5E1A16922300FFD46D /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 44354C651A16922300FFD46D;
-			remoteInfo = DrivingWhileTeen;
+			remoteInfo = SafeNetIndustries;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		44354C661A16922300FFD46D /* DrivingWhileTeen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DrivingWhileTeen.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		44354C661A16922300FFD46D /* SafeNet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SafeNet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44354C6A1A16922300FFD46D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44354C6B1A16922300FFD46D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		44354C6D1A16922300FFD46D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -110,9 +110,9 @@
 		44354C771A16922300FFD46D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		44354C791A16922300FFD46D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		44354C7C1A16922300FFD46D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		44354C821A16922300FFD46D /* DrivingWhileTeenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DrivingWhileTeenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		44354C821A16922300FFD46D /* SafeNetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SafeNetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44354C871A16922300FFD46D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		44354C881A16922300FFD46D /* DrivingWhileTeenTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DrivingWhileTeenTests.m; sourceTree = "<group>"; };
+		44354C881A16922300FFD46D /* SafeNetTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SafeNetTests.m; sourceTree = "<group>"; };
 		443EF1561A2D691B008A5EA3 /* SNParentProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNParentProfileViewController.h; sourceTree = "<group>"; };
 		443EF1571A2D691B008A5EA3 /* SNParentProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNParentProfileViewController.m; sourceTree = "<group>"; };
 		44557C371A6C1C9100C9947E /* SNI Shield.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "SNI Shield.icns"; sourceTree = "<group>"; };
@@ -186,7 +186,7 @@
 		44CF800A1A5B7FD9001171A0 /* SNTeenProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNTeenProfileViewController.m; sourceTree = "<group>"; };
 		44CF800F1A5C7F8F001171A0 /* SNAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNAboutViewController.h; path = ../SNAboutViewController.h; sourceTree = "<group>"; };
 		44CF80101A5C7F8F001171A0 /* SNAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNAboutViewController.m; path = ../SNAboutViewController.m; sourceTree = "<group>"; };
-		44D2A8251A74382200F62FEF /* DrivingWhileTeen.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = DrivingWhileTeen.entitlements; sourceTree = "<group>"; };
+		44D2A8251A74382200F62FEF /* SafeNetIndustries.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SafeNetIndustries.entitlements; sourceTree = "<group>"; };
 		44D6EA3F1A9A35EB00EE5890 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		44E5375E1A30D10C0081630F /* SNTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNTableViewCell.h; sourceTree = "<group>"; };
 		44E5375F1A30D10C0081630F /* SNTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNTableViewCell.m; sourceTree = "<group>"; };
@@ -238,8 +238,8 @@
 				44F6CA3B1A17A452008D8186 /* UIKit.framework */,
 				44F6CA391A17A426008D8186 /* QuartzCore.framework */,
 				44F6CA371A179A04008D8186 /* CoreLocation.framework */,
-				44354C681A16922300FFD46D /* DrivingWhileTeen */,
-				44354C851A16922300FFD46D /* DrivingWhileTeenTests */,
+				44354C681A16922300FFD46D /* SafeNetIndustries */,
+				44354C851A16922300FFD46D /* SafeNetIndustriesTests */,
 				44354C671A16922300FFD46D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -247,13 +247,13 @@
 		44354C671A16922300FFD46D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				44354C661A16922300FFD46D /* DrivingWhileTeen.app */,
-				44354C821A16922300FFD46D /* DrivingWhileTeenTests.xctest */,
+				44354C661A16922300FFD46D /* SafeNet.app */,
+				44354C821A16922300FFD46D /* SafeNetTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		44354C681A16922300FFD46D /* DrivingWhileTeen */ = {
+		44354C681A16922300FFD46D /* SafeNetIndustries */ = {
 			isa = PBXGroup;
 			children = (
 				449FC38E1A17E20A00F15D62 /* Library */,
@@ -284,13 +284,13 @@
 				44BEFC8C1A40CCC900F2FAE9 /* SNParentProfile.m */,
 				44CF80041A520CB5001171A0 /* SNTeenProfile.h */,
 				44CF80051A520CB5001171A0 /* SNTeenProfile.m */,
-				44D2A8251A74382200F62FEF /* DrivingWhileTeen.entitlements */,
+				44D2A8251A74382200F62FEF /* SafeNetIndustries.entitlements */,
 				44354C761A16922300FFD46D /* Main.storyboard */,
 				44354C791A16922300FFD46D /* Images.xcassets */,
 				44354C7B1A16922300FFD46D /* LaunchScreen.xib */,
 				44354C691A16922300FFD46D /* Supporting Files */,
 			);
-			path = DrivingWhileTeen;
+			path = SafeNetIndustries;
 			sourceTree = "<group>";
 		};
 		44354C691A16922300FFD46D /* Supporting Files */ = {
@@ -302,13 +302,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		44354C851A16922300FFD46D /* DrivingWhileTeenTests */ = {
+		44354C851A16922300FFD46D /* SafeNetIndustriesTests */ = {
 			isa = PBXGroup;
 			children = (
-				44354C881A16922300FFD46D /* DrivingWhileTeenTests.m */,
+				44354C881A16922300FFD46D /* SafeNetTests.m */,
 				44354C861A16922300FFD46D /* Supporting Files */,
 			);
-			path = DrivingWhileTeenTests;
+			path = SafeNetIndustriesTests;
 			sourceTree = "<group>";
 		};
 		44354C861A16922300FFD46D /* Supporting Files */ = {
@@ -395,9 +395,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		44354C651A16922300FFD46D /* DrivingWhileTeen */ = {
+		44354C651A16922300FFD46D /* SafeNet */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 44354C8C1A16922300FFD46D /* Build configuration list for PBXNativeTarget "DrivingWhileTeen" */;
+			buildConfigurationList = 44354C8C1A16922300FFD46D /* Build configuration list for PBXNativeTarget "SafeNet" */;
 			buildPhases = (
 				44354C621A16922300FFD46D /* Sources */,
 				44354C631A16922300FFD46D /* Frameworks */,
@@ -407,14 +407,14 @@
 			);
 			dependencies = (
 			);
-			name = DrivingWhileTeen;
-			productName = DrivingWhileTeen;
-			productReference = 44354C661A16922300FFD46D /* DrivingWhileTeen.app */;
+			name = SafeNet;
+			productName = SafeNetIndustries;
+			productReference = 44354C661A16922300FFD46D /* SafeNet.app */;
 			productType = "com.apple.product-type.application";
 		};
-		44354C811A16922300FFD46D /* DrivingWhileTeenTests */ = {
+		44354C811A16922300FFD46D /* SafeNetTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 44354C8F1A16922300FFD46D /* Build configuration list for PBXNativeTarget "DrivingWhileTeenTests" */;
+			buildConfigurationList = 44354C8F1A16922300FFD46D /* Build configuration list for PBXNativeTarget "SafeNetTests" */;
 			buildPhases = (
 				44354C7E1A16922300FFD46D /* Sources */,
 				44354C7F1A16922300FFD46D /* Frameworks */,
@@ -425,9 +425,9 @@
 			dependencies = (
 				44354C841A16922300FFD46D /* PBXTargetDependency */,
 			);
-			name = DrivingWhileTeenTests;
-			productName = DrivingWhileTeenTests;
-			productReference = 44354C821A16922300FFD46D /* DrivingWhileTeenTests.xctest */;
+			name = SafeNetTests;
+			productName = SafeNetIndustriesTests;
+			productReference = 44354C821A16922300FFD46D /* SafeNetTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -464,7 +464,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 44354C611A16922300FFD46D /* Build configuration list for PBXProject "DrivingWhileTeen" */;
+			buildConfigurationList = 44354C611A16922300FFD46D /* Build configuration list for PBXProject "SafeNet" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -477,8 +477,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				44354C651A16922300FFD46D /* DrivingWhileTeen */,
-				44354C811A16922300FFD46D /* DrivingWhileTeenTests */,
+				44354C651A16922300FFD46D /* SafeNet */,
+				44354C811A16922300FFD46D /* SafeNetTests */,
 			);
 		};
 /* End PBXProject section */
@@ -587,7 +587,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44354C891A16922300FFD46D /* DrivingWhileTeenTests.m in Sources */,
+				44354C891A16922300FFD46D /* SafeNetTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -596,7 +596,7 @@
 /* Begin PBXTargetDependency section */
 		44354C841A16922300FFD46D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 44354C651A16922300FFD46D /* DrivingWhileTeen */;
+			target = 44354C651A16922300FFD46D /* SafeNet */;
 			targetProxy = 44354C831A16922300FFD46D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -655,7 +655,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -690,7 +690,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -703,10 +703,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = DrivingWhileTeen/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				INFOPLIST_FILE = SafeNetIndustries/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SafeNet;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -718,10 +718,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = DrivingWhileTeen/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				INFOPLIST_FILE = SafeNetIndustries/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = SafeNet;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -739,10 +739,10 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = DrivingWhileTeenTests/Info.plist;
+				INFOPLIST_FILE = SafeNetIndustriesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DrivingWhileTeen.app/DrivingWhileTeen";
+				PRODUCT_NAME = SafeNetTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SafeNetIndustries.app/SafeNetIndustries";
 			};
 			name = Debug;
 		};
@@ -754,17 +754,17 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = DrivingWhileTeenTests/Info.plist;
+				INFOPLIST_FILE = SafeNetIndustriesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/DrivingWhileTeen.app/DrivingWhileTeen";
+				PRODUCT_NAME = SafeNetTests;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SafeNetIndustries.app/SafeNetIndustries";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		44354C611A16922300FFD46D /* Build configuration list for PBXProject "DrivingWhileTeen" */ = {
+		44354C611A16922300FFD46D /* Build configuration list for PBXProject "SafeNet" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				44354C8A1A16922300FFD46D /* Debug */,
@@ -773,7 +773,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		44354C8C1A16922300FFD46D /* Build configuration list for PBXNativeTarget "DrivingWhileTeen" */ = {
+		44354C8C1A16922300FFD46D /* Build configuration list for PBXNativeTarget "SafeNet" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				44354C8D1A16922300FFD46D /* Debug */,
@@ -782,7 +782,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		44354C8F1A16922300FFD46D /* Build configuration list for PBXNativeTarget "DrivingWhileTeenTests" */ = {
+		44354C8F1A16922300FFD46D /* Build configuration list for PBXNativeTarget "SafeNetTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				44354C901A16922300FFD46D /* Debug */,
