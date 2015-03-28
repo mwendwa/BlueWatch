@@ -15,19 +15,23 @@
 #import <CoreLocation/CoreLocation.h>
 #import <AVFoundation/AVFoundation.h>
 
-#define kParent1 @"Parent1"
-#define kParent2 @"Parent2"
-#define kTitle @"SafeNet"
-#define kRecording @"Recording...Recording...Recording..."
-#define kSpeechRate  0.10
-#define kSpeechMpx  1.0
-#define kSpeechDelay 0.25
+#define PARENT_1 @"Parent1"
+#define PARENT_2 @"Parent2"
+#define APP_TITLE @"SafeNet"
+#define RECORDING_TEXT @"Recording...Recording...Recording..."
+#define SPEECH_RATE  0.10
+#define SPEECH_MPX  1.0
+#define SPEECH_DELAY 0.25
+#define DISTANCE_FILTER 50
+#define AUDIO_FILE @"SafeNetMemo.m4a"
 
-@interface SNMainTableViewController () <AVSpeechSynthesizerDelegate, AVAudioRecorderDelegate>
+@interface SNMainTableViewController () <AVSpeechSynthesizerDelegate, AVAudioRecorderDelegate, CLLocationManagerDelegate>
 
 @property (nonatomic, strong) NSArray *menuItems;
 @property (nonatomic, strong) NSString *itemName;
 @property (nonatomic, strong) NSDate *timeofDay;
+@property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, strong) CLGeocoder *geocoder;
 @property (nonatomic, strong) NSArray *locationAddress;
 @property (nonatomic, strong) SNParentProfile *parent1;
 @property (nonatomic, strong) SNParentProfile *parent2;
@@ -55,7 +59,7 @@
     [super viewDidLoad];
     
     UILabel *tlabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0, 300, 40)];
-    tlabel.text = kTitle;
+    tlabel.text = APP_TITLE;
     tlabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:30.0];
     tlabel.textColor = [UIColor grayColor];
     tlabel.backgroundColor = [UIColor clearColor];
@@ -68,8 +72,8 @@
     [tlabel setShadowOffset:CGSizeMake(0, -0.5)];
     self.navigationItem.titleView = tlabel;
     
-    _parent1 = [SNParentProfile savedParent:kParent1];
-    _parent2 = [SNParentProfile savedParent:kParent2];
+    _parent1 = [SNParentProfile savedParent:PARENT_1];
+    _parent2 = [SNParentProfile savedParent:PARENT_2];
     _teen = [SNTeenProfile savedTeen];
     
     [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
@@ -92,7 +96,7 @@
     // Set the new dated audio file
     NSArray *pathComponents = [NSArray arrayWithObjects:
                                [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject],
-                               @"dwtMemo.m4a",
+                               AUDIO_FILE,
                                nil];
     NSURL *soundFileURL = [NSURL fileURLWithPathComponents:pathComponents];
     
@@ -100,8 +104,7 @@
     AVAudioSession *session = [AVAudioSession sharedInstance];
     [session setCategory:AVAudioSessionCategoryRecord error:&audioSessionError];
     if (audioSessionError) {
-        NSLog(@"Error %ld, %@",
-              (long)audioSessionError.code, audioSessionError.localizedDescription);
+        NSLog(@"Error %ld, %@", (long)audioSessionError.code, audioSessionError.localizedDescription);
     }
     
     // Define the recorder setting
@@ -129,6 +132,46 @@
     _synth = [[AVSpeechSynthesizer alloc] init];
     [_synth setDelegate: self];
     _speechArray = [[NSMutableArray alloc] init];
+    
+    // set the location
+    if ([CLLocationManager locationServicesEnabled]) {
+        
+        if (nil == self.locationManager)
+            self.locationManager = [[CLLocationManager alloc] init];
+        
+        self.locationManager.delegate = self;
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        self.locationManager.distanceFilter = DISTANCE_FILTER;
+        if ([self.locationManager respondsToSelector:@selector(requestWhenInUseAuthorization)])
+            [self.locationManager requestWhenInUseAuthorization];
+        [self.locationManager startUpdatingLocation];
+        
+        // reverse geocode location
+        if (!self.geocoder)
+            self.geocoder = [[CLGeocoder alloc] init];
+        
+        [self.geocoder reverseGeocodeLocation:self.locationManager.location completionHandler:^(NSArray* placemarks, NSError *error) {
+            NSLog(@"Found placemarks: %@, error: %@", placemarks, error);
+            if (nil == error && [placemarks count] > 0) {
+                NSMutableArray *tempArray = [[NSMutableArray alloc] initWithCapacity:[placemarks count]];
+                for (CLPlacemark *placemark in placemarks) {
+                    [tempArray addObject:[NSString stringWithFormat:@"%@ %@\n%@ %@\n%@\n%@\n",
+                                          placemark.subThoroughfare, placemark.thoroughfare,
+                                          placemark.postalCode, placemark.locality,
+                                          placemark.administrativeArea,
+                                          placemark.country]];
+                }
+                _locationAddress = [tempArray copy];
+                _teen.address = [tempArray copy];
+                [_teen save];
+                NSLog(@"%@ is currently at %@",_teen.name, _teen.address);
+            }
+            else {
+                _locationAddress = nil;
+                NSLog(@"Error: %@", error.debugDescription);
+            }
+        }];
+    }
     
     NSLog(@"[%@ viewDidLoad]",self);
     
@@ -167,6 +210,30 @@
     return cell;
 }
 
+#pragma mark - Location manager delegate methods
+
+-(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
+    UIAlertView *errorAlert = [[UIAlertView alloc]initWithTitle:@"Error" message:@"There was an error retrieving your location" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [errorAlert show];
+    NSLog(@"Error: %@",error.description);
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    
+    // If it's a relatively recent event, turn off updates to save power.
+    CLLocation* location = [locations lastObject];
+    NSDate* eventDate = location.timestamp;
+    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
+    if (abs(howRecent) < 15.0) {
+        // If the event is recent, save location.
+        _teen.location = location;
+        [_teen save];
+        
+        NSLog(@"Saved teen location at: %@", _teen.location);
+    }
+    NSLog(@"%@", [locations lastObject]);
+}
+
 #pragma mark - Speech
 
 - (void)speechSynthesizer:(AVSpeechSynthesizer *)avsSynthesizer didFinishSpeechUtterance:(AVSpeechUtterance *)utterance
@@ -188,9 +255,9 @@
         [_speechArray removeObjectAtIndex:0];
         _utter = [[AVSpeechUtterance alloc] initWithString:speechStr];
         _utter.voice = [AVSpeechSynthesisVoice voiceWithLanguage:@"en-US"];
-        _utter.rate = kSpeechRate;
-        _utter.pitchMultiplier = kSpeechMpx;
-        _utter.postUtteranceDelay = kSpeechDelay;
+        _utter.rate = SPEECH_RATE;
+        _utter.pitchMultiplier = SPEECH_MPX;
+        _utter.postUtteranceDelay = SPEECH_DELAY;
 
         [_synth speakUtterance:_utter];
         [_synth stopSpeakingAtBoundary:AVSpeechBoundaryImmediate];
@@ -208,9 +275,9 @@
     
     _utter = [[AVSpeechUtterance alloc] initWithString:phrase];
     _utter.voice = [AVSpeechSynthesisVoice voiceWithLanguage:@"en-US"];
-    _utter.rate = kSpeechRate;
-    _utter.pitchMultiplier = kSpeechMpx;
-    _utter.postUtteranceDelay = kSpeechDelay;
+    _utter.rate = SPEECH_RATE;
+    _utter.pitchMultiplier = SPEECH_MPX;
+    _utter.postUtteranceDelay = SPEECH_DELAY;
         
     [_synth speakUtterance:_utter];
         
@@ -248,7 +315,7 @@
     
     if (!_isRecording) {
         UILabel *tlabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0, 300, 40)];
-        tlabel.text = kTitle;
+        tlabel.text = APP_TITLE;
         tlabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:30.0];
         tlabel.textColor = [UIColor grayColor];
         tlabel.backgroundColor = [UIColor clearColor];
@@ -261,7 +328,7 @@
     else {
         CBAutoScrollLabel *tlabel = [[CBAutoScrollLabel alloc] initWithFrame:CGRectMake(0,0, 300, 40)];
         //UILabel *tlabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0, 300, 40)];
-        tlabel.text = kRecording;
+        tlabel.text = RECORDING_TEXT;
         tlabel.pauseInterval = 3.f;
         tlabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:20.0];
         tlabel.textColor = [UIColor colorWithRed:176.0f/255.0f green:37.0f/255.0f blue:32.0f/255.0f alpha:1.0f];
@@ -280,6 +347,7 @@
     if (!_audioRecorder.recording) {
         AVAudioSession *session = [AVAudioSession sharedInstance];
         [session setActive:YES error:nil];
+        [_synth stopSpeakingAtBoundary:AVSpeechBoundaryImmediate];
         
         // Start recording
         [_audioRecorder record];

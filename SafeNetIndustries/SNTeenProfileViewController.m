@@ -10,7 +10,7 @@
 #import "SWRevealViewController.h"
 #import "SNTableViewCell.h"
 
-#define kTitle @"Teen Profile"
+#define APP_TITLE @"Teen Profile"
 #define kCellIdentifier @"SNTableViewCell"
 
 @interface SNTeenProfileViewController ()
@@ -37,7 +37,7 @@
     [super viewDidLoad];
 
     UILabel* tlabel=[[UILabel alloc] initWithFrame:CGRectMake(0,0, 300, 40)];
-    tlabel.text = kTitle;
+    tlabel.text = APP_TITLE;
     tlabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:20.0];
     tlabel.textColor=[UIColor grayColor];
     tlabel.backgroundColor = [UIColor clearColor];

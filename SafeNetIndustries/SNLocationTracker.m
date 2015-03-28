@@ -12,6 +12,7 @@
 #define LATITUDE @"latitude"
 #define LONGITUDE @"longitude"
 #define ACCURACY @"theAccuracy"
+#define DISTANCE_FILTER 50
 
 #define IS_OS_8_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0)
 
@@ -25,7 +26,7 @@
 		if (_locationManager == nil) {
 			_locationManager = [[CLLocationManager alloc] init];
             _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-            _locationManager.distanceFilter = 500;
+            _locationManager.distanceFilter = DISTANCE_FILTER;
 		}
 	}
 	return _locationManager;
@@ -48,7 +49,7 @@
     CLLocationManager *locationManager = [SNLocationTracker sharedLocationManager];
     locationManager.delegate = self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    locationManager.distanceFilter = 500;
+    locationManager.distanceFilter = DISTANCE_FILTER;
     
     if (IS_OS_8_OR_LATER)
         [locationManager requestAlwaysAuthorization];
@@ -75,7 +76,7 @@
     CLLocationManager *locationManager = [SNLocationTracker sharedLocationManager];
     locationManager.delegate = self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-    locationManager.distanceFilter = 500;
+    locationManager.distanceFilter = DISTANCE_FILTER;
     
     if (IS_OS_8_OR_LATER)
         [locationManager requestAlwaysAuthorization];
@@ -107,7 +108,7 @@
             CLLocationManager *locationManager = [SNLocationTracker sharedLocationManager];
             locationManager.delegate = self;
             locationManager.desiredAccuracy = kCLLocationAccuracyBest;
-            locationManager.distanceFilter = 500;
+            locationManager.distanceFilter = DISTANCE_FILTER;
             
             if(IS_OS_8_OR_LATER)
               [locationManager requestAlwaysAuthorization];
@@ -154,7 +155,7 @@
         //Select only valid location and also location with good accuracy
         if (newLocation != nil && theAccuracy > 0
            && theAccuracy < 2000
-           &&(!(theLocation.latitude == 0.0 && theLocation.longitude == 0.0))) {
+           && (!(theLocation.latitude == 0.0 && theLocation.longitude == 0.0))) {
             
             self.myLastLocation = theLocation;
             self.myLastLocationAccuracy= theAccuracy;

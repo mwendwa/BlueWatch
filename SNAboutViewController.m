@@ -9,7 +9,7 @@
 #import "SNAboutViewController.h"
 #import "SWRevealViewController.h"
 
-#define kTitle @"About"
+#define APP_TITLE @"About"
 
 @interface SNAboutViewController ()
 
@@ -21,7 +21,7 @@
     [super viewDidLoad];
     
     UILabel* tlabel=[[UILabel alloc] initWithFrame:CGRectMake(0,0, 300, 40)];
-    tlabel.text = kTitle;
+    tlabel.text = APP_TITLE;
     tlabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:20.0];
     tlabel.textColor = [UIColor grayColor];
     tlabel.backgroundColor = [UIColor clearColor];

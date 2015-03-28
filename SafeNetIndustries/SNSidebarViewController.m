@@ -17,11 +17,12 @@
 #import <MessageUI/MessageUI.h>
 #import <AVFoundation/AVFoundation.h>
 
-#define kSendLocation @"sendLocation"
-#define kStartRecording @"startRecording"
-#define kParent1 @"Parent1"
-#define kParent2 @"Parent2"
-#define kTitle @"Settings"
+#define SEND_LOCATION @"sendLocation"
+#define SEND_RECORDING @"sendRecording"
+#define PARENT_1 @"Parent1"
+#define PARENT_2 @"Parent2"
+#define APP_TITLE @"Settings"
+#define AUDIO_FILE @"SafeNetMemo.m4a"
 
 @interface SNSidebarViewController () <UIGestureRecognizerDelegate, UITableViewDelegate, UIAlertViewDelegate, MFMessageComposeViewControllerDelegate, AVAudioRecorderDelegate>
 
@@ -52,7 +53,7 @@
     [super viewDidLoad];
     
     UILabel *tlabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0, 300, 40)];
-    tlabel.text = kTitle;
+    tlabel.text = APP_TITLE;
     tlabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:20.0];
     tlabel.textColor = [UIColor grayColor];
     tlabel.backgroundColor = [UIColor clearColor];
@@ -73,50 +74,11 @@
     [self.tableView setDelegate:self];
     [self.tableView setDataSource:self];
     
-    _parent1 = [SNParentProfile savedParent:kParent1];
-    _parent2 = [SNParentProfile savedParent:kParent2];
+    _parent1 = [SNParentProfile savedParent:PARENT_1];
+    _parent2 = [SNParentProfile savedParent:PARENT_2];
     _teen = [SNTeenProfile savedTeen];
     
     _menuItems = @[@"drive", @"parent", @"teen", @"location", @"record", @"about"];
-    
-    // Initialize the audio stuff
-    NSError *audioSessionError = nil;
-    
-    // Set the new dated audio file
-    NSArray *pathComponents = [NSArray arrayWithObjects:
-                               [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject],
-                               @"dwtMemo.m4a",
-                               nil];
-    NSURL *soundFileURL = [NSURL fileURLWithPathComponents:pathComponents];
-    
-    // Setup audio stuff
-    AVAudioSession *session = [AVAudioSession sharedInstance];
-    [session setCategory:AVAudioSessionCategoryRecord error:&audioSessionError];
-    if (audioSessionError) {
-        NSLog(@"Error %ld, %@",
-              (long)audioSessionError.code, audioSessionError.localizedDescription);
-    }
-    
-    // Define the recorder setting
-    NSMutableDictionary *recordSetting = [[NSMutableDictionary alloc] init];
-    
-    [recordSetting setValue:[NSNumber numberWithInt:kAudioFormatMPEG4AAC] forKey:AVFormatIDKey];
-    [recordSetting setValue:[NSNumber numberWithFloat:44100.0] forKey:AVSampleRateKey];
-    [recordSetting setValue:[NSNumber numberWithInt:2] forKey:AVNumberOfChannelsKey];
-    [recordSetting setValue:[NSNumber numberWithInt:16] forKey:AVEncoderBitRateKey];
-    [recordSetting setValue:[NSNumber numberWithInt:AVAudioQualityMin] forKey:AVEncoderAudioQualityKey];
-    
-    // Initiate and prepare the recorder
-    _audioRecorder = [[AVAudioRecorder alloc] initWithURL:soundFileURL settings:recordSetting error:&audioSessionError];
-    _audioRecorder.delegate = self;
-    _audioRecorder.meteringEnabled = YES;
-    
-    if (audioSessionError)
-    {
-        NSLog(@"error: %@", [audioSessionError localizedDescription]);
-    } else {
-        [_audioRecorder prepareToRecord];
-    }
     
     NSLog(@"[%@ viewDidLoad]",self);
 }
@@ -130,7 +92,7 @@
   
     // Send the teen's location to parents.  I really want this done in the didSelectRowForIndexPath method, but can't figure
     // out why it's not being triggered. Ugh!
-    if ([segue.identifier isEqualToString:kSendLocation]) {
+    if ([segue.identifier isEqualToString:SEND_LOCATION]) {
         NSLog(@"Send teen location to: %@, %@", _parent1.description, _parent2.description);
         NSLog(@"%@ is at: %@", _teen.name, _teen.myLocation);
         
@@ -154,7 +116,8 @@
                                                          handler:^(UIAlertAction *action)
                                    {
                                        NSLog(@"OK action");
-                                       [self sendSMS:_teen.myLocation recipientList:[NSArray arrayWithObjects:_parent1.number,_parent2.number, nil]];
+                                       NSString *msgBody = [NSString stringWithFormat:@"SafeNet Location Notification: \n%@\n%@", _teen.name, _teen.myLocation];
+                                       [self sendSMS:msgBody recipientList:[NSArray arrayWithObjects:_parent1.number,_parent2.number, nil]];
                                    }];
         
         [alertController addAction:cancelAction];
@@ -163,12 +126,12 @@
         [self presentViewController:alertController animated:YES completion:nil];
     }
     
-    // Start recording conversation
-    if ([segue.identifier isEqualToString:kStartRecording]) {
-        NSLog(@"Start recording conversation");
+    // send recorded conversation
+    if ([segue.identifier isEqualToString:SEND_RECORDING]) {
+        NSLog(@"Send recording");
         
-        NSString *alertTitle = NSLocalizedString(@"Record", @"Record Conversation");
-        NSString *alertMessage = NSLocalizedString(@"Record conversation with Police Officer", @"Record conversation with Police Officer");
+        NSString *alertTitle = NSLocalizedString(@"Send Recording and Location", @"Send Recording and Location");
+        NSString *alertMessage = [NSString stringWithFormat:@"%@\n\n%@", AUDIO_FILE, _teen.myLocation];
         
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:alertTitle
                                                                                  message:alertMessage
@@ -187,13 +150,10 @@
                                                          handler:^(UIAlertAction *action)
                                    {
                                        NSLog(@"OK action");
-                                       
-                                       //UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-                                       //SNMainTableViewControllerRecord *rvController = (SNMainTableViewControllerRecord *)[storyboard instantiateViewControllerWithIdentifier:@"MVC"];
-                                       //rvController.recording = @"YES";
-                                       //[self.navigationController pushViewController:rvController animated:YES];
-                                       
-                                       //[self startRecording];
+                                       NSString *msgBody = [NSString stringWithFormat:@"SafeNet Audio Notification: \n%@\n%@",
+                                                            _teen.name, _teen.myLocation];
+                                       [self sendAudio:msgBody recipientList:[NSArray arrayWithObjects:_parent1.number,_parent2.number, nil]];
+
                                    }];
         
         [alertController addAction:cancelAction];
@@ -266,6 +226,8 @@
     return UIModalPresentationNone;
 }
 
+#pragma mark - Send SMS
+
 - (void)sendSMS:(NSString *)bodyOfMessage recipientList:(NSArray *)recipients
 {
     MFMessageComposeViewController *controller = [[MFMessageComposeViewController alloc] init];
@@ -278,6 +240,33 @@
     }
 }
 
+- (void)sendAudio:(NSString *)bodyOfMessage recipientList:(NSArray *)recipients
+{
+    NSString *filename = AUDIO_FILE;
+    NSArray *pathArray = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask,YES);
+    NSString *documentsDirectory = [pathArray objectAtIndex:0];
+    NSString *soundPath = [documentsDirectory stringByAppendingPathComponent:filename];
+    
+    if ([[NSFileManager defaultManager] fileExistsAtPath:soundPath])
+    {
+        NSURL *soundURL = [NSURL fileURLWithPath:soundPath isDirectory:NO];
+        
+        MFMessageComposeViewController *controller = [[MFMessageComposeViewController alloc] init];
+        
+        if([MFMessageComposeViewController canSendText] &&
+           [MFMessageComposeViewController canSendAttachments] &&
+           [MFMessageComposeViewController isSupportedAttachmentUTI:@"com.apple.coreaudio-​format"])
+        {
+            controller.body = bodyOfMessage;
+            controller.recipients = recipients;
+            [controller addAttachmentURL:soundURL withAlternateFilename:nil];
+            controller.messageComposeDelegate = self;
+            [self presentViewController:controller animated:YES completion:nil];
+        }
+    }
+
+}
+
 - (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result
 {
     [self dismissViewControllerAnimated:YES completion:^{
@@ -288,33 +277,6 @@
         else
             NSLog(@"Message failed");
     }];
-}
-
-#pragma mark - AVAudioRecorder
-
-- (void)startRecording
-{
-    if (!_audioRecorder.recording) {
-        AVAudioSession *session = [AVAudioSession sharedInstance];
-        [session setActive:YES error:nil];
-        
-        // Start recording
-        [_audioRecorder record];
-    }
-}
-
-- (void)stopRecording
-{
-    [_audioRecorder stop];
-    
-    UIBarButtonItem *startButton = [[UIBarButtonItem alloc] initWithTitle:@"Record" style:UIBarButtonItemStyleBordered  target:self action:@selector(startRecording)];
-    self.navigationItem.rightBarButtonItem = startButton;
-}
-
-- (void)audioRecorderDidFinishRecording:(AVAudioRecorder *) aRecorder successfully:(BOOL)flag
-{
-    NSLog (@"audioRecorderDidFinishRecording:successfully:");
-    // your actions here
 }
 
 @end

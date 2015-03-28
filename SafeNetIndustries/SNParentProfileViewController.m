@@ -11,9 +11,9 @@
 #import "SNTableViewCell.h"
 
 #define kCellIdentifier @"SNTableViewCell"
-#define kParent1 @"Parent1"
-#define kParent2 @"Parent2"
-#define kTitle @"Parent Profile"
+#define PARENT_1 @"Parent1"
+#define PARENT_2 @"Parent2"
+#define APP_TITLE @"Parent Profile"
 
 @interface SNParentProfileViewController ()
 
@@ -39,7 +39,7 @@
     [super viewDidLoad];
     
     UILabel* tlabel=[[UILabel alloc] initWithFrame:CGRectMake(0,0, 300, 40)];
-    tlabel.text = kTitle;
+    tlabel.text = APP_TITLE;
     tlabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:20.0];
     tlabel.textColor = [UIColor grayColor];
     tlabel.backgroundColor = [UIColor clearColor];
@@ -52,8 +52,8 @@
     [tlabel setShadowOffset:CGSizeMake(0, -0.5)];
     self.navigationItem.titleView = tlabel;
     
-    SNParentProfile *sp1 = [SNParentProfile savedParent:kParent1];
-    SNParentProfile *sp2 = [SNParentProfile savedParent:kParent2];
+    SNParentProfile *sp1 = [SNParentProfile savedParent:PARENT_1];
+    SNParentProfile *sp2 = [SNParentProfile savedParent:PARENT_2];
     self.p1 = [[SNParentProfile alloc] init];
     self.p2 = [[SNParentProfile alloc] init];
 
@@ -198,8 +198,8 @@
     [self setTextFieldEditing:!_isEditing];
     
     if (!_isEditing) {
-        [_p1 save:kParent1];
-        [_p2 save:kParent2];
+        [_p1 save:PARENT_1];
+        [_p2 save:PARENT_2];
     }
 }
 
