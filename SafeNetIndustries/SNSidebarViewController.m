@@ -22,7 +22,7 @@
 #define PARENT_1 @"Parent1"
 #define PARENT_2 @"Parent2"
 #define APP_TITLE @"Settings"
-#define AUDIO_FILE @"SafeNetMemo.m4a"
+#define AUDIO_FILE @"SafeNet.m4a"
 
 @interface SNSidebarViewController () <UIGestureRecognizerDelegate, UITableViewDelegate, UIAlertViewDelegate, MFMessageComposeViewControllerDelegate, AVAudioRecorderDelegate>
 
@@ -130,8 +130,8 @@
     if ([segue.identifier isEqualToString:SEND_RECORDING]) {
         NSLog(@"Send recording");
         
-        NSString *alertTitle = NSLocalizedString(@"Send Recording and Location", @"Send Recording and Location");
-        NSString *alertMessage = [NSString stringWithFormat:@"%@\n\n%@", AUDIO_FILE, _teen.myLocation];
+        NSString *alertTitle = NSLocalizedString(@"Send Recording", @"Send Recording");
+        NSString *alertMessage = [NSString stringWithFormat:@"%@", AUDIO_FILE];
         
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:alertTitle
                                                                                  message:alertMessage
@@ -150,8 +150,7 @@
                                                          handler:^(UIAlertAction *action)
                                    {
                                        NSLog(@"OK action");
-                                       NSString *msgBody = [NSString stringWithFormat:@"SafeNet Audio Notification: \n%@\n%@",
-                                                            _teen.name, _teen.myLocation];
+                                       NSString *msgBody = [NSString stringWithFormat:@"SafeNet Audio Notification: \n%@", _teen.name];
                                        [self sendAudio:msgBody recipientList:[NSArray arrayWithObjects:_parent1.number,_parent2.number, nil]];
 
                                    }];
@@ -253,9 +252,12 @@
         
         MFMessageComposeViewController *controller = [[MFMessageComposeViewController alloc] init];
         
+        //com.apple.coreaudio-format .caf extension
+        //com.apple.m4a-audio .m4a extension
+        //org.3gpp.adaptive-multi-rate-audio .amr extension
         if([MFMessageComposeViewController canSendText] &&
            [MFMessageComposeViewController canSendAttachments] &&
-           [MFMessageComposeViewController isSupportedAttachmentUTI:@"com.apple.coreaudio-​format"])
+           [MFMessageComposeViewController isSupportedAttachmentUTI:@"com.apple.m4a"])
         {
             controller.body = bodyOfMessage;
             controller.recipients = recipients;

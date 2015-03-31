@@ -23,7 +23,8 @@
 #define SPEECH_MPX  1.0
 #define SPEECH_DELAY 0.25
 #define DISTANCE_FILTER 50
-#define AUDIO_FILE @"SafeNetMemo.m4a"
+#define AUDIO_FILE @"SafeNet.m4a"
+#define IS_OS_7_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
 
 @interface SNMainTableViewController () <AVSpeechSynthesizerDelegate, AVAudioRecorderDelegate, CLLocationManagerDelegate>
 
@@ -87,47 +88,22 @@
     
     _menuItems = @[@"pullover", @"window", @"engine", @"domelight", @"smartphone",  @"hands", @"speak", @"obey", @"consent", @"badge"];
     
-    // record button
+    // set the record button satus
     [self setRecording:NO];
     
-    // Initialize the audio stuff
-    NSError *audioSessionError = nil;
-    
-    // Set the new dated audio file
-    NSArray *pathComponents = [NSArray arrayWithObjects:
-                               [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject],
-                               AUDIO_FILE,
-                               nil];
-    NSURL *soundFileURL = [NSURL fileURLWithPathComponents:pathComponents];
-    
-    // Setup audio stuff
-    AVAudioSession *session = [AVAudioSession sharedInstance];
-    [session setCategory:AVAudioSessionCategoryRecord error:&audioSessionError];
-    if (audioSessionError) {
-        NSLog(@"Error %ld, %@", (long)audioSessionError.code, audioSessionError.localizedDescription);
+    if (IS_OS_7_OR_LATER) {
+        // request permission to record else recording is silent
+        if([[AVAudioSession sharedInstance ]  respondsToSelector:@selector(requestRecordPermission:)]) {
+            [[AVAudioSession sharedInstance] requestRecordPermission:^(BOOL granted) {
+                if (!granted) {
+                    NSLog(@"User will not be able to use the microphone!");
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"\"SafeNet\" Would Like to Access the Microphone" message:@"You have to enable Microphone Access to use this App. To enable, please go to Settings->Privacy->Microphone" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                    [alert show];
+                }
+            }];
+        }
     }
-    
-    // Define the recorder setting
-    NSMutableDictionary *recordSetting = [[NSMutableDictionary alloc] init];
-    
-    [recordSetting setValue:[NSNumber numberWithInt:kAudioFormatMPEG4AAC] forKey:AVFormatIDKey];
-    [recordSetting setValue:[NSNumber numberWithFloat:44100.0] forKey:AVSampleRateKey];
-    [recordSetting setValue:[NSNumber numberWithInt:2] forKey:AVNumberOfChannelsKey];
-    [recordSetting setValue:[NSNumber numberWithInt:16] forKey:AVEncoderBitRateKey];
-    [recordSetting setValue:[NSNumber numberWithInt:AVAudioQualityMin] forKey:AVEncoderAudioQualityKey];
-    
-    // Initiate and prepare the recorder
-    _audioRecorder = [[AVAudioRecorder alloc] initWithURL:soundFileURL settings:recordSetting error:&audioSessionError];
-    _audioRecorder.delegate = self;
-    _audioRecorder.meteringEnabled = YES;
-    
-    if (audioSessionError)
-    {
-        NSLog(@"error: %@", [audioSessionError localizedDescription]);
-    } else {
-        [_audioRecorder prepareToRecord];
-    }
-    
+
     // Speech stuff
     _synth = [[AVSpeechSynthesizer alloc] init];
     [_synth setDelegate: self];
@@ -327,7 +303,6 @@
     }
     else {
         CBAutoScrollLabel *tlabel = [[CBAutoScrollLabel alloc] initWithFrame:CGRectMake(0,0, 300, 40)];
-        //UILabel *tlabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0, 300, 40)];
         tlabel.text = RECORDING_TEXT;
         tlabel.pauseInterval = 3.f;
         tlabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:20.0];
@@ -344,11 +319,58 @@
 - (void)startRecording
 {
     NSLog (@"Start Recording");
+    
+    // Initialize the audio stuff
+    NSError *audioSessionError = nil;
+    NSError *activationError = nil;
+    
+    // Set the new dated audio file
+    NSArray *pathComponents = [NSArray arrayWithObjects:
+                               [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject],
+                               AUDIO_FILE,
+                               nil];
+    NSURL *soundFileURL = [NSURL fileURLWithPathComponents:pathComponents];
+    
+    // Setup audio stuff
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    [session setCategory:AVAudioSessionCategoryRecord error:&audioSessionError];
+    if (audioSessionError) {
+        NSLog(@"Error %ld, %@", (long)audioSessionError.code, audioSessionError.localizedDescription);
+        return;
+    }
+    
+    [session setActive:YES error:&activationError];
+    if (activationError) {
+        NSLog(@"Error %ld, %@", (long)activationError.code, activationError.localizedDescription);
+        return;
+    }
+    // We can use 44100, 32000, 24000, 16000, or 12000 depending on sound quality we want to record
+    double sampleRate = [session sampleRate];
+    
+    // Define the recorder setting
+    NSMutableDictionary *recordSettings = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
+                                           [NSNumber numberWithInt: kAudioFormatMPEG4AAC], AVFormatIDKey,
+                                           [NSNumber numberWithFloat:sampleRate], AVSampleRateKey,
+                                           [NSNumber numberWithInt:2], AVNumberOfChannelsKey,
+                                           //[NSNumber numberWithInt: AVAudioQualityMin],  AVEncoderAudioQualityKey,
+                                           nil];
+    
+    // Initiate and prepare the recorder
+    _audioRecorder = [[AVAudioRecorder alloc] initWithURL:soundFileURL settings:recordSettings error:&audioSessionError];
+    _audioRecorder.delegate = self;
+    _audioRecorder.meteringEnabled = YES;
+    
+    if (audioSessionError)
+    {
+        NSLog(@"error: %@", [audioSessionError localizedDescription]);
+        return;
+    } else {
+        [_audioRecorder prepareToRecord];
+    }
+    
+    // don't think we will be in this state where we will be recording
     if (!_audioRecorder.recording) {
-        AVAudioSession *session = [AVAudioSession sharedInstance];
-        [session setActive:YES error:nil];
         [_synth stopSpeakingAtBoundary:AVSpeechBoundaryImmediate];
-        
         // Start recording
         [_audioRecorder record];
     }
@@ -364,7 +386,6 @@
 {
     NSLog (@"audioRecorderDidFinishRecording:successfully:");
     // your actions here
-    
 }
 
 @end
