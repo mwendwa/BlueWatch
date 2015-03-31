@@ -26,6 +26,7 @@
 	<string>Location is required to find out where you are and notify your parents.</string>
 	<key>UIBackgroundModes</key>
 	<array>
+		<string>audio</string>
 		<string>fetch</string>
 		<string>location</string>
 	</array>
