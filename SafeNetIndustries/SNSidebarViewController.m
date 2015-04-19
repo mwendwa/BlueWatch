@@ -78,13 +78,17 @@
     _parent2 = [SNParentProfile savedParent:PARENT_2];
     _teen = [SNTeenProfile savedTeen];
     
-    _menuItems = @[@"drive", @"parent", @"teen", @"location", @"record", @"about"];
+    _menuItems = @[@"drive", @"parent", @"teen", @"location", @"record", @"rate", @"about"];
     
     NSLog(@"[%@ viewDidLoad]",self);
 }
 
 - (void) prepareForSegue: (UIStoryboardSegue *) segue sender: (id) sender
 {
+    _parent1 = [SNParentProfile savedParent:PARENT_1];
+    _parent2 = [SNParentProfile savedParent:PARENT_2];
+    _teen = [SNTeenProfile savedTeen];
+    
     // Set the title of navigation bar by using the menu items
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
     UINavigationController *destViewController = (UINavigationController*)segue.destinationViewController;
@@ -130,7 +134,7 @@
     if ([segue.identifier isEqualToString:SEND_RECORDING]) {
         NSLog(@"Send recording");
         
-        NSString *alertTitle = NSLocalizedString(@"Send Recording", @"Send Recording");
+        NSString *alertTitle = NSLocalizedString(@"Send Recording and Location", @"Send Recording and Location");
         NSString *alertMessage = [NSString stringWithFormat:@"%@", AUDIO_FILE];
         
         UIAlertController *alertController = [UIAlertController alertControllerWithTitle:alertTitle
@@ -150,7 +154,7 @@
                                                          handler:^(UIAlertAction *action)
                                    {
                                        NSLog(@"OK action");
-                                       NSString *msgBody = [NSString stringWithFormat:@"SafeNet Audio Notification: \n%@", _teen.name];
+                                       NSString *msgBody = [NSString stringWithFormat:@"SafeNet Audio Notification: \n%@\n%@", _teen.name, _teen.myLocation];
                                        [self sendAudio:msgBody recipientList:[NSArray arrayWithObjects:_parent1.number,_parent2.number, nil]];
 
                                    }];
@@ -252,9 +256,6 @@
         
         MFMessageComposeViewController *controller = [[MFMessageComposeViewController alloc] init];
         
-        //com.apple.coreaudio-format .caf extension
-        //com.apple.m4a-audio .m4a extension
-        //org.3gpp.adaptive-multi-rate-audio .amr extension
         if([MFMessageComposeViewController canSendText] &&
            [MFMessageComposeViewController canSendAttachments] &&
            [MFMessageComposeViewController isSupportedAttachmentUTI:@"com.apple.m4a"])
@@ -266,7 +267,6 @@
             [self presentViewController:controller animated:YES completion:nil];
         }
     }
-
 }
 
 - (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result

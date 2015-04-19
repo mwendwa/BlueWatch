@@ -324,7 +324,7 @@
     NSError *audioSessionError = nil;
     NSError *activationError = nil;
     
-    // Set the new dated audio file
+    // Set the new audio file. Probably should use a dated file. 
     NSArray *pathComponents = [NSArray arrayWithObjects:
                                [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject],
                                AUDIO_FILE,

@@ -70,6 +70,8 @@
 		44ACAFA11AB4A2F000610E1E /* SNBackgroundTaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 44ACAF9E1AB4A2F000610E1E /* SNBackgroundTaskManager.m */; };
 		44ACAFA21AB4A2F000610E1E /* SNLocationShareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 44ACAFA01AB4A2F000610E1E /* SNLocationShareModel.m */; };
 		44ACAFA51AB8669500610E1E /* SNLocationTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 44ACAFA41AB8669500610E1E /* SNLocationTracker.m */; };
+		44B82F021AD5DF1E0049440F /* Thumb Up-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 44B82F011AD5DF1E0049440F /* Thumb Up-50.png */; };
+		44B82F041AD5E2F70049440F /* Good Quality-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 44B82F031AD5E2F70049440F /* Good Quality-50.png */; };
 		44BEFC8D1A40CCC900F2FAE9 /* SNParentProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 44BEFC8C1A40CCC900F2FAE9 /* SNParentProfile.m */; };
 		44CF80061A520CB5001171A0 /* SNTeenProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CF80051A520CB5001171A0 /* SNTeenProfile.m */; };
 		44CF80081A5B0F97001171A0 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44CF80071A5B0F97001171A0 /* MessageUI.framework */; };
@@ -177,6 +179,8 @@
 		44ACAFA01AB4A2F000610E1E /* SNLocationShareModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNLocationShareModel.m; sourceTree = "<group>"; };
 		44ACAFA31AB8669500610E1E /* SNLocationTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNLocationTracker.h; sourceTree = "<group>"; };
 		44ACAFA41AB8669500610E1E /* SNLocationTracker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNLocationTracker.m; sourceTree = "<group>"; };
+		44B82F011AD5DF1E0049440F /* Thumb Up-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Thumb Up-50.png"; sourceTree = "<group>"; };
+		44B82F031AD5E2F70049440F /* Good Quality-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Good Quality-50.png"; sourceTree = "<group>"; };
 		44BEFC8B1A40CCC900F2FAE9 /* SNParentProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNParentProfile.h; sourceTree = "<group>"; };
 		44BEFC8C1A40CCC900F2FAE9 /* SNParentProfile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNParentProfile.m; sourceTree = "<group>"; };
 		44CF80041A520CB5001171A0 /* SNTeenProfile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNTeenProfile.h; sourceTree = "<group>"; };
@@ -331,6 +335,8 @@
 		44F6C9841A1698A1008D8186 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				44B82F031AD5E2F70049440F /* Good Quality-50.png */,
+				44B82F011AD5DF1E0049440F /* Thumb Up-50.png */,
 				44FA19171AAD226F00AB461B /* Stop-32.png */,
 				44FA19181AAD226F00AB461B /* Stop-50.png */,
 				44FA190D1AAD211600AB461B /* Record-red-50-2.png */,
@@ -516,6 +522,7 @@
 				44557C7A1A6C272F00C9947E /* Default-568h@2x.png in Resources */,
 				44557C881A6C272F00C9947E /* parent_guardian-red-50.png in Resources */,
 				44557C7D1A6C272F00C9947E /* edit_user-red-32.png in Resources */,
+				44B82F041AD5E2F70049440F /* Good Quality-50.png in Resources */,
 				44557C951A6C304600C9947E /* 29pt@2x.png in Resources */,
 				44557C8B1A6C272F00C9947E /* phone2-red-50.png in Resources */,
 				44557C8D1A6C272F00C9947E /* SNI Shield.tiff in Resources */,
@@ -547,6 +554,7 @@
 				44557C7C1A6C272F00C9947E /* Default@2x.png in Resources */,
 				44557C971A6C304600C9947E /* 57pt.png in Resources */,
 				44557C761A6C272F00C9947E /* about-red-50.png in Resources */,
+				44B82F021AD5DF1E0049440F /* Thumb Up-50.png in Resources */,
 				44354C7A1A16922300FFD46D /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -704,7 +712,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SafeNetIndustries/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = SafeNet;
 				PROVISIONING_PROFILE = "";
@@ -719,7 +727,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = SafeNetIndustries/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = SafeNet;
 				PROVISIONING_PROFILE = "";
