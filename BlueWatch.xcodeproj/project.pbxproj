@@ -106,7 +106,7 @@
 /* Begin PBXFileReference section */
 		4414F0741ABDC6BA008FCC2D /* CBAutoScrollLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CBAutoScrollLabel.h; sourceTree = "<group>"; };
 		4414F0751ABDC6BA008FCC2D /* CBAutoScrollLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CBAutoScrollLabel.m; sourceTree = "<group>"; };
-		44354C661A16922300FFD46D /* SafeNet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SafeNet.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		44354C661A16922300FFD46D /* BlueWatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlueWatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44354C6A1A16922300FFD46D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44354C6B1A16922300FFD46D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		44354C6D1A16922300FFD46D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -114,7 +114,7 @@
 		44354C771A16922300FFD46D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		44354C791A16922300FFD46D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		44354C7C1A16922300FFD46D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		44354C821A16922300FFD46D /* SafeNetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SafeNetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		44354C821A16922300FFD46D /* BlueWatchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlueWatchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44354C871A16922300FFD46D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44354C881A16922300FFD46D /* SafeNetTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SafeNetTests.m; sourceTree = "<group>"; };
 		443EF1561A2D691B008A5EA3 /* SNParentProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNParentProfileViewController.h; sourceTree = "<group>"; };
@@ -242,8 +242,8 @@
 				44F6CA3B1A17A452008D8186 /* UIKit.framework */,
 				44F6CA391A17A426008D8186 /* QuartzCore.framework */,
 				44F6CA371A179A04008D8186 /* CoreLocation.framework */,
-				44354C681A16922300FFD46D /* SafeNetIndustries */,
-				44354C851A16922300FFD46D /* SafeNetIndustriesTests */,
+				44354C681A16922300FFD46D /* BlueWatch */,
+				44354C851A16922300FFD46D /* BlueWatchTests */,
 				44354C671A16922300FFD46D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -251,13 +251,13 @@
 		44354C671A16922300FFD46D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				44354C661A16922300FFD46D /* SafeNet.app */,
-				44354C821A16922300FFD46D /* SafeNetTests.xctest */,
+				44354C661A16922300FFD46D /* BlueWatch.app */,
+				44354C821A16922300FFD46D /* BlueWatchTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		44354C681A16922300FFD46D /* SafeNetIndustries */ = {
+		44354C681A16922300FFD46D /* BlueWatch */ = {
 			isa = PBXGroup;
 			children = (
 				449FC38E1A17E20A00F15D62 /* Library */,
@@ -292,7 +292,7 @@
 				44354C7B1A16922300FFD46D /* LaunchScreen.xib */,
 				44354C691A16922300FFD46D /* Supporting Files */,
 			);
-			path = SafeNetIndustries;
+			path = BlueWatch;
 			sourceTree = "<group>";
 		};
 		44354C691A16922300FFD46D /* Supporting Files */ = {
@@ -304,12 +304,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		44354C851A16922300FFD46D /* SafeNetIndustriesTests */ = {
+		44354C851A16922300FFD46D /* BlueWatchTests */ = {
 			isa = PBXGroup;
 			children = (
 				44354C881A16922300FFD46D /* SafeNetTests.m */,
 				44354C861A16922300FFD46D /* Supporting Files */,
 			);
+			name = BlueWatchTests;
 			path = SafeNetIndustriesTests;
 			sourceTree = "<group>";
 		};
@@ -401,9 +402,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		44354C651A16922300FFD46D /* SafeNet */ = {
+		44354C651A16922300FFD46D /* BlueWatch */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 44354C8C1A16922300FFD46D /* Build configuration list for PBXNativeTarget "SafeNet" */;
+			buildConfigurationList = 44354C8C1A16922300FFD46D /* Build configuration list for PBXNativeTarget "BlueWatch" */;
 			buildPhases = (
 				44354C621A16922300FFD46D /* Sources */,
 				44354C631A16922300FFD46D /* Frameworks */,
@@ -413,14 +414,14 @@
 			);
 			dependencies = (
 			);
-			name = SafeNet;
+			name = BlueWatch;
 			productName = SafeNetIndustries;
-			productReference = 44354C661A16922300FFD46D /* SafeNet.app */;
+			productReference = 44354C661A16922300FFD46D /* BlueWatch.app */;
 			productType = "com.apple.product-type.application";
 		};
-		44354C811A16922300FFD46D /* SafeNetTests */ = {
+		44354C811A16922300FFD46D /* BlueWatchTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 44354C8F1A16922300FFD46D /* Build configuration list for PBXNativeTarget "SafeNetTests" */;
+			buildConfigurationList = 44354C8F1A16922300FFD46D /* Build configuration list for PBXNativeTarget "BlueWatchTests" */;
 			buildPhases = (
 				44354C7E1A16922300FFD46D /* Sources */,
 				44354C7F1A16922300FFD46D /* Frameworks */,
@@ -431,9 +432,9 @@
 			dependencies = (
 				44354C841A16922300FFD46D /* PBXTargetDependency */,
 			);
-			name = SafeNetTests;
+			name = BlueWatchTests;
 			productName = SafeNetIndustriesTests;
-			productReference = 44354C821A16922300FFD46D /* SafeNetTests.xctest */;
+			productReference = 44354C821A16922300FFD46D /* BlueWatchTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -470,7 +471,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 44354C611A16922300FFD46D /* Build configuration list for PBXProject "SafeNet" */;
+			buildConfigurationList = 44354C611A16922300FFD46D /* Build configuration list for PBXProject "BlueWatch" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -483,8 +484,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				44354C651A16922300FFD46D /* SafeNet */,
-				44354C811A16922300FFD46D /* SafeNetTests */,
+				44354C651A16922300FFD46D /* BlueWatch */,
+				44354C811A16922300FFD46D /* BlueWatchTests */,
 			);
 		};
 /* End PBXProject section */
@@ -604,7 +605,7 @@
 /* Begin PBXTargetDependency section */
 		44354C841A16922300FFD46D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 44354C651A16922300FFD46D /* SafeNet */;
+			target = 44354C651A16922300FFD46D /* BlueWatch */;
 			targetProxy = 44354C831A16922300FFD46D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -711,10 +712,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = SafeNetIndustries/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/BlueWatch/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = SafeNet;
+				PRODUCT_NAME = BlueWatch;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -726,10 +727,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				INFOPLIST_FILE = SafeNetIndustries/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/BlueWatch/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_NAME = SafeNet;
+				PRODUCT_NAME = BlueWatch;
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -749,7 +750,7 @@
 				);
 				INFOPLIST_FILE = SafeNetIndustriesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = SafeNetTests;
+				PRODUCT_NAME = BlueWatchTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SafeNetIndustries.app/SafeNetIndustries";
 			};
 			name = Debug;
@@ -764,7 +765,7 @@
 				);
 				INFOPLIST_FILE = SafeNetIndustriesTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_NAME = SafeNetTests;
+				PRODUCT_NAME = BlueWatchTests;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SafeNetIndustries.app/SafeNetIndustries";
 			};
 			name = Release;
@@ -772,7 +773,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		44354C611A16922300FFD46D /* Build configuration list for PBXProject "SafeNet" */ = {
+		44354C611A16922300FFD46D /* Build configuration list for PBXProject "BlueWatch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				44354C8A1A16922300FFD46D /* Debug */,
@@ -781,7 +782,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		44354C8C1A16922300FFD46D /* Build configuration list for PBXNativeTarget "SafeNet" */ = {
+		44354C8C1A16922300FFD46D /* Build configuration list for PBXNativeTarget "BlueWatch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				44354C8D1A16922300FFD46D /* Debug */,
@@ -790,7 +791,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		44354C8F1A16922300FFD46D /* Build configuration list for PBXNativeTarget "SafeNetTests" */ = {
+		44354C8F1A16922300FFD46D /* Build configuration list for PBXNativeTarget "BlueWatchTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				44354C901A16922300FFD46D /* Debug */,

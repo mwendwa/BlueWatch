@@ -17,7 +17,7 @@
 
 #define PARENT_1 @"Parent1"
 #define PARENT_2 @"Parent2"
-#define APP_TITLE @"SafeNet"
+#define APP_TITLE @"BlueWatch"
 #define RECORDING_TEXT @"Recording...Recording...Recording..."
 #define SPEECH_RATE  0.10
 #define SPEECH_MPX  1.0
