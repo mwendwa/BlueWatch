@@ -13,7 +13,7 @@
 		44354C781A16922300FFD46D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44354C761A16922300FFD46D /* Main.storyboard */; };
 		44354C7A1A16922300FFD46D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44354C791A16922300FFD46D /* Images.xcassets */; };
 		44354C7D1A16922300FFD46D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44354C7B1A16922300FFD46D /* LaunchScreen.xib */; };
-		44354C891A16922300FFD46D /* SafeNetTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44354C881A16922300FFD46D /* SafeNetTests.m */; };
+		44354C891A16922300FFD46D /* BlueWatchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 44354C881A16922300FFD46D /* BlueWatchTests.m */; };
 		443EF1581A2D691B008A5EA3 /* SNParentProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 443EF1571A2D691B008A5EA3 /* SNParentProfileViewController.m */; };
 		44557C381A6C1C9100C9947E /* SNI Shield.icns in Resources */ = {isa = PBXBuildFile; fileRef = 44557C371A6C1C9100C9947E /* SNI Shield.icns */; };
 		44557C3A1A6C1F9E00C9947E /* SNI Shield.png in Resources */ = {isa = PBXBuildFile; fileRef = 44557C391A6C1F9E00C9947E /* SNI Shield.png */; };
@@ -99,7 +99,7 @@
 			containerPortal = 44354C5E1A16922300FFD46D /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 44354C651A16922300FFD46D;
-			remoteInfo = SafeNetIndustries;
+			remoteInfo = BlueWatch;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -116,7 +116,7 @@
 		44354C7C1A16922300FFD46D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		44354C821A16922300FFD46D /* BlueWatchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlueWatchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		44354C871A16922300FFD46D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		44354C881A16922300FFD46D /* SafeNetTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SafeNetTests.m; sourceTree = "<group>"; };
+		44354C881A16922300FFD46D /* BlueWatchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BlueWatchTests.m; sourceTree = "<group>"; };
 		443EF1561A2D691B008A5EA3 /* SNParentProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNParentProfileViewController.h; sourceTree = "<group>"; };
 		443EF1571A2D691B008A5EA3 /* SNParentProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNParentProfileViewController.m; sourceTree = "<group>"; };
 		44557C371A6C1C9100C9947E /* SNI Shield.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "SNI Shield.icns"; sourceTree = "<group>"; };
@@ -190,7 +190,7 @@
 		44CF800A1A5B7FD9001171A0 /* SNTeenProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNTeenProfileViewController.m; sourceTree = "<group>"; };
 		44CF800F1A5C7F8F001171A0 /* SNAboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SNAboutViewController.h; path = ../SNAboutViewController.h; sourceTree = "<group>"; };
 		44CF80101A5C7F8F001171A0 /* SNAboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SNAboutViewController.m; path = ../SNAboutViewController.m; sourceTree = "<group>"; };
-		44D2A8251A74382200F62FEF /* SafeNetIndustries.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = SafeNetIndustries.entitlements; sourceTree = "<group>"; };
+		44D2A8251A74382200F62FEF /* BlueWatch.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = BlueWatch.entitlements; sourceTree = "<group>"; };
 		44D6EA3F1A9A35EB00EE5890 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		44E5375E1A30D10C0081630F /* SNTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNTableViewCell.h; sourceTree = "<group>"; };
 		44E5375F1A30D10C0081630F /* SNTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNTableViewCell.m; sourceTree = "<group>"; };
@@ -286,7 +286,7 @@
 				44BEFC8C1A40CCC900F2FAE9 /* SNParentProfile.m */,
 				44CF80041A520CB5001171A0 /* SNTeenProfile.h */,
 				44CF80051A520CB5001171A0 /* SNTeenProfile.m */,
-				44D2A8251A74382200F62FEF /* SafeNetIndustries.entitlements */,
+				44D2A8251A74382200F62FEF /* BlueWatch.entitlements */,
 				44354C761A16922300FFD46D /* Main.storyboard */,
 				44354C791A16922300FFD46D /* Images.xcassets */,
 				44354C7B1A16922300FFD46D /* LaunchScreen.xib */,
@@ -307,11 +307,11 @@
 		44354C851A16922300FFD46D /* BlueWatchTests */ = {
 			isa = PBXGroup;
 			children = (
-				44354C881A16922300FFD46D /* SafeNetTests.m */,
+				44354C881A16922300FFD46D /* BlueWatchTests.m */,
 				44354C861A16922300FFD46D /* Supporting Files */,
 			);
 			name = BlueWatchTests;
-			path = SafeNetIndustriesTests;
+			path = BlueWatchTests;
 			sourceTree = "<group>";
 		};
 		44354C861A16922300FFD46D /* Supporting Files */ = {
@@ -415,7 +415,7 @@
 			dependencies = (
 			);
 			name = BlueWatch;
-			productName = SafeNetIndustries;
+			productName = BlueWatch;
 			productReference = 44354C661A16922300FFD46D /* BlueWatch.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -433,7 +433,7 @@
 				44354C841A16922300FFD46D /* PBXTargetDependency */,
 			);
 			name = BlueWatchTests;
-			productName = SafeNetIndustriesTests;
+			productName = BlueWatchTests;
 			productReference = 44354C821A16922300FFD46D /* BlueWatchTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -596,7 +596,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				44354C891A16922300FFD46D /* SafeNetTests.m in Sources */,
+				44354C891A16922300FFD46D /* BlueWatchTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -748,10 +748,10 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = SafeNetIndustriesTests/Info.plist;
+				INFOPLIST_FILE = BlueWatchTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = BlueWatchTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SafeNetIndustries.app/SafeNetIndustries";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BlueWatch.app/BlueWatch";
 			};
 			name = Debug;
 		};
@@ -763,10 +763,10 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = SafeNetIndustriesTests/Info.plist;
+				INFOPLIST_FILE = BlueWatchTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = BlueWatchTests;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SafeNetIndustries.app/SafeNetIndustries";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BlueWatch.app/BlueWatch";
 			};
 			name = Release;
 		};
