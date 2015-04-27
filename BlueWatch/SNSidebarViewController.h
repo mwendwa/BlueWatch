@@ -1,6 +1,6 @@
 //
 //  SNMenuViewController.h
-//  DrivingWhileTeen
+//  BlueWatch
 //
 //  Modified by Eugene Alute Mwendwa on 10/10/14.
 //  Copyright (c) 2014 SafeNet Industries. All rights reserved.

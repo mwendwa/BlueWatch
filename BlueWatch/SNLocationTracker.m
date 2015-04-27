@@ -147,7 +147,7 @@
         CLLocationAccuracy theAccuracy = newLocation.horizontalAccuracy;
         
         NSTimeInterval locationAge = [newLocation.timestamp timeIntervalSinceNow];
-        if (abs(locationAge) < 10.0)
+        if (fabs(locationAge) < 10.0)
         {
             continue;
         }

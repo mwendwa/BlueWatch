@@ -1,6 +1,6 @@
 //
 //  SNTeenProfile.h
-//  DrivingWhileTeen
+//  BlueWatch
 //
 //  Created by Eugene Alute Mwendwa on 12/29/14.
 //  Copyright (c) 2014 SafeNet Industries. All rights reserved.

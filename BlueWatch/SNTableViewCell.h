@@ -1,6 +1,6 @@
 //
 //  SNTableViewCell.h
-//  DrivingWhileTeen
+//  BlueWatch
 //
 //  Created by Eugene Alute Mwendwa on 12/4/14.
 //  Copyright (c) 2014 SafeNet Industries. All rights reserved.

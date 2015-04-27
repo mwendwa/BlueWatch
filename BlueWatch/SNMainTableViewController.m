@@ -23,7 +23,7 @@
 #define SPEECH_MPX  1.0
 #define SPEECH_DELAY 0.25
 #define DISTANCE_FILTER 50
-#define AUDIO_FILE @"SafeNet.m4a"
+#define AUDIO_FILE @"BlueWatch.m4a"
 #define IS_OS_7_OR_LATER ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
 
 @interface SNMainTableViewController () <AVSpeechSynthesizerDelegate, AVAudioRecorderDelegate, CLLocationManagerDelegate>
@@ -97,7 +97,7 @@
             [[AVAudioSession sharedInstance] requestRecordPermission:^(BOOL granted) {
                 if (!granted) {
                     NSLog(@"User will not be able to use the microphone!");
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"\"SafeNet\" Would Like to Access the Microphone" message:@"You have to enable Microphone Access to use this App. To enable, please go to Settings->Privacy->Microphone" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"\"BlueWatch\" Would Like to Access the Microphone" message:@"You have to enable Microphone Access to use this App. To enable, please go to Settings->Privacy->Microphone" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
                     [alert show];
                 }
             }];
@@ -200,7 +200,7 @@
     CLLocation* location = [locations lastObject];
     NSDate* eventDate = location.timestamp;
     NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
-    if (abs(howRecent) < 15.0) {
+    if (fabs(howRecent) < 15.0) {
         // If the event is recent, save location.
         _teen.location = location;
         [_teen save];

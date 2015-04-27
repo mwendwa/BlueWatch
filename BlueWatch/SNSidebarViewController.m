@@ -1,6 +1,6 @@
 //
 //  SNSidebarViewController.m
-//  DrivingWhileTeen
+//  BlueWatch
 //
 //  Modified by Eugene Alute Mwendwa on 10/10/14.
 //  Copyright (c) 2014 SafeNet Industries. All rights reserved.
@@ -16,13 +16,15 @@
 #import "SNMainTableViewControllerRecord.h"
 #import <MessageUI/MessageUI.h>
 #import <AVFoundation/AVFoundation.h>
+#import <Parse/Parse.h>
 
 #define SEND_LOCATION @"sendLocation"
 #define SEND_RECORDING @"sendRecording"
+#define RATE_OFFICER @"rateOfficer"
 #define PARENT_1 @"Parent1"
 #define PARENT_2 @"Parent2"
 #define APP_TITLE @"Settings"
-#define AUDIO_FILE @"SafeNet.m4a"
+#define AUDIO_FILE @"BlueWatch.m4a"
 
 @interface SNSidebarViewController () <UIGestureRecognizerDelegate, UITableViewDelegate, UIAlertViewDelegate, MFMessageComposeViewControllerDelegate, AVAudioRecorderDelegate>
 
@@ -120,7 +122,7 @@
                                                          handler:^(UIAlertAction *action)
                                    {
                                        NSLog(@"OK action");
-                                       NSString *msgBody = [NSString stringWithFormat:@"SafeNet Location Notification: \n%@\n%@", _teen.name, _teen.myLocation];
+                                       NSString *msgBody = [NSString stringWithFormat:@"BlueWatch Location Notification: \n%@\n%@", _teen.name, _teen.myLocation];
                                        [self sendSMS:msgBody recipientList:[NSArray arrayWithObjects:_parent1.number,_parent2.number, nil]];
                                    }];
         
@@ -154,7 +156,7 @@
                                                          handler:^(UIAlertAction *action)
                                    {
                                        NSLog(@"OK action");
-                                       NSString *msgBody = [NSString stringWithFormat:@"SafeNet Audio Notification: \n%@\n%@", _teen.name, _teen.myLocation];
+                                       NSString *msgBody = [NSString stringWithFormat:@"BlueWatch Audio Notification: \n%@\n%@", _teen.name, _teen.myLocation];
                                        [self sendAudio:msgBody recipientList:[NSArray arrayWithObjects:_parent1.number,_parent2.number, nil]];
 
                                    }];
@@ -164,6 +166,105 @@
         
         [self presentViewController:alertController animated:YES completion:nil];
     }
+    
+    //rate officer experience and save to Parse cloud
+    if ([segue.identifier isEqualToString:RATE_OFFICER]) {
+        NSLog(@"Rate officer");
+        
+        NSString *alertTitle = NSLocalizedString(@"Rate", @"Rate");
+        NSString *alertMessage = @"Traffic Stop";
+        
+        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:alertTitle
+                                                                                 message:alertMessage
+                                                                          preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel", @"Cancel action")
+                                                               style:UIAlertActionStyleCancel
+                                                             handler:^(UIAlertAction *action)
+                                       {
+                                           NSLog(@"Cancel action");
+                                       }];
+        
+        UIAlertAction *oneThumb = [UIAlertAction actionWithTitle:NSLocalizedString(@"One Thumb Up", @"One Thumb Up")
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction *action)
+                                   {
+                                       NSLog(@"One Thumb Up");
+                                       // save to Parse cloud
+                                       PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:_teen.location.coordinate.latitude longitude:_teen.location.coordinate.longitude];
+                                       PFObject *rateObject = [PFObject objectWithClassName:@"RateObject"];
+                                       rateObject[@"name"] = [NSString stringWithFormat:@"%@", _teen.name];
+                                       rateObject[@"location"] = [NSString stringWithFormat:@"%@", _teen.myLocation];
+                                       rateObject[@"rating"] = @1;
+                                       rateObject[@"coordinates"] = point;
+                                       [rateObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                                           if (succeeded) {
+                                               // The object has been saved.
+                                               NSLog(@"Rate object saved");
+                                           } else {
+                                               // There was a problem, check error.description
+                                               NSLog(@"Rate object not saved.");
+                                           }
+                                       }];
+                                       
+                                   }];
+        
+        UIAlertAction *twoThumbs = [UIAlertAction actionWithTitle:NSLocalizedString(@"Two Thumbs Up", @"Two Thumbs Up")
+                                                           style:UIAlertActionStyleDefault
+                                                         handler:^(UIAlertAction *action)
+                                   {
+                                       NSLog(@"Two Thumbs Up");
+                                       // save to Parse cloud
+                                       PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:_teen.location.coordinate.latitude longitude:_teen.location.coordinate.longitude];
+                                       PFObject *rateObject = [PFObject objectWithClassName:@"RateObject"];
+                                       rateObject[@"name"] = [NSString stringWithFormat:@"%@", _teen.name];
+                                       rateObject[@"location"] = [NSString stringWithFormat:@"%@", _teen.myLocation];
+                                       rateObject[@"rating"] = @2;
+                                       rateObject[@"coordinates"] = point;
+                                       [rateObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                                           if (succeeded) {
+                                               // The object has been saved.
+                                               NSLog(@"Rate object saved");
+                                           } else {
+                                               // There was a problem, check error.description
+                                               NSLog(@"Rate object not saved.");
+                                           }
+                                       }];
+                                       
+                                   }];
+        
+        UIAlertAction *threeThumbs = [UIAlertAction actionWithTitle:NSLocalizedString(@"Three Thumbs Up", @"Three Thumbs Up")
+                                                            style:UIAlertActionStyleDefault
+                                                          handler:^(UIAlertAction *action)
+                                    {
+                                        NSLog(@"Three Thumbs Up");
+                                        // save to Parse cloud
+                                        PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:_teen.location.coordinate.latitude longitude:_teen.location.coordinate.longitude];
+                                        PFObject *rateObject = [PFObject objectWithClassName:@"RateObject"];
+                                        rateObject[@"name"] = [NSString stringWithFormat:@"%@", _teen.name];
+                                        rateObject[@"location"] = [NSString stringWithFormat:@"%@", _teen.myLocation];
+                                        rateObject[@"rating"] = @3;
+                                        rateObject[@"coordinates"] = point;
+                                        [rateObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                                            if (succeeded) {
+                                                // The object has been saved.
+                                                NSLog(@"Rate object saved");
+                                            } else {
+                                                // There was a problem, check error.description
+                                                NSLog(@"Rate object not saved.");
+                                            }
+                                        }];
+                                        
+                                    }];
+        
+        [alertController addAction:cancelAction];
+        [alertController addAction:oneThumb];
+        [alertController addAction:twoThumbs];
+        [alertController addAction:threeThumbs];
+        
+        [self presentViewController:alertController animated:YES completion:nil];
+    }
+    
     
     // Manage the view transition and tell SWRevealViewController the new front view controller for display.
     // We reuse the navigation controller and replace the view controller with destination view controller.

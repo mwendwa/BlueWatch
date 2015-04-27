@@ -1,6 +1,6 @@
 //
 //  AppDelegate.m
-//  DrivingWhileTeen
+//  BlueWatch
 //
 //  Created by Eugene Alute Mwendwa on 11/14/14.
 //  Copyright (c) 2014 SafeNet Industries. All rights reserved.
@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "SNParentProfile.h"
 #import "SNParentProfileViewController.h"
+#import <Parse/Parse.h>
 
 #define PARENT_1 @"Parent1"
 #define PARENT_2 @"Parent2"
@@ -22,6 +23,17 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    // [Optional] Power your app with Local Datastore. For more info, go to
+    // https://parse.com/docs/ios_guide#localdatastore/iOS
+    [Parse enableLocalDatastore];
+    
+    // Initialize Parse.
+    [Parse setApplicationId:@"YJcTd7GGGkBiD90I5v6uiYfcrWO9ZRbC2U4iKuPs"
+                  clientKey:@"7mvPAWRctjeJ0LeA9QGQAFON5mJbaDp8eBkmJZLK"];
+    
+    // [Optional] Track statistics around application opens.
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
 
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     SNParentProfileViewController *viewcontroller = (SNParentProfileViewController *)[storyboard instantiateViewControllerWithIdentifier:@"parentProfile"];
