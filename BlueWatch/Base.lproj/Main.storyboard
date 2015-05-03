@@ -37,7 +37,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="PULL OVER TO THE RIGHT SAFELY AND USE SIGNAL LIGHTS WHEN CHANGING LANES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" id="Sl7-vA-gjS">
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="PULL OVER SAFELY" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" id="Sl7-vA-gjS">
                                             <rect key="frame" x="73" y="0.0" width="232" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <accessibility key="accessibilityConfiguration">
@@ -226,7 +226,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="5E453038-FA2D-448D-96C2-1428BA9B8B3F" id="8R0-sh-1mc">
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="573630C5-BB12-45A8-948F-A7A561081232" id="8R0-sh-1mc">
                                             <rect key="frame" x="15" y="0.0" width="43" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
@@ -1024,7 +1024,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="B09C9024-BCDD-43EB-9C46-1B0037667C9D" id="1IJ-6U-bmJ">
+                                        <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" image="53DB0A9C-7216-4F3E-B680-7C3B6D79707F" id="1IJ-6U-bmJ">
                                             <rect key="frame" x="15" y="0.0" width="43" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </imageView>
@@ -1095,7 +1095,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="5E453038-FA2D-448D-96C2-1428BA9B8B3F" width="50" height="50">
+        <image name="53DB0A9C-7216-4F3E-B680-7C3B6D79707F" width="50" height="50">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw
@@ -1312,7 +1312,7 @@ sgC1ALcAuQC7AL0AwgDZANsA3TBfMGQwbzB4MIswjzCiMK0wtjC7MMMwxjDLMNow3jDlMO0w+jD/MQEx
 AzEIMRAxEzEYMSAxIzE1MTgxPQAAAAAAAAIBAAAAAAAAAEIAAAAAAAAAAAAAAAAAADE/A
 </mutableData>
         </image>
-        <image name="B09C9024-BCDD-43EB-9C46-1B0037667C9D" width="50" height="50">
+        <image name="573630C5-BB12-45A8-948F-A7A561081232" width="50" height="50">
             <mutableData key="keyedArchiveRepresentation">
 YnBsaXN0MDDUAQIDBAUGPj9YJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK4HCBMU
 GR4fIyQsLzI4O1UkbnVsbNUJCgsMDQ4PEBESVk5TU2l6ZVYkY2xhc3NcTlNJbWFnZUZsYWdzVk5TUmVw

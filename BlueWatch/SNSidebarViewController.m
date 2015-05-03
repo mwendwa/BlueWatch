@@ -257,10 +257,35 @@
                                         
                                     }];
         
+        UIAlertAction *thumbsDown = [UIAlertAction actionWithTitle:NSLocalizedString(@"Thumbs Down", @"Thumbs Down")
+                                                              style:UIAlertActionStyleDefault
+                                                            handler:^(UIAlertAction *action)
+                                      {
+                                          NSLog(@"Thumbs Down");
+                                          // save to Parse cloud
+                                          PFGeoPoint *point = [PFGeoPoint geoPointWithLatitude:_teen.location.coordinate.latitude longitude:_teen.location.coordinate.longitude];
+                                          PFObject *rateObject = [PFObject objectWithClassName:@"RateObject"];
+                                          rateObject[@"name"] = [NSString stringWithFormat:@"%@", _teen.name];
+                                          rateObject[@"location"] = [NSString stringWithFormat:@"%@", _teen.myLocation];
+                                          rateObject[@"rating"] = @-1;
+                                          rateObject[@"coordinates"] = point;
+                                          [rateObject saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                                              if (succeeded) {
+                                                  // The object has been saved.
+                                                  NSLog(@"Rate object saved");
+                                              } else {
+                                                  // There was a problem, check error.description
+                                                  NSLog(@"Rate object not saved.");
+                                              }
+                                          }];
+                                          
+                                      }];
+        
         [alertController addAction:cancelAction];
         [alertController addAction:oneThumb];
         [alertController addAction:twoThumbs];
         [alertController addAction:threeThumbs];
+        [alertController addAction:thumbsDown];
         
         [self presentViewController:alertController animated:YES completion:nil];
     }
