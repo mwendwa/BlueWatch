@@ -13,7 +13,7 @@
 #define kCellIdentifier @"SNTableViewCell"
 #define PARENT_1 @"Parent1"
 #define PARENT_2 @"Parent2"
-#define APP_TITLE @"Parent Profile"
+#define APP_TITLE @"Emergency Contact"
 
 @interface SNParentProfileViewController ()
 
@@ -126,7 +126,7 @@
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     cell.textFieldValue.delegate = self;
     cell.textFieldValue.tag = indexPath.row + (indexPath.section * 3);
-    NSLog(@"section: %li row: %li tag: %li", indexPath.section, indexPath.row, (long)cell.textFieldValue.tag);
+    NSLog(@"section: %li row: %li tag: %li", (long)indexPath.section, (long)indexPath.row, (long)cell.textFieldValue.tag);
     
     // there should only be 3 elements per section
     if (indexPath.section == 0) {

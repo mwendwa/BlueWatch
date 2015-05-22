@@ -10,7 +10,7 @@
 #import "SWRevealViewController.h"
 #import "SNTableViewCell.h"
 
-#define APP_TITLE @"Teen Profile"
+#define APP_TITLE @"User Profile"
 #define kCellIdentifier @"SNTableViewCell"
 
 @interface SNTeenProfileViewController ()
