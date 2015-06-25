@@ -82,6 +82,7 @@
 		44557C9A1A6C304600C9947E /* SNI Shield-2.png in Resources */ = {isa = PBXBuildFile; fileRef = 44557C941A6C304600C9947E /* SNI Shield-2.png */; };
 		449FC3911A17E20A00F15D62 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 449FC3901A17E20A00F15D62 /* SWRevealViewController.m */; };
 		449FC39E1A17E87700F15D62 /* SNSidebarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 449FC39D1A17E87700F15D62 /* SNSidebarViewController.m */; };
+		44A0676A1B2C83B200C14B21 /* SNTermsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44A067691B2C83B200C14B21 /* SNTermsViewController.m */; };
 		44ACAFA11AB4A2F000610E1E /* SNBackgroundTaskManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 44ACAF9E1AB4A2F000610E1E /* SNBackgroundTaskManager.m */; };
 		44ACAFA21AB4A2F000610E1E /* SNLocationShareModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 44ACAFA01AB4A2F000610E1E /* SNLocationShareModel.m */; };
 		44ACAFA51AB8669500610E1E /* SNLocationTracker.m in Sources */ = {isa = PBXBuildFile; fileRef = 44ACAFA41AB8669500610E1E /* SNLocationTracker.m */; };
@@ -203,6 +204,8 @@
 		449FC3901A17E20A00F15D62 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		449FC39C1A17E87700F15D62 /* SNSidebarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNSidebarViewController.h; sourceTree = "<group>"; };
 		449FC39D1A17E87700F15D62 /* SNSidebarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNSidebarViewController.m; sourceTree = "<group>"; };
+		44A067681B2C83B200C14B21 /* SNTermsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNTermsViewController.h; sourceTree = "<group>"; };
+		44A067691B2C83B200C14B21 /* SNTermsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNTermsViewController.m; sourceTree = "<group>"; };
 		44ACAF9D1AB4A2F000610E1E /* SNBackgroundTaskManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNBackgroundTaskManager.h; sourceTree = "<group>"; };
 		44ACAF9E1AB4A2F000610E1E /* SNBackgroundTaskManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNBackgroundTaskManager.m; sourceTree = "<group>"; };
 		44ACAF9F1AB4A2F000610E1E /* SNLocationShareModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNLocationShareModel.h; sourceTree = "<group>"; };
@@ -346,6 +349,8 @@
 				443EF1571A2D691B008A5EA3 /* SNParentProfileViewController.m */,
 				44CF80091A5B7FD9001171A0 /* SNTeenProfileViewController.h */,
 				44CF800A1A5B7FD9001171A0 /* SNTeenProfileViewController.m */,
+				44A067681B2C83B200C14B21 /* SNTermsViewController.h */,
+				44A067691B2C83B200C14B21 /* SNTermsViewController.m */,
 				44CF800F1A5C7F8F001171A0 /* SNAboutViewController.h */,
 				44CF80101A5C7F8F001171A0 /* SNAboutViewController.m */,
 				44E5375E1A30D10C0081630F /* SNTableViewCell.h */,
@@ -649,6 +654,7 @@
 				44CF80111A5C7F8F001171A0 /* SNAboutViewController.m in Sources */,
 				44ACAFA11AB4A2F000610E1E /* SNBackgroundTaskManager.m in Sources */,
 				443EF1581A2D691B008A5EA3 /* SNParentProfileViewController.m in Sources */,
+				44A0676A1B2C83B200C14B21 /* SNTermsViewController.m in Sources */,
 				44ACAFA51AB8669500610E1E /* SNLocationTracker.m in Sources */,
 				4414F0761ABDC6BA008FCC2D /* CBAutoScrollLabel.m in Sources */,
 				449FC3911A17E20A00F15D62 /* SWRevealViewController.m in Sources */,

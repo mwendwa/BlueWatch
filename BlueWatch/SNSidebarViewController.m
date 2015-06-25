@@ -13,7 +13,7 @@
 #import "SWRevealViewController.h"
 #import "SNParentProfile.h"
 #import "SNTeenProfile.h"
-#import "SNMainTableViewControllerRecord.h"
+#import "SNTermsViewController.h"
 #import <MessageUI/MessageUI.h>
 #import <AVFoundation/AVFoundation.h>
 #import <Parse/Parse.h>

@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "SNParentProfile.h"
 #import "SNParentProfileViewController.h"
+#import "SNTermsViewController.h"
 #import <Parse/Parse.h>
 
 #define PARENT_1 @"Parent1"
@@ -23,6 +24,18 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasLaunchedOnce"]) {
+        //first launch
+        SNTermsViewController *termsViewController = [[SNTermsViewController alloc] initWithNibName:@"TVC" bundle:nil];
+        
+        self.window.rootViewController = termsViewController;
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasLaunchedOnce"];
+    }
+    else
+    {
+        // app already launched
+    }
     
     // [Optional] Power your app with Local Datastore. For more info, go to
     // https://parse.com/docs/ios_guide#localdatastore/iOS
@@ -46,7 +59,7 @@
     UIAlertView * alert;
     
     //We have to make sure that the Background App Refresh is enable for the Location updates to work in the background.
-    if([[UIApplication sharedApplication] backgroundRefreshStatus] == UIBackgroundRefreshStatusDenied){
+    if([[UIApplication sharedApplication] backgroundRefreshStatus] == UIBackgroundRefreshStatusDenied) {
         
         alert = [[UIAlertView alloc]initWithTitle:@""
                                           message:@"The app doesn't work without the Background App Refresh enabled. To turn it on, go to Settings > General > Background App Refresh"

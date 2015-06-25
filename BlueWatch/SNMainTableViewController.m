@@ -1,6 +1,6 @@
 //
 //  SNMainTableViewController.m
-//  drivingwhileteen
+//  BlueWatch
 //
 //  Created by Eugene Alute Mwendwa on 9/22/14.
 //  Copyright (c) 2014 SafeNet Industries. All rights reserved.
@@ -267,13 +267,19 @@
     UIBarButtonItem *barButton = nil;
     
     if (recording) {
+        barButton = [[UIBarButtonItem alloc] initWithTitle:@"STOP" style:UIBarButtonItemStylePlain target:self action:@selector(barButtonPressed:)];
+        /*
         barButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Stop-50"] style:UIBarButtonItemStylePlain
                                                                   target:self
                                                                   action:@selector(barButtonPressed:)];
+         */
     } else {
+        barButton = [[UIBarButtonItem alloc] initWithTitle:@"REC" style:UIBarButtonItemStylePlain target:self action:@selector(barButtonPressed:)];
+        /*
         barButton = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Record-red-50"] style:UIBarButtonItemStylePlain
                                                                   target:self
                                                                   action:@selector(barButtonPressed:)];
+         */
     }
     
     self.navigationItem.rightBarButtonItem = barButton;
