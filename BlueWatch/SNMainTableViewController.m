@@ -11,6 +11,7 @@
 #import "SNParentProfile.h"
 #import "SNTeenProfile.h"
 #import "CBAutoScrollLabel.h"
+#import "SNTermsViewController.h"
 #import <MessageUI/MessageUI.h>
 #import <CoreLocation/CoreLocation.h>
 #import <AVFoundation/AVFoundation.h>
@@ -58,6 +59,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // Check if first run
+    /*if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasLaunchedOnce"]) {
+        //first launch
+        SNTermsViewController *termsViewController = [[SNTermsViewController alloc] init];
+        [self presentViewController:termsViewController animated:YES completion:^{
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasLaunchedOnce"];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+        }];
+    }
+    else
+    {
+        // app already launched
+         NSLog(@"Not the first launch.");
+    }*/
     
     UILabel *tlabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0, 300, 40)];
     tlabel.text = APP_TITLE;

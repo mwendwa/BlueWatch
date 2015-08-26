@@ -25,16 +25,38 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
+   /*
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasLaunchedOnce"]) {
         //first launch
-        SNTermsViewController *termsViewController = [[SNTermsViewController alloc] initWithNibName:@"TVC" bundle:nil];
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        SNTermsViewController *viewController = (SNTermsViewController *)[storyboard instantiateViewControllerWithIdentifier:@"TermsViewController"];
+        [self.window makeKeyAndVisible];
+        [self.window.rootViewController presentViewController:viewController animated:YES completion:nil];
         
-        self.window.rootViewController = termsViewController;
         [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasLaunchedOnce"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
     }
     else
     {
         // app already launched
+    }
+    */
+    
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasLaunchedOnce"])
+    {
+        // first launch
+        UIViewController* rootController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"TermsViewController"];
+        UINavigationController* navigation = [[UINavigationController alloc] initWithRootViewController:rootController];
+        self.window.rootViewController = navigation;
+    }
+    else
+    {
+        // app already launched
+        self.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
+        
+        //[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasLaunchedOnce"];
+        //[[NSUserDefaults standardUserDefaults] synchronize];
+        
     }
     
     // [Optional] Power your app with Local Datastore. For more info, go to

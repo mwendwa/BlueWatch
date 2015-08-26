@@ -59,8 +59,6 @@
     tlabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:20.0];
     tlabel.textColor = [UIColor grayColor];
     tlabel.backgroundColor = [UIColor clearColor];
-    tlabel.adjustsFontSizeToFitWidth = YES;
-    tlabel.textAlignment = NSTextAlignmentCenter;
     self.navigationItem.titleView = tlabel;
     
     // emboss so that the label looks OK

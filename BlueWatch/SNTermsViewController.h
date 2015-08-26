@@ -11,6 +11,5 @@
 @interface SNTermsViewController : UITableViewController
 
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
-@property (nonatomic, retain) NSString *recording;
 
 @end

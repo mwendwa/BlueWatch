@@ -95,6 +95,8 @@
 		44CF80111A5C7F8F001171A0 /* SNAboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44CF80101A5C7F8F001171A0 /* SNAboutViewController.m */; };
 		44D6EA401A9A35EB00EE5890 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44D6EA3F1A9A35EB00EE5890 /* AVFoundation.framework */; };
 		44E537601A30D10C0081630F /* SNTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 44E5375F1A30D10C0081630F /* SNTableViewCell.m */; };
+		44F330E91B79636100448FF4 /* SNButtonCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F330E71B79636100448FF4 /* SNButtonCell.m */; };
+		44F330EA1B79636100448FF4 /* SNButtonCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44F330E81B79636100448FF4 /* SNButtonCell.xib */; };
 		44F6CA351A16B10F008D8186 /* SNMainTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 44F6CA321A16B10F008D8186 /* SNMainTableViewController.m */; };
 		44F6CA381A179A04008D8186 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44F6CA371A179A04008D8186 /* CoreLocation.framework */; };
 		44F6CA3A1A17A426008D8186 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44F6CA391A17A426008D8186 /* QuartzCore.framework */; };
@@ -227,6 +229,9 @@
 		44D6EA3F1A9A35EB00EE5890 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		44E5375E1A30D10C0081630F /* SNTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNTableViewCell.h; sourceTree = "<group>"; };
 		44E5375F1A30D10C0081630F /* SNTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNTableViewCell.m; sourceTree = "<group>"; };
+		44F330E61B79636100448FF4 /* SNButtonCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNButtonCell.h; sourceTree = "<group>"; };
+		44F330E71B79636100448FF4 /* SNButtonCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNButtonCell.m; sourceTree = "<group>"; };
+		44F330E81B79636100448FF4 /* SNButtonCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SNButtonCell.xib; sourceTree = "<group>"; };
 		44F6CA311A16B10F008D8186 /* SNMainTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNMainTableViewController.h; sourceTree = "<group>"; };
 		44F6CA321A16B10F008D8186 /* SNMainTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNMainTableViewController.m; sourceTree = "<group>"; };
 		44F6CA371A179A04008D8186 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -355,6 +360,8 @@
 				44CF80101A5C7F8F001171A0 /* SNAboutViewController.m */,
 				44E5375E1A30D10C0081630F /* SNTableViewCell.h */,
 				44E5375F1A30D10C0081630F /* SNTableViewCell.m */,
+				44F330E61B79636100448FF4 /* SNButtonCell.h */,
+				44F330E71B79636100448FF4 /* SNButtonCell.m */,
 				44BEFC8B1A40CCC900F2FAE9 /* SNParentProfile.h */,
 				44BEFC8C1A40CCC900F2FAE9 /* SNParentProfile.m */,
 				44CF80041A520CB5001171A0 /* SNTeenProfile.h */,
@@ -364,6 +371,7 @@
 				44354C791A16922300FFD46D /* Images.xcassets */,
 				44354C7B1A16922300FFD46D /* LaunchScreen.xib */,
 				44354C691A16922300FFD46D /* Supporting Files */,
+				44F330E81B79636100448FF4 /* SNButtonCell.xib */,
 			);
 			path = BlueWatch;
 			sourceTree = "<group>";
@@ -578,6 +586,7 @@
 				44557C7F1A6C272F00C9947E /* email-red-32.png in Resources */,
 				44354C781A16922300FFD46D /* Main.storyboard in Resources */,
 				44FA19191AAD226F00AB461B /* Stop-32.png in Resources */,
+				44F330EA1B79636100448FF4 /* SNButtonCell.xib in Resources */,
 				44557C801A6C272F00C9947E /* email-red-50.png in Resources */,
 				44557C771A6C272F00C9947E /* camcoder-red-50.png in Resources */,
 				44557C831A6C272F00C9947E /* map-red-50.png in Resources */,
@@ -653,6 +662,7 @@
 				44E537601A30D10C0081630F /* SNTableViewCell.m in Sources */,
 				44CF80111A5C7F8F001171A0 /* SNAboutViewController.m in Sources */,
 				44ACAFA11AB4A2F000610E1E /* SNBackgroundTaskManager.m in Sources */,
+				44F330E91B79636100448FF4 /* SNButtonCell.m in Sources */,
 				443EF1581A2D691B008A5EA3 /* SNParentProfileViewController.m in Sources */,
 				44A0676A1B2C83B200C14B21 /* SNTermsViewController.m in Sources */,
 				44ACAFA51AB8669500610E1E /* SNLocationTracker.m in Sources */,

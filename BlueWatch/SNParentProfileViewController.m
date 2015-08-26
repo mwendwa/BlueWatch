@@ -224,14 +224,6 @@
     NSLog(@"textFieldDidBeginEditing");
 }
 
-/*
-- (BOOL)textFieldShouldEndEditing:(UITextField *)textField {
-    textField.backgroundColor = [UIColor whiteColor];
-    NSLog(@"textFieldShouldEndEditing");
-    return _isEditing;
-}
- */
-
 - (void)textFieldDidEndEditing:(UITextField *)textField {
     NSLog(@"tag: %li", (long)textField.tag);
     switch (textField.tag) {
