@@ -109,6 +109,7 @@
 		44FA19161AAD211600AB461B /* Stop-red-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 44FA19111AAD211600AB461B /* Stop-red-50.png */; };
 		44FA19191AAD226F00AB461B /* Stop-32.png in Resources */ = {isa = PBXBuildFile; fileRef = 44FA19171AAD226F00AB461B /* Stop-32.png */; };
 		44FA191A1AAD226F00AB461B /* Stop-50.png in Resources */ = {isa = PBXBuildFile; fileRef = 44FA19181AAD226F00AB461B /* Stop-50.png */; };
+		703581171B954C1D00D98EA9 /* SNEmergencyContactViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 703581161B954C1D00D98EA9 /* SNEmergencyContactViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -245,6 +246,8 @@
 		44FA19111AAD211600AB461B /* Stop-red-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stop-red-50.png"; sourceTree = "<group>"; };
 		44FA19171AAD226F00AB461B /* Stop-32.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stop-32.png"; sourceTree = "<group>"; };
 		44FA19181AAD226F00AB461B /* Stop-50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Stop-50.png"; sourceTree = "<group>"; };
+		703581151B954C1D00D98EA9 /* SNEmergencyContactViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SNEmergencyContactViewController.h; sourceTree = "<group>"; };
+		703581161B954C1D00D98EA9 /* SNEmergencyContactViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SNEmergencyContactViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -338,6 +341,7 @@
 				440FBBBA1AED6E560004290F /* parse-library-1 */,
 				449FC38E1A17E20A00F15D62 /* Library */,
 				44F6C9841A1698A1008D8186 /* images */,
+				44354C761A16922300FFD46D /* Main.storyboard */,
 				44354C6D1A16922300FFD46D /* AppDelegate.h */,
 				44354C6E1A16922300FFD46D /* AppDelegate.m */,
 				44ACAF9D1AB4A2F000610E1E /* SNBackgroundTaskManager.h */,
@@ -356,6 +360,8 @@
 				44CF800A1A5B7FD9001171A0 /* SNTeenProfileViewController.m */,
 				44A067681B2C83B200C14B21 /* SNTermsViewController.h */,
 				44A067691B2C83B200C14B21 /* SNTermsViewController.m */,
+				703581151B954C1D00D98EA9 /* SNEmergencyContactViewController.h */,
+				703581161B954C1D00D98EA9 /* SNEmergencyContactViewController.m */,
 				44CF800F1A5C7F8F001171A0 /* SNAboutViewController.h */,
 				44CF80101A5C7F8F001171A0 /* SNAboutViewController.m */,
 				44E5375E1A30D10C0081630F /* SNTableViewCell.h */,
@@ -367,7 +373,6 @@
 				44CF80041A520CB5001171A0 /* SNTeenProfile.h */,
 				44CF80051A520CB5001171A0 /* SNTeenProfile.m */,
 				44D2A8251A74382200F62FEF /* BlueWatch.entitlements */,
-				44354C761A16922300FFD46D /* Main.storyboard */,
 				44354C791A16922300FFD46D /* Images.xcassets */,
 				44354C7B1A16922300FFD46D /* LaunchScreen.xib */,
 				44354C691A16922300FFD46D /* Supporting Files */,
@@ -667,6 +672,7 @@
 				44A0676A1B2C83B200C14B21 /* SNTermsViewController.m in Sources */,
 				44ACAFA51AB8669500610E1E /* SNLocationTracker.m in Sources */,
 				4414F0761ABDC6BA008FCC2D /* CBAutoScrollLabel.m in Sources */,
+				703581171B954C1D00D98EA9 /* SNEmergencyContactViewController.m in Sources */,
 				449FC3911A17E20A00F15D62 /* SWRevealViewController.m in Sources */,
 				449FC39E1A17E87700F15D62 /* SNSidebarViewController.m in Sources */,
 				44F6CA351A16B10F008D8186 /* SNMainTableViewController.m in Sources */,
@@ -800,7 +806,7 @@
 					"$(PROJECT_DIR)/BlueWatch/parse-library-1",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/BlueWatch/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = BlueWatch;
 				PROVISIONING_PROFILE = "";
@@ -819,7 +825,7 @@
 					"$(PROJECT_DIR)/BlueWatch/parse-library-1",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/BlueWatch/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = BlueWatch;
 				PROVISIONING_PROFILE = "";

@@ -295,8 +295,8 @@
     }];
     
     [_teen save];
-    NSLog(@"Teen's Best location:%@",myBestLocation);
-    NSLog(@"Saved teen location at: %@", _teen.location);
+    NSLog(@"User's Best location:%@",myBestLocation);
+    NSLog(@"Saved user's location at: %@", _teen.location);
     
     // If the array is 0, get the last location
     // Sometimes due to network issue or unknown reason, you could not get the location during that  period,

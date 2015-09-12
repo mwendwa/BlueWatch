@@ -289,18 +289,22 @@
     }
     
     
+    /*
+     * Deprecated
+     *
     // Manage the view transition and tell SWRevealViewController the new front view controller for display.
     // We reuse the navigation controller and replace the view controller with destination view controller.
-    if ( [segue isKindOfClass: [SWRevealViewControllerSegue class]] ) {
-        SWRevealViewControllerSegue *swSegue = (SWRevealViewControllerSegue*) segue;
+    if ( [segue isKindOfClass: [SWRevealViewControllerSegueSetController class]] ) {
+        SWRevealViewControllerSegueSetController *swSegue = (SWRevealViewControllerSegueSetController*) segue;
         
-        swSegue.performBlock = ^(SWRevealViewControllerSegue* rvc_segue, UIViewController* svc, UIViewController* dvc) {
+        swSegue.performBlock = ^(SWRevealViewControllerSegueSetController* rvc_segue, UIViewController* svc, UIViewController* dvc) {
             
             UINavigationController* navController = (UINavigationController*)self.revealViewController.frontViewController;
             [navController setViewControllers: @[dvc] animated: NO ];
             [self.revealViewController setFrontViewPosition: FrontViewPositionLeft animated: YES];
         };
     }
+     */
 }
 
 - (void)didReceiveMemoryWarning

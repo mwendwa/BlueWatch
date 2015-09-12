@@ -8,6 +8,7 @@
 
 #import "SNTermsViewController.h"
 #import "SWRevealViewController.h"
+#import "SNParentProfileViewController.h"
 #import "SNSidebarViewController.h"
 
 #define APP_TITLE @"BlueWatch Terms"
@@ -24,6 +25,8 @@
 
 @implementation SNTermsViewController
 
+@synthesize emergencyContactView;
+
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -35,6 +38,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // Check if first run
+    /*if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasLaunchedOnce"]) {
+     //first launch
+     SNTermsViewController *termsViewController = [[SNTermsViewController alloc] init];
+     [self presentViewController:termsViewController animated:YES completion:^{
+     [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasLaunchedOnce"];
+     [[NSUserDefaults standardUserDefaults] synchronize];
+     }];
+     }
+     else
+     {
+     // app already launched
+     NSLog(@"Not the first launch.");
+     }*/
     
     UILabel* tlabel=[[UILabel alloc] initWithFrame:CGRectMake(0,0, 300, 40)];
     tlabel.text = APP_TITLE;
@@ -254,7 +272,7 @@
             break;
         case 8:
         {
-            cell.textLabel.text = @"5. Always pay your full attention to the road and abide with all transportation laws and regulations and most important of all law enforcement commands. ";
+            cell.textLabel.text = @"5. Always pay your full attention to the road and abide with all transportation laws and regulations and most important of all law enforcement commands.";
             cell.textLabel.adjustsFontSizeToFitWidth = YES;
             cell.textLabel.textAlignment = NSTextAlignmentLeft;
             cell.textLabel.numberOfLines = 0;
@@ -326,31 +344,39 @@
     return cell;
 }
 
--(void)acceptMethod:(UIButton*)sender
+-(void)acceptMethod:(UIButton *)sender
 {
     NSLog(@"I Clicked accept button %ld",(long)sender.tag);
     [self performSegueWithIdentifier:ACCEPT_TERMS sender: sender];
 }
 
--(void)declineMethod:(UIButton*)sender
+-(void)declineMethod:(UIButton *)sender
 {
     NSLog(@"I Clicked decline button %ld",(long)sender.tag);
     [self performSegueWithIdentifier:DECLINE_TERMS sender: sender];
 }
 
+- (IBAction)unwindToViewControllerNameHere:(UIStoryboardSegue *)segue {
+    //nothing goes here
+}
+
 - (void)prepareForSegue: (UIStoryboardSegue *) segue sender: (id) sender
 {
-    //UINavigationController *destViewController = (UINavigationController*)segue.destinationViewController;
-    
-    //destViewController.title = [[_menuItems objectAtIndex:indexPath.row] capitalizedString];
     if ([segue.identifier isEqualToString:ACCEPT_TERMS]) {
-        UINavigationController *destViewController = (UINavigationController*)segue.destinationViewController;
-        //SNSidebarViewController *sidebarViewController = [segue destinationViewController];
+        UINavigationController *destViewController = (UINavigationController *)segue.destinationViewController;
+        [self.navigationController  presentViewController:destViewController animated:YES completion:nil];
         
-        //SNSidebarViewController *sidebarViewController = [self.storyboard instantiateViewControllerWithIdentifier:"sidebarController"];
-        //[segue.destinationViewController setItemName:<#(NSString *)#>sender];
-        [self.navigationController presentViewController:destViewController animated:YES completion:nil];
+        //UIViewController *destController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"parentProfile"];
+        //UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:destController];
+        //[self.navigationController presentViewController:navigation animated:YES completion:nil];
         
+    }
+    
+    if ([segue.identifier isEqualToString:DECLINE_TERMS]) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+        SWRevealViewController *initView =  (SWRevealViewController *)[storyboard instantiateViewControllerWithIdentifier:@"blueWatch"];
+        [initView setModalPresentationStyle:UIModalPresentationFullScreen];
+        [self.navigationController presentViewController:initView animated:NO completion:nil];
     }
     
 }

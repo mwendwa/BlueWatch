@@ -7,9 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SNEmergencyContactViewController.h"
+
+@protocol TermsViewProtocol <NSObject>
+
+- (void) declineAndAcceptTermsView;
+
+@end
 
 @interface SNTermsViewController : UITableViewController
 
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
+@property (nonatomic, weak) id <TermsViewProtocol> delegate;
+@property (nonatomic, retain) SNEmergencyContactViewController *emergencyContactView;
 
 @end

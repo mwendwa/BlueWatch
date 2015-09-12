@@ -42,22 +42,21 @@
     }
     */
     
+    /*
     if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasLaunchedOnce"])
     {
         // first launch
-        UIViewController* rootController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"TermsViewController"];
-        UINavigationController* navigation = [[UINavigationController alloc] initWithRootViewController:rootController];
+        NSLog(@"Initial launch of BlueWatch");
+        UIViewController* viewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"TermsViewController"];
+        UINavigationController* navigation = [[UINavigationController alloc] initWithRootViewController:viewController];
         self.window.rootViewController = navigation;
     }
     else
     {
         // app already launched
         self.window.rootViewController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateInitialViewController];
-        
-        //[[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasLaunchedOnce"];
-        //[[NSUserDefaults standardUserDefaults] synchronize];
-        
     }
+    */
     
     // [Optional] Power your app with Local Datastore. For more info, go to
     // https://parse.com/docs/ios_guide#localdatastore/iOS

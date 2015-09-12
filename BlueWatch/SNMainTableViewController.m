@@ -61,19 +61,19 @@
     [super viewDidLoad];
     
     // Check if first run
-    /*if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasLaunchedOnce"]) {
-        //first launch
-        SNTermsViewController *termsViewController = [[SNTermsViewController alloc] init];
-        [self presentViewController:termsViewController animated:YES completion:^{
-            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"hasLaunchedOnce"];
-            [[NSUserDefaults standardUserDefaults] synchronize];
-        }];
+    /*
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:@"hasLaunchedOnce"])
+    {
+        // first launch
+        NSLog(@"Initial launch of BlueWatch");
+        [self performSegueWithIdentifier:@"TermsViewController" sender:self];
     }
     else
     {
         // app already launched
-         NSLog(@"Not the first launch.");
-    }*/
+        NSLog(@"User has already accpeted Terms of Use!");
+    }
+    */
     
     UILabel *tlabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0, 300, 40)];
     tlabel.text = APP_TITLE;
