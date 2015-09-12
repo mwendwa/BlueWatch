@@ -27,16 +27,6 @@
 
 @implementation SNEmergencyContactViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
-/*
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -45,7 +35,6 @@
     }
     return self;
 }
- */
 
 - (void)viewDidLoad {
     [super viewDidLoad];

@@ -93,7 +93,15 @@
     _parent2 = [SNParentProfile savedParent:PARENT_2];
     _teen = [SNTeenProfile savedTeen];
     
-    [self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
+    SWRevealViewController *revealViewController = self.revealViewController;
+    if ( revealViewController )
+    {
+        [self.sidebarButton setTarget: self.revealViewController];
+        [self.sidebarButton setAction: @selector( revealToggle: )];
+        [self.navigationController.navigationBar addGestureRecognizer: self.revealViewController.panGestureRecognizer];
+    }
+    
+    //[self.view addGestureRecognizer:self.revealViewController.panGestureRecognizer];
     self.view.backgroundColor = [UIColor colorWithWhite:0.2f alpha:1.0f];
     self.tableView.backgroundColor = [UIColor colorWithWhite:0.2f alpha:1.0f];
     self.tableView.separatorColor = [UIColor colorWithWhite:0.15f alpha:0.2f];
@@ -170,6 +178,8 @@
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
 }
+
+
 
 - (void)didReceiveMemoryWarning
 {
