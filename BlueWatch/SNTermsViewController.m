@@ -374,7 +374,7 @@
     
     if ([segue.identifier isEqualToString:DECLINE_TERMS]) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
-        SWRevealViewController *initView =  (SWRevealViewController *)[storyboard instantiateViewControllerWithIdentifier:@"blueWatch"];
+        SWRevealViewController *initView =  (SWRevealViewController *)[storyboard instantiateViewControllerWithIdentifier:@"SWRevealViewController"];
         [initView setModalPresentationStyle:UIModalPresentationFullScreen];
         [self.navigationController presentViewController:initView animated:NO completion:nil];
     }
