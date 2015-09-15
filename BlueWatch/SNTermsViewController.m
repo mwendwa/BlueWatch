@@ -346,13 +346,13 @@
 
 -(void)acceptMethod:(UIButton *)sender
 {
-    NSLog(@"I Clicked accept button %ld",(long)sender.tag);
+    NSLog(@"Clicked accept button %ld",(long)sender.tag);
     [self performSegueWithIdentifier:ACCEPT_TERMS sender: sender];
 }
 
 -(void)declineMethod:(UIButton *)sender
 {
-    NSLog(@"I Clicked decline button %ld",(long)sender.tag);
+    NSLog(@"Clicked decline button %ld",(long)sender.tag);
     [self performSegueWithIdentifier:DECLINE_TERMS sender: sender];
 }
 
