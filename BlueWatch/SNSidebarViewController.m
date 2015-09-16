@@ -14,6 +14,7 @@
 #import "SNParentProfile.h"
 #import "SNTeenProfile.h"
 #import "SNTermsViewController.h"
+#import "SNMainTableViewController.h"
 #import <MessageUI/MessageUI.h>
 #import <AVFoundation/AVFoundation.h>
 #import <Parse/Parse.h>
@@ -288,29 +289,17 @@
         [self presentViewController:alertController animated:YES completion:nil];
     }
     
-    
-    /*
-     * Deprecated
-     *
-    // Manage the view transition and tell SWRevealViewController the new front view controller for display.
-    // We reuse the navigation controller and replace the view controller with destination view controller.
-    if ( [segue isKindOfClass: [SWRevealViewControllerSegueSetController class]] ) {
-        SWRevealViewControllerSegueSetController *swSegue = (SWRevealViewControllerSegueSetController*) segue;
-        
-        swSegue.performBlock = ^(SWRevealViewControllerSegueSetController* rvc_segue, UIViewController* svc, UIViewController* dvc) {
-            
-            UINavigationController* navController = (UINavigationController*)self.revealViewController.frontViewController;
-            [navController setViewControllers: @[dvc] animated: NO ];
-            [self.revealViewController setFrontViewPosition: FrontViewPositionLeft animated: YES];
-        };
-    }
-     */
-    
     // configure the destination view controller:
     if ( [sender isKindOfClass: [UITableViewCell class]] )
     {
         UINavigationController *navController = segue.destinationViewController;
-        [self.navigationController presentViewController:navController animated:YES completion:nil];
+        SNMainTableViewController *svc = [navController childViewControllers].firstObject;
+        if ( [svc isKindOfClass:[SNMainTableViewController class]] )
+        {
+            // set up SNMainTableViewController
+        }
+        
+        //[self.navigationController presentViewController:navController animated:YES completion:nil];
     }
 }
 
