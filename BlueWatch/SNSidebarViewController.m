@@ -51,10 +51,14 @@
     return self;
 }
 
-- (void)viewDidLoad
+- (void) viewDidLoad
 {
     [super viewDidLoad];
-    
+    [self customSetup];
+}
+
+- (void) customSetup
+{
     UILabel *tlabel = [[UILabel alloc] initWithFrame:CGRectMake(0,0, 300, 40)];
     tlabel.text = APP_TITLE;
     tlabel.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:20.0];
@@ -92,11 +96,9 @@
     
     // Set the title of navigation bar by using the menu items
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    UINavigationController *destViewController = (UINavigationController *)segue.destinationViewController;
+    UINavigationController *destViewController = segue.destinationViewController;
     destViewController.title = [[_menuItems objectAtIndex:indexPath.row] capitalizedString];
-  
-    // Send the teen's location to parents.  I really want this done in the didSelectRowForIndexPath method, but can't figure
-    // out why it's not being triggered. Ugh!
+
     if ([segue.identifier isEqualToString:SEND_LOCATION]) {
         NSLog(@"Send teen location to: %@, %@", _parent1.description, _parent2.description);
         NSLog(@"%@ is at: %@", _teen.name, _teen.myLocation);
@@ -166,7 +168,7 @@
         [self presentViewController:alertController animated:YES completion:nil];
     }
     
-    //rate officer experience and save to Parse cloud
+    // rate officer experience and save to Parse cloud
     if ([segue.identifier isEqualToString:RATE_OFFICER]) {
         NSLog(@"Rate officer");
         
@@ -287,19 +289,6 @@
         [alertController addAction:thumbsDown];
         
         [self presentViewController:alertController animated:YES completion:nil];
-    }
-    
-    // configure the destination view controller:
-    if ( [sender isKindOfClass: [UITableViewCell class]] )
-    {
-        UINavigationController *navController = segue.destinationViewController;
-        SNMainTableViewController *svc = [navController childViewControllers].firstObject;
-        if ( [svc isKindOfClass:[SNMainTableViewController class]] )
-        {
-            // set up SNMainTableViewController
-        }
-        
-        //[self.navigationController presentViewController:navController animated:YES completion:nil];
     }
 }
 
