@@ -91,7 +91,7 @@
     
     // Set the title of navigation bar by using the menu items
     NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-    UINavigationController *destViewController = (UINavigationController*)segue.destinationViewController;
+    UINavigationController *destViewController = (UINavigationController *)segue.destinationViewController;
     destViewController.title = [[_menuItems objectAtIndex:indexPath.row] capitalizedString];
   
     // Send the teen's location to parents.  I really want this done in the didSelectRowForIndexPath method, but can't figure
@@ -305,6 +305,13 @@
         };
     }
      */
+    
+    // configure the destination view controller:
+    if ( [sender isKindOfClass: [UITableViewCell class]] )
+    {
+        UINavigationController *navController = segue.destinationViewController;
+        [self.navigationController presentViewController:navController animated:YES completion:nil];
+    }
 }
 
 - (void)didReceiveMemoryWarning

@@ -363,10 +363,10 @@
 - (void)prepareForSegue: (UIStoryboardSegue *) segue sender: (id) sender
 {
     if ([segue.identifier isEqualToString:ACCEPT_TERMS]) {
-        UINavigationController *destViewController = (UINavigationController *)segue.destinationViewController;
-        [self.navigationController  presentViewController:destViewController animated:YES completion:nil];
+        UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
+        [self.navigationController  presentViewController:navController animated:YES completion:nil];
         
-        //UIViewController *destController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"parentProfile"];
+        //UIViewController *destController = [[UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]] instantiateViewControllerWithIdentifier:@"ParentViewController"];
         //UINavigationController *navigation = [[UINavigationController alloc] initWithRootViewController:destController];
         //[self.navigationController presentViewController:navigation animated:YES completion:nil];
         

@@ -70,7 +70,7 @@
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
 
     UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    SNParentProfileViewController *viewcontroller = (SNParentProfileViewController *)[storyboard instantiateViewControllerWithIdentifier:@"parentProfile"];
+    SNParentProfileViewController *viewcontroller = (SNParentProfileViewController *)[storyboard instantiateViewControllerWithIdentifier:@"ParentViewController"];
     
     SNParentProfile *parent1 = [SNParentProfile savedParent:PARENT_1];
     viewcontroller.p1 = parent1?parent1:[[SNParentProfile alloc] init];
