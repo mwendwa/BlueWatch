@@ -302,13 +302,11 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    // Return the number of sections.
     return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Return the number of rows in the section.
     return [self.menuItems count];
 }
 
@@ -317,30 +315,15 @@
     NSString *CellIdentifier = [self.menuItems objectAtIndex:indexPath.row];
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     
-    // add tap gesture
-    //UITapGestureRecognizer * tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
-    //tapRecognizer.numberOfTapsRequired = 1;
-    //tapRecognizer.numberOfTouchesRequired = 1;
-    //cell.userInteractionEnabled = YES;
-    //[cell addGestureRecognizer:tapRecognizer];
-    
     return cell;
 }
 
-- (void) handleTap:(UIGestureRecognizer *)recognizer
-{
-    NSLog(@"handleTap: Send teen location to parent");
-}
-
-- (void) tableView:(UITableView *)tableView didSeselectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"Send teen location to: %@", _parent1);
-}
-
+/*
 - (UIModalPresentationStyle)adaptivePresentationStyleForPresentationController:(UIPresentationController *)controller
 {
     return UIModalPresentationNone;
 }
+ */
 
 #pragma mark - Send SMS
 
